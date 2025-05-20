@@ -21,6 +21,8 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding-bottom: 60px; /* Footer için yer ayırma */
+            position: relative;
         }
         .header {
             background-color: #1e2738;
@@ -353,9 +355,10 @@
             text-align: center;
             font-size: 14px;
             margin-top: 40px;
-            position: relative;
+            position: fixed;
             bottom: 0;
             width: 100%;
+            z-index: 10;
         }
         /* Mobil uyumluluk */
         @media (max-width: 768px) {
@@ -962,8 +965,15 @@
         </div>
 
         <!-- Alt Bilgi -->
-        <footer class="footer">
-            <p>© 2025 GTİ | Tüm Hakları Saklıdır</p>
+        <footer class="footer" style="position: fixed; bottom: 0; width: 100%;">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+                <div class="copyright">
+                    Copyright &copy; 2025 Gümrük ve Turizm İşletmeleri Ticaret A.Ş.
+                </div>
+                <div class="developer">
+                    Crafted by ADTech
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -3070,6 +3080,54 @@
             document.getElementById('excelFileInput').click();
         }
         
+        // Tüm ofis kayıtlarını Excel'e aktar
+        function exportAllOfficesToExcel() {
+            // Kayıt yoksa kullanıcıya bilgi ver
+            if (offices.length === 0) {
+                alert('Aktarilacak kayıt bulunamadı!');
+                return;
+            }
+            
+            // Verileri hazırla
+            const data = [];
+            
+            // Başlık satırı ekle
+            data.push(['Ofis No', 'Firma Adı', 'Elektrik Sayaç No', 'Elektrik Son Değer', 'Su Sayaç No', 'Su Son Değer']);
+            
+            // Ofis verilerini ekle
+            offices.forEach(office => {
+                data.push([
+                    office.office_no,
+                    office.name,
+                    office.electric ? office.electric.meter_no : '',
+                    office.electric ? office.electric.last_reading : '',
+                    office.water ? office.water.meter_no : '',
+                    office.water ? office.water.last_reading : ''
+                ]);
+            });
+            
+            // Excel çalışma kitabı oluştur
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Ofis Kayıtları');
+            
+            // Excel dosyasını indir
+            XLSX.writeFile(wb, 'Ofis_Sayac_Kayitlari_' + new Date().toISOString().slice(0, 10) + '.xlsx');
+            
+            // Kullanıcıya bilgi ver
+            alert('Tüm ofis kayıtları Excel dosyasına aktarıldı!');
+            
+            // Rapor sonucu göster
+            const reportResult = document.getElementById('reportResult');
+            reportResult.innerHTML = `
+                <div style="padding: 15px; background-color: #eaf7ea; border-left: 4px solid #2e7d32; margin-bottom: 20px;">
+                    <p><strong>${offices.length}</strong> adet ofis kaydı başarıyla Excel dosyasına aktarıldı.</p>
+                    <p>Dosya Adı: <strong>Ofis_Sayac_Kayitlari_${new Date().toISOString().slice(0, 10)}.xlsx</strong></p>
+                    <p>Aktarma Tarihi: ${new Date().toLocaleString('tr-TR')}</p>
+                </div>
+            `;
+        }
+        
         // Excel dosyasını işle
         function processExcelFile(file) {
             const reader = new FileReader();
@@ -3224,6 +3282,11 @@
             // Ofis veri durumu arama kutusu
             document.getElementById('statusOfficeSearch').addEventListener('input', function() {
                 searchStatusOffices(this.value.trim());
+            });
+            
+            // Excel'e aktarma butonu
+            document.getElementById('exportAllToExcel').addEventListener('click', function() {
+                exportAllOfficesToExcel();
             });
             
             // Admin panel sekme geçişleri için olay dinleyicileri
@@ -3439,17 +3502,7 @@
         });
     </script>
     
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="copyright">
-                Copyright &copy; 2025 Gümrük ve Turizm İşletmeleri Ticaret A.Ş.
-            </div>
-            <div class="developer">
-                Crafted by ADTech
-            </div>
-        </div>
-    </footer>
+    <!-- İkinci footer kaldırıldı -->
     
 </body>
 </html>
