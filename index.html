@@ -1008,6 +1008,7 @@
                         <div class="office-item" data-panel="meterPanel">Sayaç Yönetimi</div>
                         <div class="office-item" data-panel="reportPanel">Raporlar</div>
                         <div class="office-item" data-panel="statusPanel">Ofis Veri Durumu</div>
+                        <div class="office-item" data-panel="depoPanel">Depo Yönetimi</div>
                     </div>
                 </div>
 
@@ -1141,6 +1142,52 @@
                             </thead>
                             <tbody id="statusTableBody">
                                 <!-- Ofis veri durumları listelenecek -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Depo Yönetimi Paneli -->
+                    <div id="depoPanel" class="admin-panel-content" style="display: none;">
+                        <h1 class="page-title">Depo Yönetimi</h1>
+                        
+                        <div style="margin-bottom: 20px; display: flex; justify-content: space-between;">
+                            <div>
+                                <button id="addProductBtn" class="login-button" style="margin-right: 10px;">Yeni Ürün Ekle</button>
+                                <button id="bulkUploadBtn" class="login-button" style="margin-right: 10px; background-color: #28a745;">Toplu Ürün Yükle</button>
+                                <select id="depoSelector" style="padding: 8px; border-radius: 4px; border: 1px solid #ddd;">
+                                    <option value="all">Tüm Depolar</option>
+                                    <option value="SARI OTOPARK 5 NOLU DEPO">SARI OTOPARK 5 NOLU DEPO</option>
+                                    <option value="SARI OTOPARK PEYZAJ DEPOSU">SARI OTOPARK PEYZAJ DEPOSU</option>
+                                    <option value="YEŞİL OTOPARK DEPO">YEŞİL OTOPARK DEPO</option>
+                                    <option value="YAKIT DEPOSU">YAKIT DEPOSU</option>
+                                    <option value="YEŞİL OTOPARK 5 NOLU DEPO">YEŞİL OTOPARK 5 NOLU DEPO</option>
+                                    <option value="ZEMİN 30 OFİS">ZEMİN 30 OFİS</option>
+                                    <option value="-1.KAT DEPO">-1.KAT DEPO</option>
+                                    <option value="ZEMİN KAT DEPO">ZEMİN KAT DEPO</option>
+                                    <option value="İŞLETME DEPO">İŞLETME DEPO</option>
+                                    <option value="TEKNİK DEPO">TEKNİK DEPO</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="text" id="productSearch" placeholder="Ürün ara..." style="padding: 8px; width: 200px; margin-right: 10px;">
+                                <button id="exportInventoryBtn" class="login-button">Excel'e Aktar</button>
+                            </div>
+                        </div>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <th>Miktar</th>
+                                    <th>Birim</th>
+                                    <th>Depo</th>
+                                    <th>Açıklama</th>
+                                    <th>Son Güncelleme</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody">
+                                <!-- Envanter listelenecek -->
                             </tbody>
                         </table>
                     </div>
@@ -3498,11 +3545,955 @@
                 const officeId = e.target.getAttribute('data-id');
                 const meterType = e.target.getAttribute('data-type');
                 showMeterEditModal(officeId, meterType);
+            } else if (e.target.classList.contains('edit-product-btn')) {
+                const productId = e.target.getAttribute('data-id');
+                editProduct(productId);
+            } else if (e.target.classList.contains('view-movement-btn')) {
+                const productId = e.target.getAttribute('data-id');
+                viewStockMovements(productId);
             }
         });
+        
+        // Depo ve Ürün Yönetimi için veri modeli
+        let depolar = [
+            "SARI OTOPARK 5 NOLU DEPO",
+            "SARI OTOPARK PEYZAJ DEPOSU",
+            "YEŞİL OTOPARK DEPO",
+            "YAKIT DEPOSU",
+            "YEŞİL OTOPARK 5 NOLU DEPO",
+            "ZEMİN 30 OFİS",
+            "-1.KAT DEPO",
+            "ZEMİN KAT DEPO",
+            "İŞLETME DEPO",
+            "TEKNİK DEPO"
+        ];
+
+        // Envanter örnek verileri
+        let inventory = [
+            {
+                id: 1,
+                name: "Elektrik Kablosu",
+                quantity: 150,
+                unit: "Metre",
+                depo_id: "TEKNİK DEPO",
+                description: "2x2.5mm kesitli NYM kablo",
+                lastUpdated: "2025-05-18",
+                updatedBy: "admin",
+                movements: [
+                    {
+                        date: "2025-05-18",
+                        user: "admin",
+                        action: "Ekleme",
+                        oldQuantity: 0,
+                        change: 150,
+                        newQuantity: 150
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: "Temizlik Malzemesi",
+                quantity: 25,
+                unit: "Litre",
+                depo_id: "İŞLETME DEPO",
+                description: "Genel temizlik solüsyonu",
+                lastUpdated: "2025-05-19",
+                updatedBy: "admin",
+                movements: [
+                    {
+                        date: "2025-05-15",
+                        user: "admin",
+                        action: "Ekleme",
+                        oldQuantity: 0,
+                        change: 30,
+                        newQuantity: 30
+                    },
+                    {
+                        date: "2025-05-19",
+                        user: "admin",
+                        action: "Çıkarma",
+                        oldQuantity: 30,
+                        change: -5,
+                        newQuantity: 25
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: "Aydınlatma Armatürü",
+                quantity: 42,
+                unit: "Adet",
+                depo_id: "SARI OTOPARK 5 NOLU DEPO",
+                description: "LED panel 60x60",
+                lastUpdated: "2025-05-17",
+                updatedBy: "admin",
+                movements: [
+                    {
+                        date: "2025-05-17",
+                        user: "admin",
+                        action: "Ekleme",
+                        oldQuantity: 0,
+                        change: 42,
+                        newQuantity: 42
+                    }
+                ]
+            }
+        ];
+
+        // Depo yönetimi için olay dinleyicileri
+        document.addEventListener('DOMContentLoaded', function() {
+            // Depo paneli için event listener
+            document.querySelector('[data-panel="depoPanel"]').addEventListener('click', function() {
+                showDepoPanel();
+            });
+            
+            // Yeni ürün ekleme butonu
+            document.getElementById('addProductBtn')?.addEventListener('click', function() {
+                showAddProductModal();
+            });
+            
+            // Toplu ürün yükleme butonu
+            document.getElementById('bulkUploadBtn')?.addEventListener('click', function() {
+                showBulkUploadModal();
+            });
+            
+            // Excel'e aktarma butonu
+            document.getElementById('exportInventoryBtn')?.addEventListener('click', function() {
+                exportInventoryToExcel();
+            });
+            
+            // Depo filtresi değişikliği
+            document.getElementById('depoSelector')?.addEventListener('change', function() {
+                renderInventoryTable();
+            });
+            
+            // Ürün arama
+            document.getElementById('productSearch')?.addEventListener('input', function() {
+                renderInventoryTable();
+            });
+            
+            // Yeni ürün kaydetme
+            document.getElementById('saveProductBtn')?.addEventListener('click', function() {
+                saveNewProduct();
+            });
+            
+            // Ürün düzenleme kaydetme
+            document.getElementById('updateProductBtn')?.addEventListener('click', function() {
+                updateProduct();
+            });
+            
+            // Şablon dosyasını indirme
+            document.getElementById('downloadTemplateBtn')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                downloadTemplateFile();
+            });
+            
+            // Dosya seçildiğinde
+            document.getElementById('bulkUploadFile')?.addEventListener('change', function() {
+                previewBulkUpload();
+            });
+            
+            // Toplu yükleme işlemi
+            document.getElementById('processBulkUploadBtn')?.addEventListener('click', function() {
+                processBulkUpload();
+            });
+            
+            // Modal kapatma butonları
+            document.getElementById('cancelProductBtn')?.addEventListener('click', function() {
+                document.getElementById('addProductModal').style.display = 'none';
+            });
+            
+            document.getElementById('cancelEditBtn')?.addEventListener('click', function() {
+                document.getElementById('editProductModal').style.display = 'none';
+            });
+            
+            document.getElementById('closeMovementBtn')?.addEventListener('click', function() {
+                document.getElementById('stockMovementModal').style.display = 'none';
+            });
+            
+            document.getElementById('cancelBulkUploadBtn')?.addEventListener('click', function() {
+                document.getElementById('bulkUploadModal').style.display = 'none';
+            });
+        });
+
+        // Depo panelini göster
+        function showDepoPanel() {
+            // Tüm panelleri gizle
+            const allPanels = document.querySelectorAll('.admin-panel-content');
+            allPanels.forEach(panel => {
+                panel.style.display = 'none';
+            });
+            
+            // Tüm menü öğelerinin active sınıfını kaldır
+            const allMenuItems = document.querySelectorAll('.office-item');
+            allMenuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Depo panelini göster ve menü öğesini aktif yap
+            document.getElementById('depoPanel').style.display = 'block';
+            document.querySelector('[data-panel="depoPanel"]').classList.add('active');
+            
+            // Envanter tablosunu renderla
+            renderInventoryTable();
+        }
+
+        // Envanter tablosunu renderla
+        function renderInventoryTable() {
+            const tableBody = document.getElementById('inventoryTableBody');
+            if (!tableBody) return;
+            
+            tableBody.innerHTML = '';
+            
+            // Filtre değerlerini al
+            const depoFilter = document.getElementById('depoSelector').value;
+            const searchText = document.getElementById('productSearch').value.toLowerCase();
+            
+            // Filtreleme
+            let filteredInventory = inventory;
+            
+            if (depoFilter !== 'all') {
+                filteredInventory = filteredInventory.filter(item => item.depo_id === depoFilter);
+            }
+            
+            if (searchText) {
+                filteredInventory = filteredInventory.filter(item => 
+                    item.name.toLowerCase().includes(searchText) || 
+                    item.description.toLowerCase().includes(searchText)
+                );
+            }
+            
+            // Tabloyu doldur
+            filteredInventory.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unit}</td>
+                    <td>${item.depo_id}</td>
+                    <td>${item.description}</td>
+                    <td>${item.lastUpdated} (${item.updatedBy})</td>
+                    <td>
+                        <button class="edit-product-btn" data-id="${item.id}">Düzenle</button>
+                        <button class="view-movement-btn" data-id="${item.id}">Hareketler</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Yeni ürün ekleme modalını göster
+        function showAddProductModal() {
+            // Formu temizle
+            document.getElementById('newProductName').value = '';
+            document.getElementById('newProductQuantity').value = '';
+            document.getElementById('newProductUnit').value = 'Adet';
+            document.getElementById('newProductDepo').value = depolar[0];
+            document.getElementById('newProductDesc').value = '';
+            
+            // Modalı göster
+            document.getElementById('addProductModal').style.display = 'flex';
+        }
+
+        // Yeni ürün kaydet
+        function saveNewProduct() {
+            const name = document.getElementById('newProductName').value.trim();
+            const quantity = parseInt(document.getElementById('newProductQuantity').value, 10) || 0;
+            const unit = document.getElementById('newProductUnit').value;
+            const depo = document.getElementById('newProductDepo').value;
+            const description = document.getElementById('newProductDesc').value.trim();
+            
+            // Doğrulama
+            if (!name) {
+                alert('Ürün adı gereklidir!');
+                return;
+            }
+            
+            if (quantity <= 0) {
+                alert('Miktar pozitif bir sayı olmalıdır!');
+                return;
+            }
+            
+            // Yeni ID oluştur
+            const newId = inventory.length > 0 ? Math.max(...inventory.map(item => item.id)) + 1 : 1;
+            
+            // Hareket kaydı
+            const movement = {
+                date: new Date().toISOString().slice(0, 10),
+                user: currentUser.name,
+                action: "Ekleme",
+                oldQuantity: 0,
+                change: quantity,
+                newQuantity: quantity
+            };
+            
+            // Yeni ürün objesi
+            const newProduct = {
+                id: newId,
+                name: name,
+                quantity: quantity,
+                unit: unit,
+                depo_id: depo,
+                description: description,
+                lastUpdated: new Date().toISOString().slice(0, 10),
+                updatedBy: currentUser.name,
+                movements: [movement]
+            };
+            
+            // Envantere ekle
+            inventory.push(newProduct);
+            
+            // Tabloyu güncelle
+            renderInventoryTable();
+            
+            // Modalı kapat
+            document.getElementById('addProductModal').style.display = 'none';
+            
+            // Bildirim göster
+            const notification = document.getElementById('notification');
+            notification.textContent = 'Yeni ürün başarıyla eklendi!';
+            notification.style.opacity = '1';
+            
+            // 5 saniye sonra bildirimi kapat
+            setTimeout(function() {
+                notification.style.opacity = '0';
+            }, 5000);
+        }
+
+        // Ürün düzenleme modalını göster
+        function editProduct(productId) {
+            // Ürünü bul
+            const product = inventory.find(item => item.id == productId);
+            if (!product) return;
+            
+            // Formu doldur
+            document.getElementById('editProductId').value = product.id;
+            document.getElementById('editProductName').value = product.name;
+            document.getElementById('editProductQuantity').value = product.quantity;
+            document.getElementById('editProductUnit').value = product.unit;
+            document.getElementById('editProductDepo').value = product.depo_id;
+            document.getElementById('editProductDesc').value = product.description;
+            
+            // Modalı göster
+            document.getElementById('editProductModal').style.display = 'flex';
+        }
+
+        // Ürün güncelleme
+        function updateProduct() {
+            const id = document.getElementById('editProductId').value;
+            const name = document.getElementById('editProductName').value.trim();
+            const newQuantity = parseInt(document.getElementById('editProductQuantity').value, 10) || 0;
+            const unit = document.getElementById('editProductUnit').value;
+            const depo = document.getElementById('editProductDepo').value;
+            const description = document.getElementById('editProductDesc').value.trim();
+            
+            // Doğrulama
+            if (!name) {
+                alert('Ürün adı gereklidir!');
+                return;
+            }
+            
+            if (newQuantity < 0) {
+                alert('Miktar negatif olamaz!');
+                return;
+            }
+            
+            // Ürünü bul
+            const product = inventory.find(item => item.id == id);
+            if (!product) return;
+            
+            // Eski miktar
+            const oldQuantity = product.quantity;
+            
+            // Miktar değişimi varsa hareket kaydı ekle
+            if (oldQuantity !== newQuantity) {
+                const movement = {
+                    date: new Date().toISOString().slice(0, 10),
+                    user: currentUser.name,
+                    action: oldQuantity < newQuantity ? "Ekleme" : "Çıkarma",
+                    oldQuantity: oldQuantity,
+                    change: newQuantity - oldQuantity,
+                    newQuantity: newQuantity
+                };
+                
+                // Hareket kaydı ekle
+                product.movements.unshift(movement);
+            }
+            
+            // Ürünü güncelle
+            product.name = name;
+            product.quantity = newQuantity;
+            product.unit = unit;
+            product.depo_id = depo;
+            product.description = description;
+            product.lastUpdated = new Date().toISOString().slice(0, 10);
+            product.updatedBy = currentUser.name;
+            
+            // Tabloyu güncelle
+            renderInventoryTable();
+            
+            // Modalı kapat
+            document.getElementById('editProductModal').style.display = 'none';
+            
+            // Bildirim göster
+            const notification = document.getElementById('notification');
+            notification.textContent = 'Ürün başarıyla güncellendi!';
+            notification.style.opacity = '1';
+            
+            // 5 saniye sonra bildirimi kapat
+            setTimeout(function() {
+                notification.style.opacity = '0';
+            }, 5000);
+        }
+
+        // Stok hareketlerini görüntüle
+        function viewStockMovements(productId) {
+            // Ürünü bul
+            const product = inventory.find(item => item.id == productId);
+            if (!product) return;
+            
+            // Başlığı güncelle
+            document.getElementById('movementProductName').textContent = ` - ${product.name}`;
+            
+            // Tabloyu doldur
+            const tableBody = document.getElementById('movementTableBody');
+            tableBody.innerHTML = '';
+            
+            if (product.movements.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="6">Bu ürün için hareket kaydı bulunmamaktadır.</td>`;
+                tableBody.appendChild(row);
+            } else {
+                product.movements.forEach(movement => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${movement.date}</td>
+                        <td>${movement.user}</td>
+                        <td>${movement.action}</td>
+                        <td>${movement.oldQuantity} ${product.unit}</td>
+                        <td class="${movement.change > 0 ? 'positive' : 'negative'}">${movement.change > 0 ? '+' : ''}${movement.change} ${product.unit}</td>
+                        <td>${movement.newQuantity} ${product.unit}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+            
+            // Modalı göster
+            document.getElementById('stockMovementModal').style.display = 'flex';
+        }
+
+        // Toplu ürün yükleme modalını göster
+        function showBulkUploadModal() {
+            // Formu sıfırla
+            document.getElementById('bulkUploadFile').value = '';
+            document.getElementById('uploadPreview').style.display = 'none';
+            document.getElementById('previewTableBody').innerHTML = '';
+            document.getElementById('previewCount').textContent = '0';
+            
+            // Modalı göster
+            document.getElementById('bulkUploadModal').style.display = 'flex';
+        }
+        
+        // Şablon dosyasını indir
+        function downloadTemplateFile() {
+            // Şablon veri hazırla
+            const templateData = [
+                ['Ürün Adı', 'Miktar', 'Birim', 'Depo', 'Açıklama'],
+                ['Kablo', '100', 'Metre', 'TEKNİK DEPO', 'NYM 3x2.5'],
+                ['Ampul', '50', 'Adet', 'TEKNİK DEPO', 'LED 10W'],
+                ['Temizlik Malzemesi', '20', 'Litre', 'İŞLETME DEPO', 'Genel Temizlik']
+            ];
+            
+            // Excel çalışma kitabı oluştur
+            const ws = XLSX.utils.aoa_to_sheet(templateData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Ürünler');
+            
+            // Excel dosyasını indir
+            XLSX.writeFile(wb, 'Toplu_Urun_Yukleme_Sablonu.xlsx');
+        }
+        
+        // Seçilen dosyanın önizlemesini göster
+        function previewBulkUpload() {
+            const fileInput = document.getElementById('bulkUploadFile');
+            const previewTable = document.getElementById('previewTableBody');
+            const previewCount = document.getElementById('previewCount');
+            const uploadPreview = document.getElementById('uploadPreview');
+            
+            if (!fileInput.files || !fileInput.files[0]) {
+                uploadPreview.style.display = 'none';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    // Excel veya CSV dosyasını oku
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    
+                    // İlk sayfayı al
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    
+                    // JSON'a dönüştür
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+                    
+                    // Başlık satırını kontrol et
+                    if (jsonData.length < 2) {
+                        alert('Dosya boş veya geçersiz format!');
+                        return;
+                    }
+                    
+                    // Ürünleri işle
+                    const headers = jsonData[0].map(h => String(h).trim().toLowerCase());
+                    const nameIndex = headers.findIndex(h => h.includes('ad') || h.includes('ürün'));
+                    const quantityIndex = headers.findIndex(h => h.includes('miktar'));
+                    const unitIndex = headers.findIndex(h => h.includes('birim'));
+                    const depoIndex = headers.findIndex(h => h.includes('depo'));
+                    const descIndex = headers.findIndex(h => h.includes('açıklama') || h.includes('aciklama'));
+                    
+                    if (nameIndex === -1 || quantityIndex === -1) {
+                        alert('Ürün Adı veya Miktar sütunları bulunamadı!');
+                        return;
+                    }
+                    
+                    // Önizleme tablosunu temizle
+                    previewTable.innerHTML = '';
+                    
+                    // Valid ürünleri say
+                    let validProducts = 0;
+                    
+                    // Başlık satırını atla (1. indeksten başla)
+                    for (let i = 1; i < jsonData.length; i++) {
+                        const row = jsonData[i];
+                        
+                        // Boş satırları atla
+                        if (!row[nameIndex] || !row[quantityIndex]) continue;
+                        
+                        const name = String(row[nameIndex]).trim();
+                        const quantity = parseInt(row[quantityIndex], 10);
+                        
+                        // Geçersiz verileri atla
+                        if (!name || isNaN(quantity) || quantity <= 0) continue;
+                        
+                        // Birim, depo ve açıklama değerlerini al
+                        const unit = unitIndex !== -1 && row[unitIndex] ? String(row[unitIndex]).trim() : 'Adet';
+                        const depo = depoIndex !== -1 && row[depoIndex] ? String(row[depoIndex]).trim() : 'TEKNİK DEPO';
+                        
+                        // Önizlemeye ekle
+                        const previewRow = document.createElement('tr');
+                        previewRow.innerHTML = `
+                            <td>${name}</td>
+                            <td>${quantity}</td>
+                            <td>${unit}</td>
+                            <td>${depo}</td>
+                        `;
+                        previewTable.appendChild(previewRow);
+                        
+                        validProducts++;
+                    }
+                    
+                    // Önizleme sayısını güncelle
+                    previewCount.textContent = validProducts.toString();
+                    
+                    // Önizlemeyi göster/gizle
+                    if (validProducts > 0) {
+                        uploadPreview.style.display = 'block';
+                    } else {
+                        uploadPreview.style.display = 'none';
+                        alert('Dosyada yüklenebilecek geçerli ürün bulunamadı!');
+                    }
+                    
+                } catch (error) {
+                    console.error('Dosya okuma hatası:', error);
+                    alert('Dosya okunamadı veya geçersiz format!');
+                    uploadPreview.style.display = 'none';
+                }
+            };
+            
+            reader.onerror = function() {
+                alert('Dosya okunamadı!');
+                uploadPreview.style.display = 'none';
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+        
+        // Toplu ürün yükleme işlemini tamamla
+        function processBulkUpload() {
+            const fileInput = document.getElementById('bulkUploadFile');
+            
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert('Lütfen bir dosya seçin!');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    // Excel veya CSV dosyasını oku
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    
+                    // İlk sayfayı al
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    
+                    // JSON'a dönüştür
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+                    
+                    // Başlık satırını kontrol et
+                    if (jsonData.length < 2) {
+                        alert('Dosya boş veya geçersiz format!');
+                        return;
+                    }
+                    
+                    // Ürünleri işle
+                    const headers = jsonData[0].map(h => String(h).trim().toLowerCase());
+                    const nameIndex = headers.findIndex(h => h.includes('ad') || h.includes('ürün'));
+                    const quantityIndex = headers.findIndex(h => h.includes('miktar'));
+                    const unitIndex = headers.findIndex(h => h.includes('birim'));
+                    const depoIndex = headers.findIndex(h => h.includes('depo'));
+                    const descIndex = headers.findIndex(h => h.includes('açıklama') || h.includes('aciklama'));
+                    
+                    if (nameIndex === -1 || quantityIndex === -1) {
+                        alert('Ürün Adı veya Miktar sütunları bulunamadı!');
+                        return;
+                    }
+                    
+                    // Yüklenen ürünleri say
+                    let addedCount = 0;
+                    
+                    // Başlık satırını atla (1. indeksten başla)
+                    for (let i = 1; i < jsonData.length; i++) {
+                        const row = jsonData[i];
+                        
+                        // Boş satırları atla
+                        if (!row[nameIndex] || !row[quantityIndex]) continue;
+                        
+                        const name = String(row[nameIndex]).trim();
+                        const quantity = parseInt(row[quantityIndex], 10);
+                        
+                        // Geçersiz verileri atla
+                        if (!name || isNaN(quantity) || quantity <= 0) continue;
+                        
+                        // Birim, depo ve açıklama değerlerini al
+                        const unit = unitIndex !== -1 && row[unitIndex] ? String(row[unitIndex]).trim() : 'Adet';
+                        const depo = depoIndex !== -1 && row[depoIndex] ? String(row[depoIndex]).trim() : 'TEKNİK DEPO';
+                        const description = descIndex !== -1 && row[descIndex] ? String(row[descIndex]).trim() : '';
+                        
+                        // Yeni ID oluştur
+                        const newId = inventory.length > 0 ? Math.max(...inventory.map(item => item.id)) + 1 : 1;
+                        
+                        // Hareket kaydı
+                        const movement = {
+                            date: new Date().toISOString().slice(0, 10),
+                            user: currentUser.name,
+                            action: "Ekleme",
+                            oldQuantity: 0,
+                            change: quantity,
+                            newQuantity: quantity
+                        };
+                        
+                        // Yeni ürün objesi
+                        const newProduct = {
+                            id: newId + addedCount,
+                            name: name,
+                            quantity: quantity,
+                            unit: unit,
+                            depo_id: depo,
+                            description: description,
+                            lastUpdated: new Date().toISOString().slice(0, 10),
+                            updatedBy: currentUser.name,
+                            movements: [movement]
+                        };
+                        
+                        // Envantere ekle
+                        inventory.push(newProduct);
+                        addedCount++;
+                    }
+                    
+                    // Tabloyu güncelle
+                    renderInventoryTable();
+                    
+                    // Kullanıcıya bilgi ver
+                    alert(`Toplam ${addedCount} ürün başarıyla yüklendi!`);
+                    
+                    // Modalı kapat
+                    document.getElementById('bulkUploadModal').style.display = 'none';
+                    
+                    // Bildirim göster
+                    const notification = document.getElementById('notification');
+                    notification.textContent = `Toplam ${addedCount} ürün başarıyla yüklendi!`;
+                    notification.style.opacity = '1';
+                    
+                    // 5 saniye sonra bildirimi kapat
+                    setTimeout(function() {
+                        notification.style.opacity = '0';
+                    }, 5000);
+                    
+                } catch (error) {
+                    console.error('Dosya işleme hatası:', error);
+                    alert('Dosya işlenemedi: ' + error.message);
+                }
+            };
+            
+            reader.onerror = function() {
+                alert('Dosya okunamadı!');
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Envanteri Excel'e aktar
+        function exportInventoryToExcel() {
+            // Filtre değerlerini al
+            const depoFilter = document.getElementById('depoSelector').value;
+            const searchText = document.getElementById('productSearch').value.toLowerCase();
+            
+            // Filtreleme
+            let filteredInventory = inventory;
+            
+            if (depoFilter !== 'all') {
+                filteredInventory = filteredInventory.filter(item => item.depo_id === depoFilter);
+            }
+            
+            if (searchText) {
+                filteredInventory = filteredInventory.filter(item => 
+                    item.name.toLowerCase().includes(searchText) || 
+                    item.description.toLowerCase().includes(searchText)
+                );
+            }
+            
+            // Kayıt yoksa kullanıcıya bilgi ver
+            if (filteredInventory.length === 0) {
+                alert('Aktarilacak kayıt bulunamadı!');
+                return;
+            }
+            
+            // Verileri hazırla
+            const data = [];
+            
+            // Başlık satırı ekle
+            data.push(['Ürün Adı', 'Miktar', 'Birim', 'Depo', 'Açıklama', 'Son Güncelleme']);
+            
+            // Ürün verilerini ekle
+            filteredInventory.forEach(item => {
+                data.push([
+                    item.name,
+                    item.quantity,
+                    item.unit,
+                    item.depo_id,
+                    item.description,
+                    `${item.lastUpdated} (${item.updatedBy})`
+                ]);
+            });
+            
+            // Excel çalışma kitabı oluştur
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Envanter');
+            
+            // Excel dosyasını indir
+            XLSX.writeFile(wb, 'Envanter_' + new Date().toISOString().slice(0, 10) + '.xlsx');
+            
+            // Kullanıcıya bilgi ver
+            alert('Envanter verileri Excel dosyasına aktarıldı!');
+        }
     </script>
     
     <!-- İkinci footer kaldırıldı -->
     
+    <!-- Yeni Ürün Ekleme Modal -->
+    <div id="addProductModal" class="login-modal">
+        <div class="login-form">
+            <div class="login-header">
+                <h2>Yeni Ürün Ekle</h2>
+            </div>
+            <div class="form-group">
+                <label for="newProductName">Ürün Adı:</label>
+                <input type="text" id="newProductName" placeholder="Ürün adı girin">
+            </div>
+            <div class="form-group">
+                <label for="newProductQuantity">Miktar:</label>
+                <input type="number" id="newProductQuantity" min="0" placeholder="Miktar girin">
+            </div>
+            <div class="form-group">
+                <label for="newProductUnit">Birim:</label>
+                <select id="newProductUnit" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="Adet">Adet</option>
+                    <option value="Kg">Kg</option>
+                    <option value="Litre">Litre</option>
+                    <option value="Metre">Metre</option>
+                    <option value="Paket">Paket</option>
+                    <option value="Kutu">Kutu</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="newProductDepo">Depo:</label>
+                <select id="newProductDepo" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="SARI OTOPARK 5 NOLU DEPO">SARI OTOPARK 5 NOLU DEPO</option>
+                    <option value="SARI OTOPARK PEYZAJ DEPOSU">SARI OTOPARK PEYZAJ DEPOSU</option>
+                    <option value="YEŞİL OTOPARK DEPO">YEŞİL OTOPARK DEPO</option>
+                    <option value="YAKIT DEPOSU">YAKIT DEPOSU</option>
+                    <option value="YEŞİL OTOPARK 5 NOLU DEPO">YEŞİL OTOPARK 5 NOLU DEPO</option>
+                    <option value="ZEMİN 30 OFİS">ZEMİN 30 OFİS</option>
+                    <option value="-1.KAT DEPO">-1.KAT DEPO</option>
+                    <option value="ZEMİN KAT DEPO">ZEMİN KAT DEPO</option>
+                    <option value="İŞLETME DEPO">İŞLETME DEPO</option>
+                    <option value="TEKNİK DEPO">TEKNİK DEPO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="newProductDesc">Açıklama:</label>
+                <textarea id="newProductDesc" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; resize: vertical;" rows="3" placeholder="Açıklama girin"></textarea>
+            </div>
+            <div class="form-actions">
+                <button id="saveProductBtn" class="login-button">Kaydet</button>
+                <button id="cancelProductBtn" class="close-button">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ürün Düzenleme Modal -->
+    <div id="editProductModal" class="login-modal">
+        <div class="login-form">
+            <div class="login-header">
+                <h2>Ürün Düzenle</h2>
+            </div>
+            <div class="form-group">
+                <label for="editProductName">Ürün Adı:</label>
+                <input type="text" id="editProductName">
+                <input type="hidden" id="editProductId">
+            </div>
+            <div class="form-group">
+                <label for="editProductQuantity">Miktar:</label>
+                <input type="number" id="editProductQuantity" min="0">
+            </div>
+            <div class="form-group">
+                <label for="editProductUnit">Birim:</label>
+                <select id="editProductUnit" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="Adet">Adet</option>
+                    <option value="Kg">Kg</option>
+                    <option value="Litre">Litre</option>
+                    <option value="Metre">Metre</option>
+                    <option value="Paket">Paket</option>
+                    <option value="Kutu">Kutu</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editProductDepo">Depo:</label>
+                <select id="editProductDepo" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="SARI OTOPARK 5 NOLU DEPO">SARI OTOPARK 5 NOLU DEPO</option>
+                    <option value="SARI OTOPARK PEYZAJ DEPOSU">SARI OTOPARK PEYZAJ DEPOSU</option>
+                    <option value="YEŞİL OTOPARK DEPO">YEŞİL OTOPARK DEPO</option>
+                    <option value="YAKIT DEPOSU">YAKIT DEPOSU</option>
+                    <option value="YEŞİL OTOPARK 5 NOLU DEPO">YEŞİL OTOPARK 5 NOLU DEPO</option>
+                    <option value="ZEMİN 30 OFİS">ZEMİN 30 OFİS</option>
+                    <option value="-1.KAT DEPO">-1.KAT DEPO</option>
+                    <option value="ZEMİN KAT DEPO">ZEMİN KAT DEPO</option>
+                    <option value="İŞLETME DEPO">İŞLETME DEPO</option>
+                    <option value="TEKNİK DEPO">TEKNİK DEPO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editProductDesc">Açıklama:</label>
+                <textarea id="editProductDesc" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; resize: vertical;" rows="3"></textarea>
+            </div>
+            <div class="form-actions">
+                <button id="updateProductBtn" class="login-button">Güncelle</button>
+                <button id="cancelEditBtn" class="close-button">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stok Hareketi Modal -->
+    <div id="stockMovementModal" class="login-modal">
+        <div class="login-form" style="width: 600px; max-width: 90%;">
+            <div class="login-header">
+                <h2>Stok Hareketleri</h2>
+                <span id="movementProductName" style="font-weight: normal;"></span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Kullanıcı</th>
+                        <th>İşlem</th>
+                        <th>Önceki Miktar</th>
+                        <th>Değişim</th>
+                        <th>Yeni Miktar</th>
+                    </tr>
+                </thead>
+                <tbody id="movementTableBody">
+                    <!-- Stok hareketleri listelenecek -->
+                </tbody>
+            </table>
+            <div class="form-actions" style="margin-top: 20px; justify-content: center;">
+                <button id="closeMovementBtn" class="close-button">Kapat</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toplu Ürün Yükleme Modal -->
+    <div id="bulkUploadModal" class="login-modal">
+        <div class="login-form" style="width: 600px;">
+            <div class="login-header">
+                <h2>Toplu Ürün Yükleme</h2>
+            </div>
+            <div class="form-group">
+                <p style="margin-bottom: 15px; line-height: 1.5;">
+                    Ürünleri toplu olarak yüklemek için Excel (.xlsx) veya CSV dosyası kullanabilirsiniz. Dosyanızın aşağıdaki sütunları içermesi gerekmektedir:
+                </p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                    <ul style="list-style-type: none; padding-left: 10px;">
+                        <li><strong>Ürün Adı</strong> (zorunlu)</li>
+                        <li><strong>Miktar</strong> (zorunlu)</li>
+                        <li><strong>Birim</strong> (opsiyonel, varsayılan: Adet)</li>
+                        <li><strong>Depo</strong> (opsiyonel, varsayılan: TEKNİK DEPO)</li>
+                        <li><strong>Açıklama</strong> (opsiyonel)</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <a href="#" id="downloadTemplateBtn" style="color: #1e87f0; text-decoration: underline;">Şablon dosyasını indir</a>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="bulkUploadFile">Excel veya CSV Dosyası:</label>
+                <input type="file" id="bulkUploadFile" accept=".xlsx,.xls,.csv" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div id="uploadPreview" style="display: none; margin-top: 20px;">
+                <h3>Yüklenecek Ürünler Önizlemesi</h3>
+                <div style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>Miktar</th>
+                                <th>Birim</th>
+                                <th>Depo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previewTableBody">
+                            <!-- Önizleme verileri burada gösterilecek -->
+                        </tbody>
+                    </table>
+                </div>
+                <div style="font-weight: bold; margin-bottom: 10px;">
+                    Toplam <span id="previewCount">0</span> ürün yüklenecek
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button id="processBulkUploadBtn" class="login-button">Yükle</button>
+                <button id="cancelBulkUploadBtn" class="close-button">İptal</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
