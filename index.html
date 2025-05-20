@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTÄ°-Muratbey</title>
+    <title>GTİ-Muratbey</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -220,7 +220,7 @@
             cursor: pointer;
             text-decoration: underline;
         }
-        /* Uygulama EkranÄ± Stilleri */
+        /* Uygulama Ekranı Stilleri */
         #appScreen {
             display: none;
         }
@@ -382,7 +382,7 @@
                 width: 100%;
             }
         }
-        /* SayaÃ§ dÃ¼zenleme modalÄ± stileri */
+        /* Sayaç düzenleme modalı stileri */
         #editMeterModal {
             display: none;
             position: fixed;
@@ -412,7 +412,7 @@
             font-size: 14px;
         }
         
-        /* HakkÄ±mÄ±zda Sayfa Stili */
+        /* Hakkımızda Sayfa Stili */
         .hero-container {
             width: 100%;
             height: calc(100vh - 90px);
@@ -466,7 +466,7 @@
             background-color: #15192a;
         }
         
-        /* Ä°letiÅŸim SayfasÄ± Stilleri */
+        /* İletişim Sayfası Stilleri */
         .contact-container {
             display: flex;
             flex-wrap: wrap;
@@ -585,7 +585,7 @@
             }
         }
         
-        /* HakkÄ±mÄ±zda Modal Stili */
+        /* Hakkımızda Modal Stili */
         .about-modal {
             display: none;
             position: fixed;
@@ -705,49 +705,49 @@
 <body>
     <!-- Ana Sayfa -->
     <div id="homePage">
-        <!-- Ãœst MenÃ¼ -->
+        <!-- Üst Menü -->
         <header class="header">
             <div class="logo-container">
-                <img src="gti-logo.svg" alt="GTÄ° Logo" class="logo">
+                <img src="gti-logo.svg" alt="GTİ Logo" class="logo">
                 <div class="logo-text">
-                    <h1>Ofis SayaÃ§-Depo Envanter Takip Sistemi</h1>
+                    <h1>Ofis Sayaç-Depo Envanter Takip Sistemi</h1>
                 </div>
             </div>
             <nav class="nav-menu">
                 <a href="#" class="nav-item" id="homeLink" onclick="showHeroSection(event); return false;">Ana Sayfa</a>
-                <a href="#" class="nav-item" id="aboutLink" onclick="showAboutSection(event); return false;">HakkÄ±mÄ±zda</a>
-                <a href="#" class="nav-item" id="contactLink" onclick="showContactSection(event); return false;">Ä°letiÅŸim</a>
+                <a href="#" class="nav-item" id="aboutLink" onclick="showAboutSection(event); return false;">Hakkımızda</a>
+                <a href="#" class="nav-item" id="contactLink" onclick="showContactSection(event); return false;">İletişim</a>
             </nav>
         </header>
 
-        <!-- Ana Ä°Ã§erik AlanÄ± -->
+        <!-- Ana İçerik Alanı -->
         <div class="hero-container">
-            <!-- Hero BÃ¶lÃ¼mÃ¼ -->
+            <!-- Hero Bölümü -->
             <div id="heroSection" class="hero">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
-                    <h1>Ofis SayaÃ§-Depo Envanter Takip Sistemi</h1>
-                    <p>GTÄ°'nin geliÅŸtirdiÄŸi bu platform, ofislerdeki elektrik, su ve doÄŸalgaz sayaÃ§larÄ±nÄ±n yanÄ± sÄ±ra depo envanterlerinin de takibini kolaylaÅŸtÄ±rÄ±r. TÃ¼m verilerinizi doÄŸru ve gÃ¼venilir bir ÅŸekilde kayÄ±t altÄ±na almanÄ±zÄ± saÄŸlayan entegre bir yÃ¶netim sistemidir.</p>
-                    <button id="heroLoginBtn" class="hero-button" onclick="openLoginModal(); return false;">Sisteme GiriÅŸ Yap</button>
+                    <h1>Ofis Sayaç-Depo Envanter Takip Sistemi</h1>
+                    <p>GTİ'nin geliştirdiği bu platform, ofislerdeki elektrik, su ve doğalgaz sayaçlarının yanı sıra depo envanterlerinin de takibini kolaylaştırır. Tüm verilerinizi doğru ve güvenilir bir şekilde kayıt altına almanızı sağlayan entegre bir yönetim sistemidir.</p>
+                    <button id="heroLoginBtn" class="hero-button" onclick="openLoginModal(); return false;">Sisteme Giriş Yap</button>
                 </div>
             </div>
             
-            <!-- HakkÄ±mÄ±zda BÃ¶lÃ¼mÃ¼ -->
+            <!-- Hakkımızda Bölümü -->
             <div id="aboutSection" class="hero" style="display: none;">
                 <div class="hero-overlay"></div>
                 <div class="about-content-inline">
                     <div class="about-header-inline">
-                        <h1>Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ HakkÄ±nda</h1>
-                        <button id="backToHomeBtn" class="back-button" onclick="showHeroSection(event); return false;">Ana Sayfa'ya DÃ¶n</button>
+                        <h1>Muratbey Gümrük Müdürlüğü Hakkında</h1>
+                        <button id="backToHomeBtn" class="back-button" onclick="showHeroSection(event); return false;">Ana Sayfa'ya Dön</button>
                     </div>
                     <div class="about-stats">
                         <div class="stat-box">
-                            <div class="stat-number">220.000 mÂ²</div>
+                            <div class="stat-number">220.000 m²</div>
                             <div class="stat-label">Toplam Alan</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-number">56.472 mÂ²</div>
-                            <div class="stat-label">KapalÄ± Alan</div>
+                            <div class="stat-number">56.472 m²</div>
+                            <div class="stat-label">Kapalı Alan</div>
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">0</div>
@@ -755,33 +755,33 @@
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">0</div>
-                            <div class="stat-label">TaÅŸÄ±t Kapasitesi</div>
+                            <div class="stat-label">Taşıt Kapasitesi</div>
                         </div>
                     </div>
                     <div class="about-text-inline">
-                        <p>TÃ¼rkiye'nin dÄ±ÅŸ ticaretinde Ã¶nemli bir yere sahip olan, ÅŸehir iÃ§inde kaldÄ±ÄŸÄ± iÃ§in trafik akÄ±ÅŸÄ±nÄ± olumsuz etkileyen, fiziki koÅŸullarÄ±nÄ±n yetersizliÄŸi nedeniyle ihtiyaca cevap veremeyen, eski adÄ±yla HalkalÄ± GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ modernize edilerek Ä°stanbul'un Ã‡atalca bÃ¶lgesine taÅŸÄ±nmÄ±ÅŸ ve Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ olarak hizmete sunulmuÅŸtur.</p>
-                        <p>Åžehir trafiÄŸine girmeden kolaylÄ±kla eriÅŸilebilen Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼, yeni yapÄ±lanmasÄ±yla birlikte 220.000 m2 alan Ã¼zerine kurulmuÅŸ olup, 35.000 mÂ² depo alanÄ±, 4.150 mÂ² ofis alanÄ± ve 3.000 mÂ²'lik sosyal hizmet alanÄ± ile modern bir teknik altyapÄ±ya sahiptir.</p>
-                        <p>GTÄ° tarafÄ±ndan son teknolojiyle donatÄ±lmÄ±ÅŸ bu tesiste GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼'ne ait birimlerin yanÄ± sÄ±ra, baÅŸta gÃ¼mrÃ¼k mÃ¼ÅŸavirliÄŸi ve lojistik firmalarÄ± olmak Ã¼zere dÄ±ÅŸ ticaret ile iliÅŸkili kurum, kuruluÅŸ, meslek odalarÄ± ve sivil toplum temsilciliklerinin kullanÄ±mÄ±na sunulmuÅŸ 200'e yakÄ±n ofis bulunmaktadÄ±r.</p>
-                        <p>GÃ¼mrÃ¼k iÅŸlemleri ve lojistik hizmetler iÃ§in giriÅŸ/Ã§Ä±kÄ±ÅŸ yapan TIR ÅŸofÃ¶rlerinin ihtiyaÃ§larÄ± dÃ¼ÅŸÃ¼nÃ¼lerek planlanlanan Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼; kafe, restoran ve market gibi sosyal alanlarla birlikte ATM, berber, duÅŸ ve cami dahil olmak Ã¼zere her tÃ¼rlÃ¼ hizmeti tek Ã§atÄ± altÄ±nda toplayarak, modern ve teknolojik bir tesis olarak faaliyet gÃ¶stermektedir.</p>
+                        <p>Türkiye'nin dış ticaretinde önemli bir yere sahip olan, şehir içinde kaldığı için trafik akışını olumsuz etkileyen, fiziki koşullarının yetersizliği nedeniyle ihtiyaca cevap veremeyen, eski adıyla Halkalı Gümrük Müdürlüğü modernize edilerek İstanbul'un Çatalca bölgesine taşınmış ve Muratbey Gümrük Müdürlüğü olarak hizmete sunulmuştur.</p>
+                        <p>Şehir trafiğine girmeden kolaylıkla erişilebilen Muratbey Gümrük Müdürlüğü, yeni yapılanmasıyla birlikte 220.000 m2 alan üzerine kurulmuş olup, 35.000 m² depo alanı, 4.150 m² ofis alanı ve 3.000 m²'lik sosyal hizmet alanı ile modern bir teknik altyapıya sahiptir.</p>
+                        <p>GTİ tarafından son teknolojiyle donatılmış bu tesiste Gümrük Müdürlüğü'ne ait birimlerin yanı sıra, başta gümrük müşavirliği ve lojistik firmaları olmak üzere dış ticaret ile ilişkili kurum, kuruluş, meslek odaları ve sivil toplum temsilciliklerinin kullanımına sunulmuş 200'e yakın ofis bulunmaktadır.</p>
+                        <p>Gümrük işlemleri ve lojistik hizmetler için giriş/çıkış yapan TIR şoförlerinin ihtiyaçları düşünülerek planlanlanan Muratbey Gümrük Müdürlüğü; kafe, restoran ve market gibi sosyal alanlarla birlikte ATM, berber, duş ve cami dahil olmak üzere her türlü hizmeti tek çatı altında toplayarak, modern ve teknolojik bir tesis olarak faaliyet göstermektedir.</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Ä°letiÅŸim BÃ¶lÃ¼mÃ¼ -->
+            <!-- İletişim Bölümü -->
             <div id="contactSection" class="hero" style="display: none;">
                 <div class="hero-overlay"></div>
                 <div class="about-content-inline">
                     <div class="about-header-inline">
-                        <h1>Ä°letiÅŸim Bilgileri</h1>
-                        <button id="backFromContactBtn" class="back-button" onclick="showHeroSection(event); return false;">Ana Sayfa'ya DÃ¶n</button>
+                        <h1>İletişim Bilgileri</h1>
+                        <button id="backFromContactBtn" class="back-button" onclick="showHeroSection(event); return false;">Ana Sayfa'ya Dön</button>
                     </div>
                     <div class="contact-container">
                         <div class="contact-info">
                             <div class="contact-item">
                                 <div class="contact-icon"><i class="location-icon"></i></div>
                                 <div class="contact-details">
-                                    <h3>MURATBEY / Ä°STANBUL</h3>
-                                    <p>Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ Tesisleri, Muratbey â€“ Ã‡atalca / Ä°stanbul</p>
+                                    <h3>MURATBEY / İSTANBUL</h3>
+                                    <p>Muratbey Gümrük Müdürlüğü Tesisleri, Muratbey – Çatalca / İstanbul</p>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -815,21 +815,21 @@
         </div>
     </div>
 
-    <!-- HakkÄ±mÄ±zda Modal -->
+    <!-- Hakkımızda Modal -->
     <div id="aboutModal" class="about-modal">
         <div class="about-content">
             <div class="about-header">
-                <h2>Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ HakkÄ±nda</h2>
+                <h2>Muratbey Gümrük Müdürlüğü Hakkında</h2>
                 <button class="close-about" id="closeAboutBtn">&times;</button>
             </div>
             <div class="about-stats">
                 <div class="stat-box">
-                    <div class="stat-number">220.000 mÂ²</div>
+                    <div class="stat-number">220.000 m²</div>
                     <div class="stat-label">Toplam Alan</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">56.472 mÂ²</div>
-                    <div class="stat-label">KapalÄ± Alan</div>
+                    <div class="stat-number">56.472 m²</div>
+                    <div class="stat-label">Kapalı Alan</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">0</div>
@@ -837,119 +837,119 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">0</div>
-                    <div class="stat-label">TaÅŸÄ±t Kapasitesi</div>
+                    <div class="stat-label">Taşıt Kapasitesi</div>
                 </div>
             </div>
             <div class="about-text">
-                <p>TÃ¼rkiye'nin dÄ±ÅŸ ticaretinde Ã¶nemli bir yere sahip olan, ÅŸehir iÃ§inde kaldÄ±ÄŸÄ± iÃ§in trafik akÄ±ÅŸÄ±nÄ± olumsuz etkileyen, fiziki koÅŸullarÄ±nÄ±n yetersizliÄŸi nedeniyle ihtiyaca cevap veremeyen, eski adÄ±yla HalkalÄ± GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ modernize edilerek Ä°stanbul'un Ã‡atalca bÃ¶lgesine taÅŸÄ±nmÄ±ÅŸ ve Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼ olarak hizmete sunulmuÅŸtur.</p>
-                <p>Åžehir trafiÄŸine girmeden kolaylÄ±kla eriÅŸilebilen Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼, yeni yapÄ±lanmasÄ±yla birlikte 220.000 m2 alan Ã¼zerine kurulmuÅŸ olup, 35.000 mÂ² depo alanÄ±, 4.150 mÂ² ofis alanÄ± ve 3.000 mÂ²'lik sosyal hizmet alanÄ± ile modern bir teknik altyapÄ±ya sahiptir.</p>
-                <p>GTÄ° tarafÄ±ndan son teknolojiyle donatÄ±lmÄ±ÅŸ bu tesiste GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼'ne ait birimlerin yanÄ± sÄ±ra, baÅŸta gÃ¼mrÃ¼k mÃ¼ÅŸavirliÄŸi ve lojistik firmalarÄ± olmak Ã¼zere dÄ±ÅŸ ticaret ile iliÅŸkili kurum, kuruluÅŸ, meslek odalarÄ± ve sivil toplum temsilciliklerinin kullanÄ±mÄ±na sunulmuÅŸ 200'e yakÄ±n ofis bulunmaktadÄ±r.</p>
-                <p>GÃ¼mrÃ¼k iÅŸlemleri ve lojistik hizmetler iÃ§in giriÅŸ/Ã§Ä±kÄ±ÅŸ yapan TIR ÅŸofÃ¶rlerinin ihtiyaÃ§larÄ± dÃ¼ÅŸÃ¼nÃ¼lerek planlanlanan Muratbey GÃ¼mrÃ¼k MÃ¼dÃ¼rlÃ¼ÄŸÃ¼; kafe, restoran ve market gibi sosyal alanlarla birlikte ATM, berber, duÅŸ ve cami dahil olmak Ã¼zere her tÃ¼rlÃ¼ hizmeti tek Ã§atÄ± altÄ±nda toplayarak, modern ve teknolojik bir tesis olarak faaliyet gÃ¶stermektedir.</p>
+                <p>Türkiye'nin dış ticaretinde önemli bir yere sahip olan, şehir içinde kaldığı için trafik akışını olumsuz etkileyen, fiziki koşullarının yetersizliği nedeniyle ihtiyaca cevap veremeyen, eski adıyla Halkalı Gümrük Müdürlüğü modernize edilerek İstanbul'un Çatalca bölgesine taşınmış ve Muratbey Gümrük Müdürlüğü olarak hizmete sunulmuştur.</p>
+                <p>Şehir trafiğine girmeden kolaylıkla erişilebilen Muratbey Gümrük Müdürlüğü, yeni yapılanmasıyla birlikte 220.000 m2 alan üzerine kurulmuş olup, 35.000 m² depo alanı, 4.150 m² ofis alanı ve 3.000 m²'lik sosyal hizmet alanı ile modern bir teknik altyapıya sahiptir.</p>
+                <p>GTİ tarafından son teknolojiyle donatılmış bu tesiste Gümrük Müdürlüğü'ne ait birimlerin yanı sıra, başta gümrük müşavirliği ve lojistik firmaları olmak üzere dış ticaret ile ilişkili kurum, kuruluş, meslek odaları ve sivil toplum temsilciliklerinin kullanımına sunulmuş 200'e yakın ofis bulunmaktadır.</p>
+                <p>Gümrük işlemleri ve lojistik hizmetler için giriş/çıkış yapan TIR şoförlerinin ihtiyaçları düşünülerek planlanlanan Muratbey Gümrük Müdürlüğü; kafe, restoran ve market gibi sosyal alanlarla birlikte ATM, berber, duş ve cami dahil olmak üzere her türlü hizmeti tek çatı altında toplayarak, modern ve teknolojik bir tesis olarak faaliyet göstermektedir.</p>
             </div>
         </div>
     </div>
     
-    <!-- GiriÅŸ Modal -->
+    <!-- Giriş Modal -->
     <div id="loginModal" class="login-modal">
         <div class="login-form">
             <div class="login-header">
-                <img src="gti-logo.svg" alt="GTÄ° Logo" class="logo" style="height: 40px;">
-                <h2>YÃ¶netici GiriÅŸi</h2>
+                <img src="gti-logo.svg" alt="GTİ Logo" class="logo" style="height: 40px;">
+                <h2>Yönetici Girişi</h2>
             </div>
             <div class="form-group">
-                <label for="username">KullanÄ±cÄ± AdÄ±:</label>
-                <input type="text" id="username" placeholder="KullanÄ±cÄ± adÄ±nÄ±zÄ± girin">
+                <label for="username">Kullanıcı Adı:</label>
+                <input type="text" id="username" placeholder="Kullanıcı adınızı girin">
             </div>
             <div class="form-group">
-                <label for="password">Åžifre:</label>
-                <input type="password" id="password" placeholder="Åžifrenizi girin">
+                <label for="password">Şifre:</label>
+                <input type="password" id="password" placeholder="Şifrenizi girin">
                 <div id="loginError" class="error-message"></div>
             </div>
             <div class="form-actions">
-                <button id="submitLoginBtn" class="login-button">GiriÅŸ Yap</button>
-                <button id="closeLoginBtn" class="close-button">Ä°ptal</button>
+                <button id="submitLoginBtn" class="login-button">Giriş Yap</button>
+                <button id="closeLoginBtn" class="close-button">İptal</button>
             </div>
         </div>
     </div>
 
-    <!-- Uygulama EkranÄ± -->
+    <!-- Uygulama Ekranı -->
     <div id="appScreen">
-        <!-- Ãœst MenÃ¼ -->
+        <!-- Üst Menü -->
         <header class="header">
             <div class="logo-container">
-                <img src="gti-logo.svg" alt="GTÄ° Logo" class="logo">
+                <img src="gti-logo.svg" alt="GTİ Logo" class="logo">
                 <div class="logo-text">
-                    <h1>Ofis SayaÃ§ Takip Sistemi</h1>
+                    <h1>Ofis Sayaç Takip Sistemi</h1>
                 </div>
             </div>
             <nav class="nav-menu">
                 <a href="#" class="nav-item">Ana Sayfa</a>
                 <a href="#" class="nav-item">Ofisler</a>
                 <a href="#" class="nav-item">Raporlar</a>
-                <a href="#" class="nav-item">YardÄ±m</a>
+                <a href="#" class="nav-item">Yardım</a>
             </nav>
         </header>
 
-        <!-- Ana Ä°Ã§erik -->
+        <!-- Ana İçerik -->
         <div class="content">
             <div class="user-info">
-                <span class="user-name">HoÅŸ geldiniz, <span id="currentUsername">KullanÄ±cÄ±</span></span>
-                <button id="logoutButton" class="logout-button">Ã‡Ä±kÄ±ÅŸ Yap</button>
+                <span class="user-name">Hoş geldiniz, <span id="currentUsername">Kullanıcı</span></span>
+                <button id="logoutButton" class="logout-button">Çıkış Yap</button>
             </div>
 
             <div class="main-container">
-                <!-- Sol MenÃ¼ -->
+                <!-- Sol Menü -->
                 <div class="sidebar">
                     <h3>Ofisler</h3>
-                    <!-- KullanÄ±cÄ± arayÃ¼zÃ¼ iÃ§in ofis arama kutusu -->
+                    <!-- Kullanıcı arayüzü için ofis arama kutusu -->
                     <input type="text" id="userOfficeSearch" class="search-box" placeholder="Ofis ara...">
                     <div id="officeList">
                         <!-- Ofisler burada listelenecek -->
                     </div>
                 </div>
 
-                <!-- SaÄŸ Ä°Ã§erik -->
+                <!-- Sağ İçerik -->
                 <div class="main-content">
                     <h1 class="page-title">
-                        SayaÃ§ Takip Sistemi
+                        Sayaç Takip Sistemi
                         <span class="date-display" id="currentDate"></span>
                     </h1>
-                    <div class="notification" id="notification">SayaÃ§ deÄŸerleri baÅŸarÄ±yla kaydedildi!</div>
+                    <div class="notification" id="notification">Sayaç değerleri başarıyla kaydedildi!</div>
                     
                     <div id="officeDetail">
-                        <p>LÃ¼tfen sol taraftan bir ofis seÃ§in.</p>
+                        <p>Lütfen sol taraftan bir ofis seçin.</p>
                     </div>
                     
                     <div id="meterForm" style="display: none;">
                         <h2 id="officeName" style="margin-bottom: 20px; color: #1e2738;"></h2>
                         <div class="form-group">
-                            <label for="electricMeter">Elektrik SayacÄ±:</label>
+                            <label for="electricMeter">Elektrik Sayacı:</label>
                             <div style="display: flex; margin-bottom: 5px;">
-                                <input type="number" id="electricMeterNo" placeholder="Elektrik sayaÃ§ numarasÄ±" style="flex: 1; margin-right: 10px;" readonly>
-                                <input type="number" id="electricMeter" placeholder="Elektrik sayaÃ§ deÄŸerini girin" style="flex: 1;">
+                                <input type="number" id="electricMeterNo" placeholder="Elektrik sayaç numarası" style="flex: 1; margin-right: 10px;" readonly>
+                                <input type="number" id="electricMeter" placeholder="Elektrik sayaç değerini girin" style="flex: 1;">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="waterMeter">Su SayacÄ±:</label>
+                            <label for="waterMeter">Su Sayacı:</label>
                             <div style="display: flex; margin-bottom: 5px;">
-                                <input type="number" id="waterMeterNo" placeholder="Su sayaÃ§ numarasÄ±" style="flex: 1; margin-right: 10px;" readonly>
-                                <input type="number" id="waterMeter" placeholder="Su sayaÃ§ deÄŸerini girin" style="flex: 1;">
+                                <input type="number" id="waterMeterNo" placeholder="Su sayaç numarası" style="flex: 1; margin-right: 10px;" readonly>
+                                <input type="number" id="waterMeter" placeholder="Su sayaç değerini girin" style="flex: 1;">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="gasMeter">DoÄŸalgaz SayacÄ±:</label>
-                            <input type="number" id="gasMeter" placeholder="DoÄŸalgaz sayaÃ§ deÄŸerini girin">
+                            <label for="gasMeter">Doğalgaz Sayacı:</label>
+                            <input type="number" id="gasMeter" placeholder="Doğalgaz sayaç değerini girin">
                         </div>
                         <button id="saveButton" class="login-button">Kaydet</button>
                         
-                            <h3>GeÃ§miÅŸ KayÄ±tlar</h3>
+                            <h3>Geçmiş Kayıtlar</h3>
                             <table id="historyTable">
                                 <thead>
                                     <tr>
                                         <th>Tarih</th>
                                         <th>Elektrik (kWh)</th>
-                                        <th>Su (mÂ³)</th>
-                                        <th>DoÄŸalgaz (mÂ³)</th>
+                                        <th>Su (m³)</th>
+                                        <th>Doğalgaz (m³)</th>
                                     </tr>
                                 </thead>
                                 <tbody id="historyBody">
@@ -963,7 +963,7 @@
 
         <!-- Alt Bilgi -->
         <footer class="footer">
-            <p>Â© 2025 GTÄ° | TÃ¼m HaklarÄ± SaklÄ±dÄ±r</p>
+            <p>© 2025 GTİ | Tüm Hakları Saklıdır</p>
         </footer>
     </div>
 
@@ -971,98 +971,98 @@
     <div id="adminPanel" style="display: none;">
         <header class="header">
             <div class="logo-container">
-                <img src="gti-logo.svg" alt="GTÄ° Logo" class="logo">
+                <img src="gti-logo.svg" alt="GTİ Logo" class="logo">
                 <div class="logo-text">
-                    <h1>Ofis SayaÃ§ Takip Sistemi</h1>
+                    <h1>Ofis Sayaç Takip Sistemi</h1>
                 </div>
             </div>
             <nav class="nav-menu">
                 <a href="#" class="nav-item" id="dashboardLink">Ana Sayfa</a>
-                <a href="#" class="nav-item active" id="adminLink">YÃ¶netici Paneli</a>
-                <a href="#" class="nav-item">YardÄ±m</a>
+                <a href="#" class="nav-item active" id="adminLink">Yönetici Paneli</a>
+                <a href="#" class="nav-item">Yardım</a>
             </nav>
         </header>
 
         <div class="content">
             <div class="user-info">
-                <span class="user-name">HoÅŸ geldiniz, <span id="adminUsername">YÃ¶netici</span></span>
-                <button id="adminLogoutButton" class="logout-button">Ã‡Ä±kÄ±ÅŸ Yap</button>
+                <span class="user-name">Hoş geldiniz, <span id="adminUsername">Yönetici</span></span>
+                <button id="adminLogoutButton" class="logout-button">Çıkış Yap</button>
             </div>
 
             <div class="main-container">
                 <div class="sidebar" style="width: 200px; max-height: 700px;">
-                    <h3>Ä°ÅŸlemler</h3>
+                    <h3>İşlemler</h3>
                     <div>
-                        <div class="office-item active" data-panel="userPanel">KullanÄ±cÄ± YÃ¶netimi</div>
-                        <div class="office-item" data-panel="officePanel">Ofis YÃ¶netimi</div>
-                        <div class="office-item" data-panel="meterPanel">SayaÃ§ YÃ¶netimi</div>
+                        <div class="office-item active" data-panel="userPanel">Kullanıcı Yönetimi</div>
+                        <div class="office-item" data-panel="officePanel">Ofis Yönetimi</div>
+                        <div class="office-item" data-panel="meterPanel">Sayaç Yönetimi</div>
                         <div class="office-item" data-panel="reportPanel">Raporlar</div>
                         <div class="office-item" data-panel="statusPanel">Ofis Veri Durumu</div>
                     </div>
                 </div>
 
                 <div class="main-content">
-                    <!-- KullanÄ±cÄ± YÃ¶netimi Paneli -->
+                    <!-- Kullanıcı Yönetimi Paneli -->
                     <div id="userPanel" class="admin-panel-content" style="background-color: white; position: relative; z-index: 10;">
-                        <h1 class="page-title">KullanÄ±cÄ± YÃ¶netimi</h1>
+                        <h1 class="page-title">Kullanıcı Yönetimi</h1>
                         
                         <div style="margin-bottom: 20px;">
-                            <button id="addUserBtn" class="login-button" style="margin-right: 10px;">Yeni KullanÄ±cÄ± Ekle</button>
+                            <button id="addUserBtn" class="login-button" style="margin-right: 10px;">Yeni Kullanıcı Ekle</button>
                         </div>
                         
                         <table>
                             <thead>
                                 <tr>
-                                    <th>KullanÄ±cÄ± AdÄ±</th>
+                                    <th>Kullanıcı Adı</th>
                                     <th>Ad Soyad</th>
                                     <th>Rol</th>
-                                    <th>Ä°ÅŸlemler</th>
+                                    <th>İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody id="userTableBody">
-                                <!-- KullanÄ±cÄ±lar listelenecek -->
+                                <!-- Kullanıcılar listelenecek -->
                             </tbody>
                         </table>
                     </div>
                     
-                    <!-- Ofis YÃ¶netimi Paneli -->
+                    <!-- Ofis Yönetimi Paneli -->
                     <div id="officePanel" class="admin-panel-content" style="display: none;">
-                        <h1 class="page-title">Ofis YÃ¶netimi</h1>
+                        <h1 class="page-title">Ofis Yönetimi</h1>
                         
                         <div class="search-container" style="margin-bottom: 20px;">
                             <input type="text" id="adminOfficeSearch" placeholder="Ofis ara..." style="padding: 10px; width: 300px;">
                         </div>
                         
                         <div id="officeEditForm" style="display: none; margin-top: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 5px;">
-                            <h3>Ofis Bilgileri DÃ¼zenle</h3>
+                            <h3>Ofis Bilgileri Düzenle</h3>
                             <div class="form-group">
                                 <label for="editOfficeNo">Ofis No:</label>
                                 <input type="text" id="editOfficeNo" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="editOfficeName">Firma AdÄ±:</label>
+                                <label for="editOfficeName">Firma Adı:</label>
                                 <input type="text" id="editOfficeName">
                             </div>
                             <div class="form-group">
-                                <label for="editElectricMeterNo">Elektrik SayaÃ§ No:</label>
+                                <label for="editElectricMeterNo">Elektrik Sayaç No:</label>
                                 <input type="text" id="editElectricMeterNo">
                             </div>
                             <div class="form-group">
-                                <label for="editWaterMeterNo">Su SayaÃ§ No:</label>
+                                <label for="editWaterMeterNo">Su Sayaç No:</label>
                                 <input type="text" id="editWaterMeterNo">
                             </div>
                             <button id="saveOfficeBtn" class="login-button">Kaydet</button>
-                            <button id="cancelOfficeEditBtn" class="close-button" style="margin-left: 10px;">Ä°ptal</button>
+                            <button id="cancelOfficeEditBtn" class="close-button" style="margin-left: 10px;">İptal</button>
                         </div>
                         
                         <table>
                             <thead>
                                 <tr>
                                     <th>Ofis No</th>
-                                    <th>Firma AdÄ±</th>
-                                    <th>Elektrik SayaÃ§ No</th>
-                                    <th>Su SayaÃ§ No</th>
-                                    <th>Ä°ÅŸlemler</th>
+                                    <th>Firma Adı</th>
+                                    <th>Elektrik Sayaç No</th>
+                                    <th>Su Sayaç No</th>
+                                    <th>İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody id="officeTableBody">
@@ -1071,26 +1071,26 @@
                         </table>
                     </div>
                     
-                    <!-- SayaÃ§ YÃ¶netimi Paneli -->
+                    <!-- Sayaç Yönetimi Paneli -->
                     <div id="meterPanel" class="admin-panel-content" style="display: none;">
-                        <h1 class="page-title">SayaÃ§ YÃ¶netimi</h1>
+                        <h1 class="page-title">Sayaç Yönetimi</h1>
                         
                         <div class="search-container" style="margin-bottom: 20px;">
-                            <input type="text" id="adminMeterSearch" placeholder="SayaÃ§ ara..." style="padding: 10px; width: 300px;">
+                            <input type="text" id="adminMeterSearch" placeholder="Sayaç ara..." style="padding: 10px; width: 300px;">
                         </div>
                         
                         <table>
                             <thead>
                                 <tr>
                                     <th>Ofis No</th>
-                                    <th>SayaÃ§ Tipi</th>
-                                    <th>SayaÃ§ No</th>
-                                    <th>Son DeÄŸer</th>
-                                    <th>Ä°ÅŸlemler</th>
+                                    <th>Sayaç Tipi</th>
+                                    <th>Sayaç No</th>
+                                    <th>Son Değer</th>
+                                    <th>İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody id="meterTableBody">
-                                <!-- SayaÃ§lar listelenecek -->
+                                <!-- Sayaçlar listelenecek -->
                             </tbody>
                         </table>
                     </div>
@@ -1100,11 +1100,11 @@
                         <h1 class="page-title">Raporlar</h1>
                         
                         <div style="margin-bottom: 20px;">
-                            <button id="exportAllToExcel" class="login-button">TÃ¼m Ofis KayÄ±tlarÄ±nÄ± Excel'e Aktar</button>
+                            <button id="exportAllToExcel" class="login-button">Tüm Ofis Kayıtlarını Excel'e Aktar</button>
                         </div>
                         
                         <div id="reportResult" class="result-container">
-                            <p>RaporlarÄ±nÄ±z burada gÃ¶rÃ¼ntÃ¼lenecektir.</p>
+                            <p>Raporlarınız burada görüntülenecektir.</p>
                         </div>
                     </div>
                     
@@ -1121,16 +1121,16 @@
                                 <tr>
                                     <th>Blok</th>
                                     <th>Ofis No</th>
-                                    <th>Firma AdÄ±</th>
-                                    <th>Elektrik SayaÃ§</th>
-                                    <th>Su SayaÃ§</th>
+                                    <th>Firma Adı</th>
+                                    <th>Elektrik Sayaç</th>
+                                    <th>Su Sayaç</th>
                                     <th>Veri Giren</th>
                                     <th>Tarih</th>
                                     <th>Durum</th>
                                 </tr>
                             </thead>
                             <tbody id="statusTableBody">
-                                <!-- Ofis veri durumlarÄ± listelenecek -->
+                                <!-- Ofis veri durumları listelenecek -->
                             </tbody>
                         </table>
                     </div>
@@ -1139,80 +1139,80 @@
         </div>
     </div>
 
-    <!-- Yeni KullanÄ±cÄ± Ekleme Modal -->
+    <!-- Yeni Kullanıcı Ekleme Modal -->
     <div id="addUserModal" class="login-modal">
         <div class="login-form">
             <div class="login-header">
-                <h2>Yeni KullanÄ±cÄ± Ekle</h2>
+                <h2>Yeni Kullanıcı Ekle</h2>
             </div>
             <div class="form-group">
-                <label for="newUsername">KullanÄ±cÄ± AdÄ±:</label>
-                <input type="text" id="newUsername" placeholder="KullanÄ±cÄ± adÄ± girin">
+                <label for="newUsername">Kullanıcı Adı:</label>
+                <input type="text" id="newUsername" placeholder="Kullanıcı adı girin">
             </div>
             <div class="form-group">
                 <label for="newFullName">Ad Soyad:</label>
                 <input type="text" id="newFullName" placeholder="Ad Soyad girin">
             </div>
             <div class="form-group">
-                <label for="newPassword">Åžifre:</label>
-                <input type="password" id="newPassword" placeholder="Åžifre girin">
+                <label for="newPassword">Şifre:</label>
+                <input type="password" id="newPassword" placeholder="Şifre girin">
             </div>
             <div class="form-group">
                 <label for="newRole">Rol:</label>
                 <select id="newRole" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-                    <option value="user">KullanÄ±cÄ±</option>
-                    <option value="admin">YÃ¶netici</option>
+                    <option value="user">Kullanıcı</option>
+                    <option value="admin">Yönetici</option>
                 </select>
             </div>
             <div class="form-actions">
                 <button id="saveUserBtn" class="login-button">Kaydet</button>
-                <button id="cancelUserBtn" class="close-button">Ä°ptal</button>
+                <button id="cancelUserBtn" class="close-button">İptal</button>
             </div>
         </div>
     </div>
 
-    <!-- SayaÃ§ DÃ¼zenleme Modal -->
+    <!-- Sayaç Düzenleme Modal -->
     <div id="editMeterModal" class="login-modal">
         <div class="login-form">
             <div class="login-header">
-                <h2>SayaÃ§ DÃ¼zenle</h2>
+                <h2>Sayaç Düzenle</h2>
             </div>
             <div class="form-group">
                 <label for="editMeterOffice">Ofis:</label>
                 <input type="text" id="editMeterOffice" readonly>
             </div>
             <div class="form-group">
-                <label for="editMeterType">SayaÃ§ Tipi:</label>
+                <label for="editMeterType">Sayaç Tipi:</label>
                 <input type="text" id="editMeterType" readonly>
             </div>
             <div class="form-group">
-                <label for="editMeterNo">SayaÃ§ No:</label>
+                <label for="editMeterNo">Sayaç No:</label>
                 <input type="text" id="editMeterNo">
             </div>
             <div class="form-group">
-                <label for="editMeterReading">Son DeÄŸer:</label>
+                <label for="editMeterReading">Son Değer:</label>
                 <input type="number" id="editMeterReading">
             </div>
             <div class="form-actions">
                 <button id="saveMeterBtn" class="login-button">Kaydet</button>
-                <button id="cancelMeterBtn" class="close-button">Ä°ptal</button>
+                <button id="cancelMeterBtn" class="close-button">İptal</button>
             </div>
         </div>
     </div>
 
-    <!-- Excel YÃ¼kleme Formu -->
+    <!-- Excel Yükleme Formu -->
     <input type="file" id="excelFileInput" accept=".xlsx,.xls" style="display: none;">
 
     <!-- Ana JavaScript kodu -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
-        // KullanÄ±cÄ± bilgileri - gerÃ§ek bir uygulamada veritabanÄ±nda saklanmalÄ±
+        // Kullanıcı bilgileri - gerçek bir uygulamada veritabanında saklanmalı
         const users = [
-            { username: "admin", password: "admin123", name: "YÃ¶netici", role: "admin" },
+            { username: "admin", password: "admin123", name: "Yönetici", role: "admin" },
             { username: "teknik", password: "teknik123", name: "Teknik Personel", role: "user" }
         ];
         
-        // KullanÄ±cÄ± oturumu
+        // Kullanıcı oturumu
         let currentUser = null;
         
         // Ofis verileri
@@ -1222,7 +1222,7 @@
               electric: { meter_no: "39296823", last_reading: 0 },
               water: { meter_no: "5185306", last_reading: 0 }
             },
-            { id: "2", office_no: "1B-20", name: "His GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "2", office_no: "1B-20", name: "His Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297205", last_reading: 0 },
               water: { meter_no: "5185291", last_reading: 0 }
             },
@@ -1230,31 +1230,31 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185285", last_reading: 0 }
             },
-            { id: "4", office_no: "1B-18", name: "Narin GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "4", office_no: "1B-18", name: "Narin Gümrük Müşavirliği", 
               electric: { meter_no: "39296915", last_reading: 0 },
               water: { meter_no: "5185331", last_reading: 0 }
             },
-            { id: "5", office_no: "1B-17", name: "OMN GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "5", office_no: "1B-17", name: "OMN Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296908", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "6", office_no: "1B-16", name: "Arion GÃ¼mrÃ¼kleme LTD.ÅžTÄ°.", 
+            { id: "6", office_no: "1B-16", name: "Arion Gümrükleme LTD.ŞTİ.", 
               electric: { meter_no: "39296836", last_reading: 0 },
               water: { meter_no: "5185369", last_reading: 0 }
             },
-            { id: "7", office_no: "1B-15", name: "DDP GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "7", office_no: "1B-15", name: "DDP Gümrük Müşavirliği", 
               electric: { meter_no: "39296267", last_reading: 0 },
               water: { meter_no: "5185349", last_reading: 0 }
             },
-            { id: "8", office_no: "1B-14", name: "Erben GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi Ltd.Åžti.", 
+            { id: "8", office_no: "1B-14", name: "Erben Gümrük Müşavirliği Ltd.Şti.", 
               electric: { meter_no: "39297028", last_reading: 0 },
               water: { meter_no: "5185342", last_reading: 0 }
             },
-            { id: "9", office_no: "1B-13", name: "Anka Dia GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.ÅŸ", 
+            { id: "9", office_no: "1B-13", name: "Anka Dia Gümrük Müşavirliği A.ş", 
               electric: { meter_no: "39296753", last_reading: 0 },
               water: { meter_no: "5185367", last_reading: 0 }
             },
-            { id: "10", office_no: "1B-12", name: "Ä°mer GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "10", office_no: "1B-12", name: "İmer Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297212", last_reading: 0 },
               water: { meter_no: "5185280", last_reading: 0 }
             },
@@ -1262,39 +1262,39 @@
               electric: { meter_no: "39297070", last_reading: 0 },
               water: { meter_no: "5185329", last_reading: 0 }
             },
-            { id: "12", office_no: "1B-10", name: "Ä°GT GÃ¼mrÃ¼k MÃ¼ÅŸ.LTD.ÅžTÄ°.", 
+            { id: "12", office_no: "1B-10", name: "İGT Gümrük Müş.LTD.ŞTİ.", 
               electric: { meter_no: "39297011", last_reading: 0 },
               water: { meter_no: "5185259", last_reading: 0 }
             },
-            { id: "13", office_no: "1B-09", name: "SeÃ§kin GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "13", office_no: "1B-09", name: "Seçkin Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297109", last_reading: 0 },
               water: { meter_no: "5185366", last_reading: 0 }
             },
-            { id: "14", office_no: "1B-08", name: "PeyiÃ§ Transport DÄ±ÅŸ Tic. LTD.ÅžTÄ°. (TAH)", 
+            { id: "14", office_no: "1B-08", name: "Peyiç Transport Dış Tic. LTD.ŞTİ. (TAH)", 
               electric: { meter_no: "39296844", last_reading: 0 },
               water: { meter_no: "5185252", last_reading: 0 }
             },
-            { id: "15", office_no: "1B-07", name: "HÃ¼seyin Bayram", 
+            { id: "15", office_no: "1B-07", name: "Hüseyin Bayram", 
               electric: { meter_no: "39297168", last_reading: 0 },
               water: { meter_no: "5185299", last_reading: 0 }
             },
-            { id: "16", office_no: "1B-06", name: "Hizmet GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "16", office_no: "1B-06", name: "Hizmet Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297104", last_reading: 0 },
               water: { meter_no: "5185394", last_reading: 0 }
             },
-            { id: "17", office_no: "1B-05", name: "Tan Group Lojistik LTD.ÅžTÄ°.", 
+            { id: "17", office_no: "1B-05", name: "Tan Group Lojistik LTD.ŞTİ.", 
               electric: { meter_no: "39297034", last_reading: 0 },
               water: { meter_no: "16323436", last_reading: 0 }
             },
-            { id: "18", office_no: "1B-04", name: "Barsan Global Lojistik A.Åž.", 
+            { id: "18", office_no: "1B-04", name: "Barsan Global Lojistik A.Ş.", 
               electric: { meter_no: "39296811", last_reading: 0 },
               water: { meter_no: "16328443", last_reading: 0 }
             },
-            { id: "19", office_no: "1B-03", name: "Evolog Nakliyat Loj.Hiz.Tic.Ltd.Åžti.", 
+            { id: "19", office_no: "1B-03", name: "Evolog Nakliyat Loj.Hiz.Tic.Ltd.Şti.", 
               electric: { meter_no: "39297172", last_reading: 0 },
               water: { meter_no: "5185386", last_reading: 0 }
             },
-            { id: "20", office_no: "1B-02", name: "Ãœnsped GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi ve Loj. Hiz. A.Åž.", 
+            { id: "20", office_no: "1B-02", name: "Ünsped Gümrük Müşavirliği ve Loj. Hiz. A.Ş.", 
               electric: { meter_no: "39297118", last_reading: 0 },
               water: { meter_no: "1815964", last_reading: 0 }
             },
@@ -1304,11 +1304,11 @@
             },
             
             // 2B Blok
-            { id: "22", office_no: "2B-24", name: "Sertrans UluslararasÄ± Nakliyat Tic. A.Åž.", 
+            { id: "22", office_no: "2B-24", name: "Sertrans Uluslararası Nakliyat Tic. A.Ş.", 
               electric: { meter_no: "39296878", last_reading: 0 },
               water: { meter_no: "5185271", last_reading: 0 }
             },
-            { id: "23", office_no: "2B-23", name: "GÃ¼zel Lojistik/Ã–mer GÃ¼zel", 
+            { id: "23", office_no: "2B-23", name: "Güzel Lojistik/Ömer Güzel", 
               electric: { meter_no: "39297020", last_reading: 0 },
               water: { meter_no: "5185384", last_reading: 0 }
             },
@@ -1316,19 +1316,19 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185380", last_reading: 0 }
             },
-            { id: "25", office_no: "2B-21", name: "Devnak Nakliyat Tur. Ä°Ã§ ve DÄ±ÅŸ Tic. A.Åž.", 
+            { id: "25", office_no: "2B-21", name: "Devnak Nakliyat Tur. İç ve Dış Tic. A.Ş.", 
               electric: { meter_no: "39297181", last_reading: 0 },
               water: { meter_no: "5185397", last_reading: 0 }
             },
-            { id: "26", office_no: "2B-20", name: "GeliÅŸim Ulus.Loj.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "26", office_no: "2B-20", name: "Gelişim Ulus.Loj.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297078", last_reading: 0 },
               water: { meter_no: "5185368", last_reading: 0 }
             },
-            { id: "27", office_no: "2B-19", name: "Ulus GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi Ltd. Åžti.", 
+            { id: "27", office_no: "2B-19", name: "Ulus Gümrük Müşavirliği Ltd. Şti.", 
               electric: { meter_no: "39297015", last_reading: 0 },
               water: { meter_no: "5185260", last_reading: 0 }
             },
-            { id: "28", office_no: "2B-18", name: "Ekol GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "28", office_no: "2B-18", name: "Ekol Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297052", last_reading: 0 },
               water: { meter_no: "5185279", last_reading: 0 }
             },
@@ -1340,7 +1340,7 @@
               electric: { meter_no: "39297152", last_reading: 0 },
               water: { meter_no: "5185450", last_reading: 0 }
             },
-            { id: "31", office_no: "2B-15", name: "OÄŸuz GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "31", office_no: "2B-15", name: "Oğuz Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296750", last_reading: 0 },
               water: { meter_no: "5185287", last_reading: 0 }
             },
@@ -1360,99 +1360,99 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185284", last_reading: 0 }
             },
-            { id: "36", office_no: "2B-10", name: "Magna GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "36", office_no: "2B-10", name: "Magna Gümrük Müşavirliği Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297059", last_reading: 0 },
               water: { meter_no: "5185393", last_reading: 0 }
             },
-            { id: "37", office_no: "2B-09", name: "Mekar GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "37", office_no: "2B-09", name: "Mekar Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297153", last_reading: 0 },
               water: { meter_no: "5185413", last_reading: 0 }
             },
-            { id: "38", office_no: "2B-08", name: "DCS Dijital GÃ¼mrÃ¼k Hizmetleri A.Åž.", 
+            { id: "38", office_no: "2B-08", name: "DCS Dijital Gümrük Hizmetleri A.Ş.", 
               electric: { meter_no: "39296783", last_reading: 0 },
               water: { meter_no: "8846564", last_reading: 0 }
             },
-            { id: "39", office_no: "2B-07", name: "Ä°stanbul Ticaret OdasÄ±", 
+            { id: "39", office_no: "2B-07", name: "İstanbul Ticaret Odası", 
               electric: { meter_no: "52636359", last_reading: 0 },
               water: { meter_no: "5185268", last_reading: 0 }
             },
             
             // 3B Blok
-            { id: "40", office_no: "3B-15", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "40", office_no: "3B-15", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39296840", last_reading: 0 },
               water: { meter_no: "5185307", last_reading: 0 }
             },
-            { id: "41", office_no: "3B-14", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "41", office_no: "3B-14", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39297169", last_reading: 0 },
               water: { meter_no: "5185277", last_reading: 0 }
             },
-            { id: "42", office_no: "3B-13", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "42", office_no: "3B-13", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39296792", last_reading: 0 },
               water: { meter_no: "5185278", last_reading: 0 }
             },
-            { id: "43", office_no: "3B-12", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "43", office_no: "3B-12", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39296831", last_reading: 0 },
               water: { meter_no: "5185258", last_reading: 0 }
             },
-            { id: "44", office_no: "3B-11", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "44", office_no: "3B-11", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39296998", last_reading: 0 },
               water: { meter_no: "5185403", last_reading: 0 }
             },
-            { id: "45", office_no: "3B-10", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "45", office_no: "3B-10", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39296856", last_reading: 0 },
               water: { meter_no: "5185440", last_reading: 0 }
             },
-            { id: "46", office_no: "3B-09", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "46", office_no: "3B-09", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39267079", last_reading: 0 },
               water: { meter_no: "5185407", last_reading: 0 }
             },
-            { id: "47", office_no: "3B-08", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "47", office_no: "3B-08", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39297062", last_reading: 0 },
               water: { meter_no: "5185319", last_reading: 0 }
             },
-            { id: "48", office_no: "3B-07", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "48", office_no: "3B-07", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39297102", last_reading: 0 },
               water: { meter_no: "5185385", last_reading: 0 }
             },
-            { id: "49", office_no: "3B-06", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "49", office_no: "3B-06", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39297185", last_reading: 0 },
               water: { meter_no: "5185345", last_reading: 0 }
             },
-            { id: "50", office_no: "3B-05", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "50", office_no: "3B-05", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39297149", last_reading: 0 },
               water: { meter_no: "5185320", last_reading: 0 }
             },
-            { id: "51", office_no: "3B-04", name: "TÃœRK STANDARDLARI ENSTÄ°TÃœSÃœ", 
+            { id: "51", office_no: "3B-04", name: "TÜRK STANDARDLARI ENSTİTÜSÜ", 
               electric: { meter_no: "39297204", last_reading: 0 },
               water: { meter_no: "8846455", last_reading: 0 }
             },
-            { id: "52", office_no: "3B-02", name: "DMS MarketÃ§ilik A.Åž.", 
+            { id: "52", office_no: "3B-02", name: "DMS Marketçilik A.Ş.", 
               electric: { meter_no: "73262830", last_reading: 0 },
               water: { meter_no: "1815963", last_reading: 0 }
             },
-            { id: "53", office_no: "3B-01", name: "TÃ¼lay TAÅž/Yemekhane", 
+            { id: "53", office_no: "3B-01", name: "Tülay TAŞ/Yemekhane", 
               electric: { meter_no: "73261635", last_reading: 0 },
               water: { meter_no: "2365633", last_reading: 0 }
             },
             
             // Z Blok
-            { id: "54", office_no: "Z-63", name: "Nova Grup MÃ¼ÅŸavirlik LTD.ÅžTÄ°.", 
+            { id: "54", office_no: "Z-63", name: "Nova Grup Müşavirlik LTD.ŞTİ.", 
               electric: { meter_no: "39297154", last_reading: 0 },
               water: { meter_no: "5185406", last_reading: 0 }
             },
-            { id: "55", office_no: "Z-62", name: "Star Nakliyat/AydÄ±n Aktimur", 
+            { id: "55", office_no: "Z-62", name: "Star Nakliyat/Aydın Aktimur", 
               electric: { meter_no: "39297190", last_reading: 0 },
               water: { meter_no: "5185334", last_reading: 0 }
             },
-            { id: "56", office_no: "Z-61", name: "Ã‡aÄŸberk Loj. Paz. Ä°Ã§ ve DÄ±ÅŸ Tic. A.ÅŸ.", 
+            { id: "56", office_no: "Z-61", name: "Çağberk Loj. Paz. İç ve Dış Tic. A.ş.", 
               electric: { meter_no: "39296873", last_reading: 0 },
               water: { meter_no: "5185317", last_reading: 0 }
             },
-            { id: "57", office_no: "Z-60", name: "Emir GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "57", office_no: "Z-60", name: "Emir Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297055", last_reading: 0 },
               water: { meter_no: "5185327", last_reading: 0 }
             },
-            { id: "58", office_no: "Z-59", name: "HGL GÃ¼mrÃ¼k MÃ¼ÅŸ. LTD.ÅžTÄ°.", 
+            { id: "58", office_no: "Z-59", name: "HGL Gümrük Müş. LTD.ŞTİ.", 
               electric: { meter_no: "39297206", last_reading: 0 },
               water: { meter_no: "5185439", last_reading: 0 }
             },
@@ -1460,19 +1460,19 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185293", last_reading: 0 }
             },
-            { id: "60", office_no: "Z-57", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "60", office_no: "Z-57", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "39296997", last_reading: 0 },
               water: { meter_no: "5185296", last_reading: 0 }
             },
-            { id: "61", office_no: "Z-56", name: "Nehir GÃ¼mrÃ¼kleme Ä°Ã§ DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "61", office_no: "Z-56", name: "Nehir Gümrükleme İç Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297008", last_reading: 0 },
               water: { meter_no: "5185324", last_reading: 0 }
             },
-            { id: "62", office_no: "Z-55", name: "Volkan GÃ¼mrÃ¼kleme/Ayla Altuncu BaÅŸtÄ±mar", 
+            { id: "62", office_no: "Z-55", name: "Volkan Gümrükleme/Ayla Altuncu Baştımar", 
               electric: { meter_no: "39296777", last_reading: 0 },
               water: { meter_no: "5185305", last_reading: 0 }
             },
-            { id: "63", office_no: "Z-54", name: "Tunaset GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "63", office_no: "Z-54", name: "Tunaset Gümrük Müşavirliği", 
               electric: { meter_no: "39296884", last_reading: 0 },
               water: { meter_no: "5185310", last_reading: 0 }
             },
@@ -1480,11 +1480,11 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185373", last_reading: 0 }
             },
-            { id: "65", office_no: "Z-52", name: "Erkal Ulus.Nak.Tic.LTD.ÅžTÄ°.", 
+            { id: "65", office_no: "Z-52", name: "Erkal Ulus.Nak.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297103", last_reading: 0 },
               water: { meter_no: "5185363", last_reading: 0 }
             },
-            { id: "66", office_no: "Z-51", name: "Karem GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "66", office_no: "Z-51", name: "Karem Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297126", last_reading: 0 },
               water: { meter_no: "5185404", last_reading: 0 }
             },
@@ -1492,7 +1492,7 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185370", last_reading: 0 }
             },
-            { id: "68", office_no: "Z-49", name: "KÃ¼resel GÃ¼mrÃ¼k MÃ¼ÅŸ. Ve Loj. Hiz. A.Åž.", 
+            { id: "68", office_no: "Z-49", name: "Küresel Gümrük Müş. Ve Loj. Hiz. A.Ş.", 
               electric: { meter_no: "39297013", last_reading: 0 },
               water: { meter_no: "5185383", last_reading: 0 }
             },
@@ -1500,11 +1500,11 @@
               electric: { meter_no: "39139415", last_reading: 0 },
               water: { meter_no: "5185340", last_reading: 0 }
             },
-            { id: "70", office_no: "Z-47", name: "Mainland Loj.Depolama Hizmt.LTD.ÅžTÄ°.", 
+            { id: "70", office_no: "Z-47", name: "Mainland Loj.Depolama Hizmt.LTD.ŞTİ.", 
               electric: { meter_no: "39296791", last_reading: 0 },
               water: { meter_no: "5185257", last_reading: 0 }
             },
-            { id: "71", office_no: "Z-46", name: "TransalkÄ±m Ulus.Nak.Tic.LTD.ÅžTÄ°.", 
+            { id: "71", office_no: "Z-46", name: "Transalkım Ulus.Nak.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "3929704", last_reading: 0 },
               water: { meter_no: "5185355", last_reading: 0 }
             },
@@ -1512,11 +1512,11 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185443", last_reading: 0 }
             },
-            { id: "73", office_no: "Z-44", name: "Day GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "73", office_no: "Z-44", name: "Day Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297139", last_reading: 0 },
               water: { meter_no: "5185375", last_reading: 0 }
             },
-            { id: "74", office_no: "Z-43", name: "Data GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "74", office_no: "Z-43", name: "Data Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297120", last_reading: 0 },
               water: { meter_no: "5185417", last_reading: 0 }
             },
@@ -1524,19 +1524,19 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "76", office_no: "Z-41", name: "SubaÅŸÄ± GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "76", office_no: "Z-41", name: "Subaşı Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296778", last_reading: 0 },
               water: { meter_no: "5185311", last_reading: 0 }
             },
-            { id: "77", office_no: "Z-40", name: "DMR GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "77", office_no: "Z-40", name: "DMR Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296958", last_reading: 0 },
               water: { meter_no: "5185358", last_reading: 0 }
             },
-            { id: "78", office_no: "Z-39", name: "Ã–mtur Loj.DÄ±ÅŸ Tic.", 
+            { id: "78", office_no: "Z-39", name: "Ömtur Loj.Dış Tic.", 
               electric: { meter_no: "39297009", last_reading: 0 },
               water: { meter_no: "5185313", last_reading: 0 }
             },
-            { id: "79", office_no: "Z-38", name: "G.S.G. GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "79", office_no: "Z-38", name: "G.S.G. Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297142", last_reading: 0 },
               water: { meter_no: "5185270", last_reading: 0 }
             },
@@ -1544,23 +1544,23 @@
               electric: { meter_no: "39297171", last_reading: 0 },
               water: { meter_no: "5185326", last_reading: 0 }
             },
-            { id: "81", office_no: "Z-36", name: "Emirler Loj.GÃ¼m.Acent.Hiz.Tic.LTD.ÅžTÄ°.", 
+            { id: "81", office_no: "Z-36", name: "Emirler Loj.Güm.Acent.Hiz.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296912", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "82", office_no: "Z-35", name: "Netist DÄ±ÅŸ Tic. A.Åž.", 
+            { id: "82", office_no: "Z-35", name: "Netist Dış Tic. A.Ş.", 
               electric: { meter_no: "39296808", last_reading: 0 },
               water: { meter_no: "5185298", last_reading: 0 }
             },
-            { id: "83", office_no: "Z-34", name: "Solmaz KÃ¼resel GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "83", office_no: "Z-34", name: "Solmaz Küresel Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297032", last_reading: 0 },
               water: { meter_no: "5185427", last_reading: 0 }
             },
-            { id: "84", office_no: "Z-33", name: "Solmaz KÃ¼resel GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "84", office_no: "Z-33", name: "Solmaz Küresel Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297148", last_reading: 0 },
               water: { meter_no: "5185303", last_reading: 0 }
             },
-            { id: "85", office_no: "Z-32", name: "Trasant Ulus.Nak.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "85", office_no: "Z-32", name: "Trasant Ulus.Nak.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296830", last_reading: 0 },
               water: { meter_no: "5185275", last_reading: 0 }
             },
@@ -1572,181 +1572,181 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "88", office_no: "Z-29", name: "Ã–ykÃ¼ GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "88", office_no: "Z-29", name: "Öykü Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297081", last_reading: 0 },
               water: { meter_no: "5185318", last_reading: 0 }
             },
-            { id: "89", office_no: "Z-28", name: "Link Denizcilik ve TaÅŸ.LTD.ÅžTÄ°.", 
+            { id: "89", office_no: "Z-28", name: "Link Denizcilik ve Taş.LTD.ŞTİ.", 
               electric: { meter_no: "39297203", last_reading: 0 },
               water: { meter_no: "5185304", last_reading: 0 }
             },
-            { id: "90", office_no: "Z-27", name: "GÃ¼Ã§lÃ¼ UluslararasÄ± Nak. Turz.San.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "90", office_no: "Z-27", name: "Güçlü Uluslararası Nak. Turz.San.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296901", last_reading: 0 },
               water: { meter_no: "5185304", last_reading: 0 }
             },
-            { id: "91", office_no: "Z-26", name: "AteÅŸer Lojistik LTD.ÅžTÄ°.", 
+            { id: "91", office_no: "Z-26", name: "Ateşer Lojistik LTD.ŞTİ.", 
               electric: { meter_no: "39297030", last_reading: 0 },
               water: { meter_no: "5185441", last_reading: 0 }
             },
-            { id: "92", office_no: "Z-25", name: "Duray GÃ¼mrÃ¼kleme Ulus. Nak. Tic.LTD.ÅžTÄ°.", 
+            { id: "92", office_no: "Z-25", name: "Duray Gümrükleme Ulus. Nak. Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296940", last_reading: 0 },
               water: { meter_no: "5185336", last_reading: 0 }
             },
-            { id: "93", office_no: "Z-24", name: "Bultrans Ulus.Loj. Tic.LTD.ÅžTÄ°.", 
+            { id: "93", office_no: "Z-24", name: "Bultrans Ulus.Loj. Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297053", last_reading: 0 },
               water: { meter_no: "5185325", last_reading: 0 }
             },
-            { id: "94", office_no: "Z-23", name: "Pozitif GÃ¼mrÃ¼k MÃ¼ÅŸavirlik Hizmetleri LTD.ÅžTÄ°.", 
+            { id: "94", office_no: "Z-23", name: "Pozitif Gümrük Müşavirlik Hizmetleri LTD.ŞTİ.", 
               electric: { meter_no: "39296935", last_reading: 0 },
               water: { meter_no: "5185272", last_reading: 0 }
             },
-            { id: "95", office_no: "Z-22", name: "Boykan GÃ¼mrÃ¼k MÃ¼ÅŸ.Loj. A.Åž.", 
+            { id: "95", office_no: "Z-22", name: "Boykan Gümrük Müş.Loj. A.Ş.", 
               electric: { meter_no: "39297119", last_reading: 0 },
               water: { meter_no: "5185425", last_reading: 0 }
             },
-            { id: "96", office_no: "Z-21", name: "Palamutlar Group Lojistik DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "96", office_no: "Z-21", name: "Palamutlar Group Lojistik Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297201", last_reading: 0 },
               water: { meter_no: "5185283", last_reading: 0 }
             },
-            { id: "97", office_no: "Z-20", name: "GÃ¼Ã§lÃ¼ UluslararasÄ± Nak. Turz.San.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "97", office_no: "Z-20", name: "Güçlü Uluslararası Nak. Turz.San.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297187", last_reading: 0 },
               water: { meter_no: "5155344", last_reading: 0 }
             },
-            { id: "98", office_no: "Z-19", name: "Asy GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "98", office_no: "Z-19", name: "Asy Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297015", last_reading: 0 },
               water: { meter_no: "5185260", last_reading: 0 }
             },
-            { id: "99", office_no: "Z-18", name: "Transmetro GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi Tic.LTD.ÅžTÄ°.", 
+            { id: "99", office_no: "Z-18", name: "Transmetro Gümrük Müşavirliği Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297092", last_reading: 0 },
               water: { meter_no: "5185323", last_reading: 0 }
             },
-            { id: "100", office_no: "Z-17", name: "Tuaz Lojistik GÃ¼mrÃ¼kleme LTD.ÅžTÄ°.", 
+            { id: "100", office_no: "Z-17", name: "Tuaz Lojistik Gümrükleme LTD.ŞTİ.", 
               electric: { meter_no: "39297115", last_reading: 0 },
               water: { meter_no: "5185290", last_reading: 0 }
             },
-            { id: "101", office_no: "Z-16", name: "Egemen Nakliyat San.Tic.LTD.ÅžTÄ°.", 
+            { id: "101", office_no: "Z-16", name: "Egemen Nakliyat San.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296824", last_reading: 0 },
               water: { meter_no: "5185354", last_reading: 0 }
             },
-            { id: "102", office_no: "Z-15", name: "Mentor GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "102", office_no: "Z-15", name: "Mentor Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296849", last_reading: 0 },
               water: { meter_no: "5185269", last_reading: 0 }
             },
-            { id: "103", office_no: "Z-14", name: "Ä°mex TaÅŸÄ±macÄ±lÄ±k San.DÄ±ÅŸ.Tic.LTD.ÅžTÄ°.", 
+            { id: "103", office_no: "Z-14", name: "İmex Taşımacılık San.Dış.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296959", last_reading: 0 },
               water: { meter_no: "5185387", last_reading: 0 }
             },
-            { id: "104", office_no: "Z-13", name: "Cem Trans/Murat AKÃ‡A", 
+            { id: "104", office_no: "Z-13", name: "Cem Trans/Murat AKÇA", 
               electric: { meter_no: "39296757", last_reading: 0 },
               water: { meter_no: "5185416", last_reading: 0 }
             },
-            { id: "105", office_no: "Z-12", name: "E-BatÄ± GÃ¼mrÃ¼k MÃ¼ÅŸavirlik Hizmetleri LTD.ÅžTÄ°.", 
+            { id: "105", office_no: "Z-12", name: "E-Batı Gümrük Müşavirlik Hizmetleri LTD.ŞTİ.", 
               electric: { meter_no: "39296867", last_reading: 0 },
               water: { meter_no: "5185448", last_reading: 0 }
             },
-            { id: "106", office_no: "Z-11", name: "PeyiÃ§ Transport DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "106", office_no: "Z-11", name: "Peyiç Transport Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296761", last_reading: 0 },
               water: { meter_no: "5185389", last_reading: 0 }
             },
-            { id: "107", office_no: "Z-10", name: "Bizz Trans Ulus.Nak./AÅŸkÄ±n Muammer Tekin", 
+            { id: "107", office_no: "Z-10", name: "Bizz Trans Ulus.Nak./Aşkın Muammer Tekin", 
               electric: { meter_no: "39297068", last_reading: 0 },
               water: { meter_no: "5185409", last_reading: 0 }
             },
-            { id: "108", office_no: "Z-09", name: "Turnak GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "108", office_no: "Z-09", name: "Turnak Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296764", last_reading: 0 },
               water: { meter_no: "5185337", last_reading: 0 }
             },
-            { id: "109", office_no: "Z-08", name: "SÄ±r GÃ¼mrÃ¼k MÃ¼ÅŸavirli LTD.ÅžTÄ°.", 
+            { id: "109", office_no: "Z-08", name: "Sır Gümrük Müşavirli LTD.ŞTİ.", 
               electric: { meter_no: "39297176", last_reading: 0 },
               water: { meter_no: "5185321", last_reading: 0 }
             },
-            { id: "110", office_no: "Z-07", name: "Oskar GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "110", office_no: "Z-07", name: "Oskar Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296784", last_reading: 0 },
               water: { meter_no: "5185261", last_reading: 0 }
             },
-            { id: "111", office_no: "Z-06", name: "BoÄŸaziÃ§i GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "111", office_no: "Z-06", name: "Boğaziçi Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297202", last_reading: 0 },
               water: { meter_no: "5185408", last_reading: 0 }
             },
-            { id: "112", office_no: "Z-05", name: "Tepe GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "112", office_no: "Z-05", name: "Tepe Gümrük Müşavirliği", 
               electric: { meter_no: "39297150", last_reading: 0 },
               water: { meter_no: "5185266", last_reading: 0 }
             },
-            { id: "113", office_no: "Z-04", name: "Datalog Ulus.TaÅŸ Ä°th.Ä°hr.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "113", office_no: "Z-04", name: "Datalog Ulus.Taş İth.İhr.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297122", last_reading: 0 },
               water: { meter_no: "5185386", last_reading: 0 }
             },
-            { id: "114", office_no: "Z-03", name: "Sienzi Loj. Antrepo DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "114", office_no: "Z-03", name: "Sienzi Loj. Antrepo Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297129", last_reading: 0 },
               water: { meter_no: "5185365", last_reading: 0 }
             },
-            { id: "115", office_no: "Z-02", name: "DoÄŸruer GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "115", office_no: "Z-02", name: "Doğruer Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297022", last_reading: 0 },
               water: { meter_no: "5185426", last_reading: 0 }
             },
-            { id: "116", office_no: "Z-01", name: "Deks Tekstil Ä°th.Ä°hr.Turz.LTD.ÅžTÄ°.", 
+            { id: "116", office_no: "Z-01", name: "Deks Tekstil İth.İhr.Turz.LTD.ŞTİ.", 
               electric: { meter_no: "39296962", last_reading: 0 },
               water: { meter_no: "5185446", last_reading: 0 }
             },
             
-            // NumaralÄ± ofisler (100+ serisi)
-            { id: "117", office_no: "101", name: "HÃ¼ner Ulus.TaÅŸ.LTD.ÅžTÄ°.", 
+            // Numaralı ofisler (100+ serisi)
+            { id: "117", office_no: "101", name: "Hüner Ulus.Taş.LTD.ŞTİ.", 
               electric: { meter_no: "39297099", last_reading: 0 },
               water: { meter_no: "5185267", last_reading: 0 }
             },
-            { id: "118", office_no: "102", name: "KÄ±zÄ±lkaya GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "118", office_no: "102", name: "Kızılkaya Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297010", last_reading: 0 },
               water: { meter_no: "5185335", last_reading: 0 }
             },
-            { id: "119", office_no: "103", name: "Tezer GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "119", office_no: "103", name: "Tezer Gümrük Müşavirliği", 
               electric: { meter_no: "39297097", last_reading: 0 },
               water: { meter_no: "5185374", last_reading: 0 }
             },
-            { id: "120", office_no: "104", name: "Mettrans TaÅŸÄ±macÄ±lÄ±k ve Tic.LTD.ÅžTÄ°.", 
+            { id: "120", office_no: "104", name: "Mettrans Taşımacılık ve Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39296766", last_reading: 0 },
               water: { meter_no: "5185442", last_reading: 0 }
             },
-            { id: "121", office_no: "105", name: "Ulustrans Ulus. Nak.Tic. A.Åž.", 
+            { id: "121", office_no: "105", name: "Ulustrans Ulus. Nak.Tic. A.Ş.", 
               electric: { meter_no: "39297165", last_reading: 0 },
               water: { meter_no: "5185392", last_reading: 0 }
             },
-            { id: "122", office_no: "106", name: "Elt Global Loj. Ve DÄ±ÅŸ Ticaret A.Åž.", 
+            { id: "122", office_no: "106", name: "Elt Global Loj. Ve Dış Ticaret A.Ş.", 
               electric: { meter_no: "39297088", last_reading: 0 },
               water: { meter_no: "5185378", last_reading: 0 }
             },
-            { id: "123", office_no: "107", name: "Okuyan GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "123", office_no: "107", name: "Okuyan Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297107", last_reading: 0 },
               water: { meter_no: "5185410", last_reading: 0 }
             },
-            { id: "124", office_no: "108", name: "Sentez GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "124", office_no: "108", name: "Sentez Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297057", last_reading: 0 },
               water: { meter_no: "5185420", last_reading: 0 }
             },
-            { id: "125", office_no: "109", name: "Bunasta GÃ¼mrÃ¼k Transit Hiz.Ä°th.Ä°hr.Tic.A.Åž.", 
+            { id: "125", office_no: "109", name: "Bunasta Gümrük Transit Hiz.İth.İhr.Tic.A.Ş.", 
               electric: { meter_no: "39297208", last_reading: 0 },
               water: { meter_no: "5185364", last_reading: 0 }
             },
-            { id: "126", office_no: "110", name: "Ä°ST Global GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "126", office_no: "110", name: "İST Global Gümrük Müşavirliği", 
               electric: { meter_no: "39297039", last_reading: 0 },
               water: { meter_no: "5185276", last_reading: 0 }
             },
-            { id: "127", office_no: "111", name: "Borusan Tedarik Zinciri. Ã‡Ã¶z.ve Tek. A.Åž.", 
+            { id: "127", office_no: "111", name: "Borusan Tedarik Zinciri. Çöz.ve Tek. A.Ş.", 
               electric: { meter_no: "39297089", last_reading: 0 },
               water: { meter_no: "5185339", last_reading: 0 }
             },
-            { id: "128", office_no: "112", name: "Asset GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "128", office_no: "112", name: "Asset Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296817", last_reading: 0 },
               water: { meter_no: "5185309", last_reading: 0 }
             },
-            { id: "129", office_no: "113", name: "BD Global Loj.Turz.San.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "129", office_no: "113", name: "BD Global Loj.Turz.San.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297188", last_reading: 0 },
               water: { meter_no: "5185289", last_reading: 0 }
             },
-            { id: "130", office_no: "114", name: "Oben GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "130", office_no: "114", name: "Oben Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297128", last_reading: 0 },
               water: { meter_no: "5185429", last_reading: 0 }
             },
-            { id: "131", office_no: "115", name: "YÄ±ldÄ±z GÃ¼mrÃ¼k Acent.DanÄ±ÅŸmanlÄ±k Hiz.LTD.ÅžTÄ°.", 
+            { id: "131", office_no: "115", name: "Yıldız Gümrük Acent.Danışmanlık Hiz.LTD.ŞTİ.", 
               electric: { meter_no: "39297193", last_reading: 0 },
               water: { meter_no: "5185398", last_reading: 0 }
             },
@@ -1754,67 +1754,67 @@
               electric: { meter_no: "39297074", last_reading: 0 },
               water: { meter_no: "5185302", last_reading: 0 }
             },
-            { id: "133", office_no: "117", name: "BoÄŸa Ulus.TaÅŸ.DÄ±ÅŸ Tic.LTD.ÅžTÄ°.", 
+            { id: "133", office_no: "117", name: "Boğa Ulus.Taş.Dış Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297182", last_reading: 0 },
               water: { meter_no: "5185405", last_reading: 0 }
             },
-            { id: "134", office_no: "118", name: "HB Nakliyat GÃ¼mrÃ¼kleme Sinan Atay", 
+            { id: "134", office_no: "118", name: "HB Nakliyat Gümrükleme Sinan Atay", 
               electric: { meter_no: "39297125", last_reading: 0 },
               water: { meter_no: "5185343", last_reading: 0 }
             },
-            { id: "135", office_no: "119", name: "Karaca GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "135", office_no: "119", name: "Karaca Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39296790", last_reading: 0 },
               water: { meter_no: "5185379", last_reading: 0 }
             },
-            { id: "136", office_no: "120", name: "Bor GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "136", office_no: "120", name: "Bor Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39296991", last_reading: 0 },
               water: { meter_no: "4975390", last_reading: 0 }
             },
-            { id: "137", office_no: "121", name: "GÃ¼ler GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "137", office_no: "121", name: "Güler Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39296805", last_reading: 0 },
               water: { meter_no: "5185308", last_reading: 0 }
             },
-            { id: "138", office_no: "122", name: "Aslan Global GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "138", office_no: "122", name: "Aslan Global Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297058", last_reading: 0 },
               water: { meter_no: "5185428", last_reading: 0 }
             },
-            { id: "139", office_no: "123", name: "Hitit GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "139", office_no: "123", name: "Hitit Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297095", last_reading: 0 },
               water: { meter_no: "5185346", last_reading: 0 }
             },
-            { id: "140", office_no: "124", name: "Duygu GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "140", office_no: "124", name: "Duygu Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296829", last_reading: 0 },
               water: { meter_no: "5185332", last_reading: 0 }
             },
-            { id: "141", office_no: "125", name: "Obdan Sistem GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "141", office_no: "125", name: "Obdan Sistem Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39296794", last_reading: 0 },
               water: { meter_no: "5185361", last_reading: 0 }
             },
-            { id: "142", office_no: "126", name: "TGS Transport Ulus.TaÅŸ.Acen.LTD.ÅžTÄ°.", 
+            { id: "142", office_no: "126", name: "TGS Transport Ulus.Taş.Acen.LTD.ŞTİ.", 
               electric: { meter_no: "39297178", last_reading: 0 },
               water: { meter_no: "5185253", last_reading: 0 }
             },
-            { id: "143", office_no: "127", name: "Erdal BÃ¼yÃ¼kÅŸahin", 
+            { id: "143", office_no: "127", name: "Erdal Büyükşahin", 
               electric: { meter_no: "39297209", last_reading: 0 },
               water: { meter_no: "5185411", last_reading: 0 }
             },
-            { id: "144", office_no: "128", name: "KarÄ±nca Lojistik A.Åž.", 
+            { id: "144", office_no: "128", name: "Karınca Lojistik A.Ş.", 
               electric: { meter_no: "39296925", last_reading: 0 },
               water: { meter_no: "5185340", last_reading: 0 }
             },
-            { id: "145", office_no: "129", name: "Armatrans Ulus.TaÅŸ. Acen.Ä°th.Ä°hr.Tic.LTD.ÅžTÄ°.", 
+            { id: "145", office_no: "129", name: "Armatrans Ulus.Taş. Acen.İth.İhr.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297029", last_reading: 0 },
               water: { meter_no: "4675455", last_reading: 0 }
             },
-            { id: "146", office_no: "130", name: "TÃ¼m Global Lojistik Hiz.A.Åž.", 
+            { id: "146", office_no: "130", name: "Tüm Global Lojistik Hiz.A.Ş.", 
               electric: { meter_no: "39297045", last_reading: 0 },
               water: { meter_no: "8846594", last_reading: 0 }
             },
-            { id: "147", office_no: "131", name: "DMS Lojistik TaÅŸÄ±macÄ±lÄ±k LTD.ÅžTÄ°.", 
+            { id: "147", office_no: "131", name: "DMS Lojistik Taşımacılık LTD.ŞTİ.", 
               electric: { meter_no: "39297177", last_reading: 0 },
               water: { meter_no: "5185281", last_reading: 0 }
             },
-            { id: "148", office_no: "132", name: "SaÄŸlÄ±k Transport Nak. Tic. LTD.ÅžTÄ°.", 
+            { id: "148", office_no: "132", name: "Sağlık Transport Nak. Tic. LTD.ŞTİ.", 
               electric: { meter_no: "39297087", last_reading: 0 },
               water: { meter_no: "5185444", last_reading: 0 }
             },
@@ -1826,7 +1826,7 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185274", last_reading: 0 }
             },
-            { id: "151", office_no: "135", name: "TGL GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "151", office_no: "135", name: "TGL Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297127", last_reading: 0 },
               water: { meter_no: "5185264", last_reading: 0 }
             },
@@ -1842,15 +1842,15 @@
               electric: { meter_no: "39297164", last_reading: 0 },
               water: { meter_no: "5185449", last_reading: 0 }
             },
-            { id: "155", office_no: "139", name: "Asos Global Lojistik LTD.ÅžTÄ°.", 
+            { id: "155", office_no: "139", name: "Asos Global Lojistik LTD.ŞTİ.", 
               electric: { meter_no: "39297156", last_reading: 0 },
               water: { meter_no: "5185438", last_reading: 0 }
             },
-            { id: "156", office_no: "140", name: "MKR GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "156", office_no: "140", name: "MKR Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297207", last_reading: 0 },
               water: { meter_no: "5185312", last_reading: 0 }
             },
-            { id: "157", office_no: "141", name: "Atabay Loj. Ve GÃ¼mrÃ¼kleme Tic. LTD.ÅžTÄ°.", 
+            { id: "157", office_no: "141", name: "Atabay Loj. Ve Gümrükleme Tic. LTD.ŞTİ.", 
               electric: { meter_no: "39297017", last_reading: 0 },
               water: { meter_no: "5185350", last_reading: 0 }
             },
@@ -1858,11 +1858,11 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "159", office_no: "143", name: "YÄ±lmaz UluslararasÄ± TaÅŸ. LTD.ÅžTÄ°.", 
+            { id: "159", office_no: "143", name: "Yılmaz Uluslararası Taş. LTD.ŞTİ.", 
               electric: { meter_no: "39296853", last_reading: 0 },
               water: { meter_no: "5185436", last_reading: 0 }
             },
-            { id: "160", office_no: "144", name: "BS Lojistik DÄ±ÅŸ Ticaret LTD.ÅžTÄ°.", 
+            { id: "160", office_no: "144", name: "BS Lojistik Dış Ticaret LTD.ŞTİ.", 
               electric: { meter_no: "39296910", last_reading: 0 },
               water: { meter_no: "5185431", last_reading: 0 }
             },
@@ -1870,11 +1870,11 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185353", last_reading: 0 }
             },
-            { id: "162", office_no: "146", name: "HG GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "162", office_no: "146", name: "HG Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297136", last_reading: 0 },
               water: { meter_no: "5185263", last_reading: 0 }
             },
-            { id: "163", office_no: "147", name: "KRE Kare GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi", 
+            { id: "163", office_no: "147", name: "KRE Kare Gümrük Müşavirliği", 
               electric: { meter_no: "39296987", last_reading: 0 },
               water: { meter_no: "5185388", last_reading: 0 }
             },
@@ -1882,7 +1882,7 @@
               electric: { meter_no: "39296755", last_reading: 0 },
               water: { meter_no: "5185416", last_reading: 0 }
             },
-            { id: "165", office_no: "149", name: "GÃ¼neÅŸ GÃ¼mrÃ¼k ve Lojistik Hiz. LTD.ÅžTÄ°", 
+            { id: "165", office_no: "149", name: "Güneş Gümrük ve Lojistik Hiz. LTD.ŞTİ", 
               electric: { meter_no: "39297147", last_reading: 0 },
               water: { meter_no: "5185322", last_reading: 0 }
             },
@@ -1890,11 +1890,11 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185282", last_reading: 0 }
             },
-            { id: "167", office_no: "151", name: "Point Lojistik LTD.ÅžTÄ°.", 
+            { id: "167", office_no: "151", name: "Point Lojistik LTD.ŞTİ.", 
               electric: { meter_no: "39296819", last_reading: 0 },
               water: { meter_no: "5185402", last_reading: 0 }
             },
-            { id: "168", office_no: "152", name: "Global Express DÄ±ÅŸ Tic.A.Åž.", 
+            { id: "168", office_no: "152", name: "Global Express Dış Tic.A.Ş.", 
               electric: { meter_no: "39296897", last_reading: 0 },
               water: { meter_no: "5185381", last_reading: 0 }
             },
@@ -1902,19 +1902,19 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185264", last_reading: 0 }
             },
-            { id: "170", office_no: "154", name: "On-El GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "170", office_no: "154", name: "On-El Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297083", last_reading: 0 },
               water: { meter_no: "5185400", last_reading: 0 }
             },
-            { id: "171", office_no: "155", name: "DÃ¶rtel GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi A.Åž.", 
+            { id: "171", office_no: "155", name: "Dörtel Gümrük Müşavirliği A.Ş.", 
               electric: { meter_no: "39297074", last_reading: 0 },
               water: { meter_no: "5185423", last_reading: 0 }
             },
-            { id: "172", office_no: "156", name: "Teknik GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "172", office_no: "156", name: "Teknik Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297108", last_reading: 0 },
               water: { meter_no: "5185255", last_reading: 0 }
             },
-            { id: "173", office_no: "157", name: "Kuzey GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi Hiz. LTD.ÅžTÄ°.", 
+            { id: "173", office_no: "157", name: "Kuzey Gümrük Müşavirliği Hiz. LTD.ŞTİ.", 
               electric: { meter_no: "39297286", last_reading: 0 },
               water: { meter_no: "5185314", last_reading: 0 }
             },
@@ -1922,11 +1922,11 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185372", last_reading: 0 }
             },
-            { id: "175", office_no: "159", name: "Keskin GÃ¼ngÃ¶r GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "175", office_no: "159", name: "Keskin Güngör Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297211", last_reading: 0 },
               water: { meter_no: "5185434", last_reading: 0 }
             },
-            { id: "176", office_no: "160", name: "Teksim GÃ¼mrÃ¼k MÃ¼ÅŸ. LTD.ÅžTÄ°.", 
+            { id: "176", office_no: "160", name: "Teksim Gümrük Müş. LTD.ŞTİ.", 
               electric: { meter_no: "39297138", last_reading: 0 },
               water: { meter_no: "5185333", last_reading: 0 }
             },
@@ -1934,170 +1934,170 @@
               electric: { meter_no: "", last_reading: 0 },
               water: { meter_no: "5185347", last_reading: 0 }
             },
-            { id: "178", office_no: "162", name: "Seray Ulus.TaÅŸ.Ä°nÅŸ.Tic.LTD.ÅžTÄ°.", 
+            { id: "178", office_no: "162", name: "Seray Ulus.Taş.İnş.Tic.LTD.ŞTİ.", 
               electric: { meter_no: "39297180", last_reading: 0 },
               water: { meter_no: "5185301", last_reading: 0 }
             },
-            { id: "179", office_no: "163", name: "Derin GÃ¼mrÃ¼k MÃ¼ÅŸavirliÄŸi LTD.ÅžTÄ°.", 
+            { id: "179", office_no: "163", name: "Derin Gümrük Müşavirliği LTD.ŞTİ.", 
               electric: { meter_no: "39297037", last_reading: 0 },
               water: { meter_no: "5185328", last_reading: 0 }
             },
             
             // ATM ve Banka
-            { id: "180", office_no: "ATM01", name: "TÃ¼rkiye VakÄ±flar BankasÄ± T.A.O", 
+            { id: "180", office_no: "ATM01", name: "Türkiye Vakıflar Bankası T.A.O", 
               electric: { meter_no: "72950388", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "181", office_no: "ATM02", name: "Ziraat BankasÄ± A.Åž.", 
+            { id: "181", office_no: "ATM02", name: "Ziraat Bankası A.Ş.", 
               electric: { meter_no: "21181800", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "182", office_no: "ATM03", name: "Denizbank A.Åž.", 
+            { id: "182", office_no: "ATM03", name: "Denizbank A.Ş.", 
               electric: { meter_no: "73941721", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "183", office_no: "ATM04", name: "Garanti BankasÄ± A.Åž.", 
+            { id: "183", office_no: "ATM04", name: "Garanti Bankası A.Ş.", 
               electric: { meter_no: "260019266", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "184", office_no: "ATM05", name: "TÃ¼rkiye Ä°ÅŸ BankasÄ± A.Åž.", 
+            { id: "184", office_no: "ATM05", name: "Türkiye İş Bankası A.Ş.", 
               electric: { meter_no: "260003752", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "185", office_no: "ATM06", name: "YapÄ± Kredi BankasÄ± A.Åž.", 
+            { id: "185", office_no: "ATM06", name: "Yapı Kredi Bankası A.Ş.", 
               electric: { meter_no: "52301997", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
             
-            // TelekomÃ¼nikasyon
-            { id: "186", office_no: "Telekom-1", name: "Turkcell Ä°letiÅŸim Hizmetleri A.Åž.", 
+            // Telekomünikasyon
+            { id: "186", office_no: "Telekom-1", name: "Turkcell İletişim Hizmetleri A.Ş.", 
               electric: { meter_no: "39587154", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "187", office_no: "Telekom-2", name: "Vodafone TelekomÃ¼nikasyon A.Åž.", 
+            { id: "187", office_no: "Telekom-2", name: "Vodafone Telekomünikasyon A.Ş.", 
               electric: { meter_no: "40839162", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "188", office_no: "Telekom-3", name: "TT MOBÄ°L Ä°LETÄ°ÅžÄ°M HÄ°ZMETLERÄ° A.Åž.", 
+            { id: "188", office_no: "Telekom-3", name: "TT MOBİL İLETİŞİM HİZMETLERİ A.Ş.", 
               electric: { meter_no: "41038534", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
             
-            // Ã–zel BÃ¶lgeler
-            { id: "189", office_no: "20A", name: "Hamit CENGÄ°Z/Ä°thalat GiriÅŸ", 
+            // Özel Bölgeler
+            { id: "189", office_no: "20A", name: "Hamit CENGİZ/İthalat Giriş", 
               electric: { meter_no: "40172802", last_reading: 0 },
               water: { meter_no: "2365436", last_reading: 0 }
             },
-            { id: "190", office_no: "20-2", name: "Hamit CENGÄ°Z/Nakliye GiriÅŸ", 
+            { id: "190", office_no: "20-2", name: "Hamit CENGİZ/Nakliye Giriş", 
               electric: { meter_no: "40172476", last_reading: 0 },
               water: { meter_no: "2365382", last_reading: 0 }
             },
-            { id: "191", office_no: "2B01", name: "Hamit CENGÄ°Z/Bina Cafe", 
+            { id: "191", office_no: "2B01", name: "Hamit CENGİZ/Bina Cafe", 
               electric: { meter_no: "73262760", last_reading: 0 },
               water: { meter_no: "900723640", last_reading: 0 }
             },
-            { id: "192", office_no: "20-6R", name: "ABY GÄ±da LTD.ÅžTÄ°. / Ä°hracat 2 Cafe", 
+            { id: "192", office_no: "20-6R", name: "ABY Gıda LTD.ŞTİ. / İhracat 2 Cafe", 
               electric: { meter_no: "73261729", last_reading: 0 },
               water: { meter_no: "5832341", last_reading: 0 }
             },
-            { id: "193", office_no: "20-6S", name: "ABY GÄ±da LTD.ÅžTÄ°. / Ä°hracat 3 Cafe", 
+            { id: "193", office_no: "20-6S", name: "ABY Gıda LTD.ŞTİ. / İhracat 3 Cafe", 
               electric: { meter_no: "62536647", last_reading: 0 },
               water: { meter_no: "6231862", last_reading: 0 }
             },
-            { id: "194", office_no: "20-6V", name: "ABY GÄ±da LTD.ÅžTÄ°. / Ä°hracat 4 TÄ±r Shop", 
+            { id: "194", office_no: "20-6V", name: "ABY Gıda LTD.ŞTİ. / İhracat 4 Tır Shop", 
               electric: { meter_no: "73261730", last_reading: 0 },
               water: { meter_no: "16328438", last_reading: 0 }
             },
-            { id: "195", office_no: "Z-61", name: "Pilav ArabasÄ± /Z62", 
+            { id: "195", office_no: "Z-61", name: "Pilav Arabası /Z62", 
               electric: { meter_no: "39296873", last_reading: 0 },
               water: { meter_no: "6231784", last_reading: 0 }
             },
-            { id: "196", office_no: "20-6H", name: "ABY GÄ±da LTD.ÅžTÄ°. / Ä°thalat 2 Cafe/Ofis", 
+            { id: "196", office_no: "20-6H", name: "ABY Gıda LTD.ŞTİ. / İthalat 2 Cafe/Ofis", 
               electric: { meter_no: "73261779", last_reading: 0 },
               water: { meter_no: "398530", last_reading: 0 }
             },
             
-            // YÃ¼k DaÄŸÄ±tÄ±m (YD) ve Sunucu DaÄŸÄ±tÄ±m (SD) AlanlarÄ±
+            // Yük Dağıtım (YD) ve Sunucu Dağıtım (SD) Alanları
             
-            // Fedex Express TÃ¼rkiye - TÃ¼m sayaÃ§lar
-            { id: "197", office_no: "YD1-1", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            // Fedex Express Türkiye - Tüm sayaçlar
+            { id: "197", office_no: "YD1-1", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "73136044", last_reading: 0 },
               water: { meter_no: "5173255", last_reading: 0 }
             },
-            { id: "204", office_no: "YD1-2", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "204", office_no: "YD1-2", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "73135649", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "205", office_no: "YD1-3", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "205", office_no: "YD1-3", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "73135960", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "206", office_no: "YD1-4", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "206", office_no: "YD1-4", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80072113", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "207", office_no: "YD1-5", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "207", office_no: "YD1-5", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "73135417", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "208", office_no: "YD1-6", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "208", office_no: "YD1-6", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "73135481", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "209", office_no: "YD1-7", name: "Fedex Express TÃ¼rkiye TaÅŸ.TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "209", office_no: "YD1-7", name: "Fedex Express Türkiye Taş.TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80071866", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
 
             
-            // GÃ¼Ã§lÃ¼ Global - TÃ¼m sayaÃ§lar
-            { id: "198", office_no: "YD2-1", name: "GÃ¼Ã§lÃ¼ Global LTD.ÅžTÄ°.", 
+            // Güçlü Global - Tüm sayaçlar
+            { id: "198", office_no: "YD2-1", name: "Güçlü Global LTD.ŞTİ.", 
               electric: { meter_no: "80071801", last_reading: 0 },
               water: { meter_no: "9782907", last_reading: 0 }
             },
-            { id: "211", office_no: "YD2-2", name: "GÃ¼Ã§lÃ¼ Global LTD.ÅžTÄ°.", 
+            { id: "211", office_no: "YD2-2", name: "Güçlü Global LTD.ŞTİ.", 
               electric: { meter_no: "73135966", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "212", office_no: "YD2-3", name: "GÃ¼Ã§lÃ¼ Global LTD.ÅžTÄ°.", 
+            { id: "212", office_no: "YD2-3", name: "Güçlü Global LTD.ŞTİ.", 
               electric: { meter_no: "80071872", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "213", office_no: "YD2-4", name: "GÃ¼Ã§lÃ¼ Global LTD.ÅžTÄ°.", 
+            { id: "213", office_no: "YD2-4", name: "Güçlü Global LTD.ŞTİ.", 
               electric: { meter_no: "73136012", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "214", office_no: "YD2-5", name: "GÃ¼Ã§lÃ¼ Global LTD.ÅžTÄ°.", 
+            { id: "214", office_no: "YD2-5", name: "Güçlü Global LTD.ŞTİ.", 
               electric: { meter_no: "73136050", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
             
-            // Mir Global Lojistik - TÃ¼m sayaÃ§lar
-            { id: "199", office_no: "SD1-1", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            // Mir Global Lojistik - Tüm sayaçlar
+            { id: "199", office_no: "SD1-1", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80034332", last_reading: 0 },
               water: { meter_no: "16326241", last_reading: 0 }
             },
-            { id: "215", office_no: "SD1-2", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "215", office_no: "SD1-2", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80034043", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "216", office_no: "SD1-3", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "216", office_no: "SD1-3", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80036312", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "217", office_no: "SD1-4", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "217", office_no: "SD1-4", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80036139", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "218", office_no: "SD1-5", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "218", office_no: "SD1-5", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "800353425", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "219", office_no: "SD1-6", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "219", office_no: "SD1-6", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80047978", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "220", office_no: "SD1-7", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "220", office_no: "SD1-7", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80036076", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
@@ -2105,53 +2105,53 @@
 
             
             // SD2 Mir Global Lojistik
-            { id: "200", office_no: "SD2-1", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "200", office_no: "SD2-1", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80034408", last_reading: 0 },
               water: { meter_no: "5173349", last_reading: 0 }
             },
 
-            { id: "224", office_no: "SD2-3", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "224", office_no: "SD2-3", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80036034", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "225", office_no: "SD2-4", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "225", office_no: "SD2-4", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80036228", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "226", office_no: "SD2-5", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "226", office_no: "SD2-5", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80034356", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "227", office_no: "SD2-6", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "227", office_no: "SD2-6", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80034397", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "228", office_no: "SD2-7", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "228", office_no: "SD2-7", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "80034389", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
             // MD1 Asav Lojistik
-            { id: "201", office_no: "MD1-1", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "201", office_no: "MD1-1", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80032892", last_reading: 0 },
               water: { meter_no: "16326243", last_reading: 0 }
             },
-            { id: "229", office_no: "MD1-2", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "229", office_no: "MD1-2", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80036025", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "230", office_no: "MD1-3", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "230", office_no: "MD1-3", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80032830", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "231", office_no: "MD1-4", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "231", office_no: "MD1-4", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80032844", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "232", office_no: "MD1-5", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "232", office_no: "MD1-5", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80032396", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "233", office_no: "MD1-6", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "233", office_no: "MD1-6", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80032907", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
@@ -2159,43 +2159,43 @@
 
             
             // MD2 Asav Lojistik
-            { id: "202", office_no: "MD2-1", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "202", office_no: "MD2-1", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80031176", last_reading: 0 },
               water: { meter_no: "5173059", last_reading: 0 }
             },
 
-            { id: "237", office_no: "MD2-3", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "237", office_no: "MD2-3", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80034074", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "238", office_no: "MD2-4", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "238", office_no: "MD2-4", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80034075", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "239", office_no: "MD2-5", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "239", office_no: "MD2-5", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80033844", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "240", office_no: "MD2-6", name: "Asav Loj. Hizmt. A.Åž.", 
+            { id: "240", office_no: "MD2-6", name: "Asav Loj. Hizmt. A.Ş.", 
               electric: { meter_no: "80034072", last_reading: 0 },
               water: { meter_no: "", last_reading: 0 }
             },
-            { id: "203", office_no: "ID", name: "Mir Global Lojistik TÄ°C.LTD.ÅžTÄ°.", 
+            { id: "203", office_no: "ID", name: "Mir Global Lojistik TİC.LTD.ŞTİ.", 
               electric: { meter_no: "8003384", last_reading: 0 },
               water: { meter_no: "5173012", last_reading: 0 }
             }
         ];
 
-        // GiriÅŸ modalÄ±nÄ± aÃ§
+        // Giriş modalını aç
         function openLoginModal() {
             document.getElementById('loginModal').style.display = 'flex';
         }
         
-        // GiriÅŸ modalÄ±nÄ± kapat
+        // Giriş modalını kapat
         function closeLoginModal() {
             document.getElementById('loginModal').style.display = 'none';
             
-            // Form alanlarÄ±nÄ± temizle
+            // Form alanlarını temizle
             const username = document.getElementById('username');
             const password = document.getElementById('password');
             const loginError = document.getElementById('loginError');
@@ -2205,7 +2205,7 @@
             if (loginError) loginError.textContent = '';
         }
         
-        // Ana sayfa ve hakkÄ±mÄ±zda bÃ¶lÃ¼mleri arasÄ±nda geÃ§iÅŸ fonksiyonlarÄ±
+        // Ana sayfa ve hakkımızda bölümleri arasında geçiş fonksiyonları
         function showAboutSection() {
             document.getElementById('heroSection').style.display = 'none';
             document.getElementById('aboutSection').style.display = 'flex';
@@ -2217,73 +2217,73 @@
             document.getElementById('heroSection').style.display = 'flex';
         }
         
-        // Ä°letiÅŸim sayfasÄ±nÄ± gÃ¶ster
+        // İletişim sayfasını göster
         function showContactSection() {
             document.getElementById('heroSection').style.display = 'none';
             document.getElementById('aboutSection').style.display = 'none';
             document.getElementById('contactSection').style.display = 'flex';
         }
 
-        // GiriÅŸ iÅŸlemi
+        // Giriş işlemi
         function handleLogin() {
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
             const loginError = document.getElementById('loginError');
             
             if (!username || !password) {
-                loginError.textContent = "KullanÄ±cÄ± adÄ± ve ÅŸifre gereklidir!";
+                loginError.textContent = "Kullanıcı adı ve şifre gereklidir!";
                 return;
             }
             
             const user = users.find(u => u.username === username && u.password === password);
             
             if (user) {
-                // BaÅŸarÄ±lÄ± giriÅŸ
+                // Başarılı giriş
                 currentUser = user;
                 
-                // KullanÄ±cÄ± bilgilerini ekranda gÃ¶ster
+                // Kullanıcı bilgilerini ekranda göster
                 document.getElementById('currentUsername').textContent = user.name;
                 
-                // GiriÅŸ modalÄ±nÄ± kapat
+                // Giriş modalını kapat
                 closeLoginModal();
                 
                 if (user.role === 'admin') {
-                    // Admin ise yÃ¶netici panelini gÃ¶ster
+                    // Admin ise yönetici panelini göster
                     document.getElementById('adminUsername').textContent = user.name;
                     document.getElementById('homePage').style.display = 'none';
                     document.getElementById('appScreen').style.display = 'none';
                     document.getElementById('adminPanel').style.display = 'block';
                     
-                    // Admin paneli iÃ§in verileri hazÄ±rla
+                    // Admin paneli için verileri hazırla
                     renderUserTable();
                     showAdminPanel('userPanel');
                 } else {
-                    // Normal kullanÄ±cÄ± ise ana paneli gÃ¶ster
+                    // Normal kullanıcı ise ana paneli göster
                     document.getElementById('homePage').style.display = 'none';
                     document.getElementById('appScreen').style.display = 'block';
                     document.getElementById('adminPanel').style.display = 'none';
                     
-                    // Ofisleri listele ve tarihi gÃ¶ster
+                    // Ofisleri listele ve tarihi göster
                     renderOfficeList();
                     updateDate();
-                    setInterval(updateDate, 60000); // Her dakika gÃ¼ncelle
+                    setInterval(updateDate, 60000); // Her dakika güncelle
                 }
             } else {
-                loginError.textContent = "GeÃ§ersiz kullanÄ±cÄ± adÄ± veya ÅŸifre!";
+                loginError.textContent = "Geçersiz kullanıcı adı veya şifre!";
             }
         }
 
-        // Ã‡Ä±kÄ±ÅŸ iÅŸlemi
+        // Çıkış işlemi
         function handleLogout() {
             currentUser = null;
             
-            // Ana sayfaya dÃ¶n
+            // Ana sayfaya dön
             document.getElementById('homePage').style.display = 'block';
             document.getElementById('appScreen').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'none';
         }
 
-        // Mevcut tarihi gÃ¶ster
+        // Mevcut tarihi göster
         function updateDate() {
             const currentDate = document.getElementById('currentDate');
             if (currentDate) {
@@ -2299,25 +2299,25 @@
             }
         }
         
-        // Admin paneli iÃ§in iÅŸlevler
+        // Admin paneli için işlevler
         function showAdminPanel(panelId) {
-            // TÃ¼m panel iÃ§eriklerini gizle
+            // Tüm panel içeriklerini gizle
             document.querySelectorAll('.admin-panel-content').forEach(panel => {
                 panel.style.display = 'none';
             });
             
-            // TÃ¼m tab butonlarÄ±nÄ± pasif hale getir
+            // Tüm tab butonlarını pasif hale getir
             document.querySelectorAll('.office-item').forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // SeÃ§ilen paneli gÃ¶ster
+            // Seçilen paneli göster
             document.getElementById(panelId).style.display = 'block';
             
-            // SeÃ§ilen tab butonunu aktif hale getir
+            // Seçilen tab butonunu aktif hale getir
             document.querySelector(`.office-item[data-panel="${panelId}"]`).classList.add('active');
             
-            // Panel iÃ§erikleri iÃ§in verileri gÃ¼ncelle
+            // Panel içerikleri için verileri güncelle
             if (panelId === 'userPanel') {
                 renderUserTable();
             } else if (panelId === 'officePanel') {
@@ -2329,7 +2329,7 @@
             }
         }
 
-        // KullanÄ±cÄ± tablosunu oluÅŸtur
+        // Kullanıcı tablosunu oluştur
         function renderUserTable() {
             const userTableBody = document.getElementById('userTableBody');
             if (!userTableBody) return;
@@ -2341,9 +2341,9 @@
                 row.innerHTML = `
                     <td>${user.username}</td>
                     <td>${user.name}</td>
-                    <td>${user.role === 'admin' ? 'YÃ¶netici' : 'KullanÄ±cÄ±'}</td>
+                    <td>${user.role === 'admin' ? 'Yönetici' : 'Kullanıcı'}</td>
                     <td>
-                        <button class="edit-btn" data-username="${user.username}">DÃ¼zenle</button>
+                        <button class="edit-btn" data-username="${user.username}">Düzenle</button>
                         <button class="delete-btn" data-username="${user.username}">Sil</button>
                     </td>
                 `;
@@ -2351,7 +2351,7 @@
             });
         }
 
-        // Ofis tablosunu oluÅŸtur
+        // Ofis tablosunu oluştur
         function renderOfficeTable() {
             const officeTableBody = document.getElementById('officeTableBody');
             if (!officeTableBody) return;
@@ -2366,14 +2366,14 @@
                     <td>${office.electric ? office.electric.meter_no : '-'}</td>
                     <td>${office.water ? office.water.meter_no : '-'}</td>
                     <td>
-                        <button class="edit-office-btn" data-id="${office.id}">DÃ¼zenle</button>
+                        <button class="edit-office-btn" data-id="${office.id}">Düzenle</button>
                     </td>
                 `;
                 officeTableBody.appendChild(row);
             });
         }
 
-        // SayaÃ§ tablosunu oluÅŸtur
+        // Sayaç tablosunu oluştur
         function renderMeterTable() {
             const meterTableBody = document.getElementById('meterTableBody');
             meterTableBody.innerHTML = '';
@@ -2381,7 +2381,7 @@
             let allMeters = [];
             
             offices.forEach(office => {
-                // Elektrik sayaÃ§Ä± iÃ§in
+                // Elektrik sayaçı için
                 if (office.electric && office.electric.meter_no) {
                     allMeters.push({
                         office_id: office.id,
@@ -2392,7 +2392,7 @@
                     });
                 }
                 
-                // Su sayaÃ§Ä± iÃ§in
+                // Su sayaçı için
                 if (office.water && office.water.meter_no) {
                     allMeters.push({
                         office_id: office.id,
@@ -2403,19 +2403,19 @@
                     });
                 }
                 
-                // DoÄŸalgaz sayaÃ§Ä± iÃ§in
+                // Doğalgaz sayaçı için
                 if (office.gas && office.gas.meter_no) {
                     allMeters.push({
                         office_id: office.id,
                         office_no: office.office_no,
-                        type: 'DoÄŸalgaz',
+                        type: 'Doğalgaz',
                         meter_no: office.gas.meter_no,
                         value: office.gas.last_reading || 0,
                     });
                 }
             });
             
-            // SayaÃ§larÄ± listeleyerek tabloya ekle
+            // Sayaçları listeleyerek tabloya ekle
             allMeters.forEach(meter => {
                 const row = document.createElement('tr');
                 
@@ -2425,7 +2425,7 @@
                     <td>${meter.meter_no}</td>
                     <td>${meter.value}</td>
                     <td>
-                        <button class="edit-meter-btn" data-id="${meter.office_id}" data-type="${meter.type.toLowerCase()}">DÃ¼zenle</button>
+                        <button class="edit-meter-btn" data-id="${meter.office_id}" data-type="${meter.type.toLowerCase()}">Düzenle</button>
                     </td>
                 `;
                 
@@ -2433,22 +2433,22 @@
             });
         }
         
-        // Ofis veri durumu tablosunu oluÅŸtur
+        // Ofis veri durumu tablosunu oluştur
         function renderStatusTable() {
             const statusTableBody = document.getElementById('statusTableBody');
             statusTableBody.innerHTML = '';
             
             offices.forEach(office => {
-                // Sayac verisinin girilip girilmediÄŸini kontrol et
+                // Sayac verisinin girilip girilmediğini kontrol et
                 const hasElectricData = office.electric && office.electric.last_reading !== undefined && office.electric.last_reading > 0;
                 const hasWaterData = office.water && office.water.last_reading !== undefined && office.water.last_reading > 0;
                 const allDataEntered = hasElectricData && hasWaterData;
                 
-                // Veri giren kullanÄ±cÄ± bilgisi ve tarih
+                // Veri giren kullanıcı bilgisi ve tarih
                 const user = office.lastUpdatedBy || '-';
                 const date = office.lastUpdatedDate ? new Date(office.lastUpdatedDate).toLocaleString('tr-TR') : '-';
                 
-                const block = office.office_no.includes('-') ? office.office_no.split('-')[0] : 'DiÄŸer';
+                const block = office.office_no.includes('-') ? office.office_no.split('-')[0] : 'Diğer';
                 
                 const row = document.createElement('tr');
                 row.className = allDataEntered ? 'status-success' : 'status-error';
@@ -2489,7 +2489,7 @@
             });
         }
 
-        // Yeni kullanÄ±cÄ± modalÄ±nÄ± gÃ¶ster
+        // Yeni kullanıcı modalını göster
         function showUserModal() {
             const modal = document.getElementById('addUserModal');
             if (modal) {
@@ -2497,7 +2497,7 @@
             }
         }
         
-        // Yeni kullanÄ±cÄ± modalÄ±nÄ± gizle
+        // Yeni kullanıcı modalını gizle
         function hideUserModal() {
             const modal = document.getElementById('addUserModal');
             if (modal) {
@@ -2511,7 +2511,7 @@
             document.getElementById('newRole').value = 'user';
         }
         
-        // Yeni kullanÄ±cÄ± kaydet
+        // Yeni kullanıcı kaydet
         function saveNewUser() {
             const username = document.getElementById('newUsername').value.trim();
             const fullName = document.getElementById('newFullName').value.trim();
@@ -2519,17 +2519,17 @@
             const role = document.getElementById('newRole').value;
             
             if (!username || !fullName || !password) {
-                alert('TÃ¼m alanlarÄ± doldurun!');
+                alert('Tüm alanları doldurun!');
                 return;
             }
             
-            // KullanÄ±cÄ± adÄ± benzersiz olmalÄ±
+            // Kullanıcı adı benzersiz olmalı
             if (users.some(u => u.username === username)) {
-                alert('Bu kullanÄ±cÄ± adÄ± zaten kullanÄ±lÄ±yor!');
+                alert('Bu kullanıcı adı zaten kullanılıyor!');
                 return;
             }
             
-            // Yeni kullanÄ±cÄ± ekle
+            // Yeni kullanıcı ekle
             users.push({
                 username: username,
                 password: password,
@@ -2537,21 +2537,21 @@
                 role: role
             });
             
-            // KullanÄ±cÄ± tablosunu gÃ¼ncelle
+            // Kullanıcı tablosunu güncelle
             renderUserTable();
             
-            // ModalÄ± kapat
+            // Modalı kapat
             hideUserModal();
             
-            alert('KullanÄ±cÄ± baÅŸarÄ±yla eklendi!');
+            alert('Kullanıcı başarıyla eklendi!');
         }
         
-        // KullanÄ±cÄ± dÃ¼zenleme modalÄ±nÄ± gÃ¶ster
+        // Kullanıcı düzenleme modalını göster
         function showEditUserModal(username) {
             const user = users.find(u => u.username === username);
             if (!user) return;
             
-            // Modal elementlerini oluÅŸtur
+            // Modal elementlerini oluştur
             if (!document.getElementById('editUserModal')) {
                 const modal = document.createElement('div');
                 modal.id = 'editUserModal';
@@ -2559,10 +2559,10 @@
                 modal.innerHTML = `
                     <div class="login-form">
                         <div class="login-header">
-                            <h2>KullanÄ±cÄ± DÃ¼zenle</h2>
+                            <h2>Kullanıcı Düzenle</h2>
                         </div>
                         <div class="form-group">
-                            <label for="editUsername">KullanÄ±cÄ± AdÄ±:</label>
+                            <label for="editUsername">Kullanıcı Adı:</label>
                             <input type="text" id="editUsername" readonly>
                         </div>
                         <div class="form-group">
@@ -2570,19 +2570,19 @@
                             <input type="text" id="editFullName">
                         </div>
                         <div class="form-group">
-                            <label for="editPassword">Yeni Åžifre (boÅŸ bÄ±rakÄ±lÄ±rsa deÄŸiÅŸmez):</label>
-                            <input type="password" id="editPassword" placeholder="Yeni ÅŸifre">
+                            <label for="editPassword">Yeni Şifre (boş bırakılırsa değişmez):</label>
+                            <input type="password" id="editPassword" placeholder="Yeni şifre">
                         </div>
                         <div class="form-group">
                             <label for="editRole">Rol:</label>
                             <select id="editRole" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-                                <option value="user">KullanÄ±cÄ±</option>
-                                <option value="admin">YÃ¶netici</option>
+                                <option value="user">Kullanıcı</option>
+                                <option value="admin">Yönetici</option>
                             </select>
                         </div>
                         <div class="form-actions">
-                            <button id="updateUserBtn" class="login-button">GÃ¼ncelle</button>
-                            <button id="cancelEditUserBtn" class="close-button">Ä°ptal</button>
+                            <button id="updateUserBtn" class="login-button">Güncelle</button>
+                            <button id="cancelEditUserBtn" class="close-button">İptal</button>
                         </div>
                     </div>
                 `;
@@ -2592,7 +2592,7 @@
                 document.getElementById('updateUserBtn').addEventListener('click', updateUser);
                 document.getElementById('cancelEditUserBtn').addEventListener('click', hideEditUserModal);
                 
-                // Modal dÄ±ÅŸÄ±na tÄ±klandÄ±ÄŸÄ±nda kapat
+                // Modal dışına tıklandığında kapat
                 document.getElementById('editUserModal').addEventListener('click', function(e) {
                     if (e.target === this) {
                         hideEditUserModal();
@@ -2600,22 +2600,22 @@
                 });
             }
             
-            // Modal deÄŸerlerini doldur
+            // Modal değerlerini doldur
             document.getElementById('editUsername').value = user.username;
             document.getElementById('editFullName').value = user.name;
             document.getElementById('editPassword').value = '';
             document.getElementById('editRole').value = user.role;
             
-            // ModalÄ± gÃ¶ster
+            // Modalı göster
             document.getElementById('editUserModal').style.display = 'flex';
         }
         
-        // KullanÄ±cÄ± dÃ¼zenleme modalÄ±nÄ± gizle
+        // Kullanıcı düzenleme modalını gizle
         function hideEditUserModal() {
             document.getElementById('editUserModal').style.display = 'none';
         }
         
-        // KullanÄ±cÄ± bilgilerini gÃ¼ncelle
+        // Kullanıcı bilgilerini güncelle
         function updateUser() {
             const username = document.getElementById('editUsername').value;
             const fullName = document.getElementById('editFullName').value.trim();
@@ -2623,52 +2623,52 @@
             const role = document.getElementById('editRole').value;
             
             if (!fullName) {
-                alert('Ad Soyad alanÄ± boÅŸ bÄ±rakÄ±lamaz!');
+                alert('Ad Soyad alanı boş bırakılamaz!');
                 return;
             }
             
-            // KullanÄ±cÄ±yÄ± bul ve gÃ¼ncelle
+            // Kullanıcıyı bul ve güncelle
             const user = users.find(u => u.username === username);
             if (user) {
                 user.name = fullName;
                 user.role = role;
                 
-                // Åžifre girildiyse gÃ¼ncelle
+                // Şifre girildiyse güncelle
                 if (password) {
                     user.password = password;
                 }
                 
-                // Tabloyu gÃ¼ncelle
+                // Tabloyu güncelle
                 renderUserTable();
                 
-                // ModalÄ± kapat
+                // Modalı kapat
                 hideEditUserModal();
                 
-                alert('KullanÄ±cÄ± bilgileri gÃ¼ncellendi!');
+                alert('Kullanıcı bilgileri güncellendi!');
             }
         }
         
-        // KullanÄ±cÄ± dÃ¼zenle
+        // Kullanıcı düzenle
         function editUser(username) {
             showEditUserModal(username);
         }
         
-        // KullanÄ±cÄ± sil
+        // Kullanıcı sil
         function deleteUser(username) {
-            // KullanÄ±cÄ±yÄ± silme iÅŸlemi
-            if (confirm(`${username} kullanÄ±cÄ±sÄ±nÄ± silmek istediÄŸinize emin misiniz?`)) {
+            // Kullanıcıyı silme işlemi
+            if (confirm(`${username} kullanıcısını silmek istediğinize emin misiniz?`)) {
                 const index = users.findIndex(u => u.username === username);
                 if (index !== -1) {
                     users.splice(index, 1);
                     renderUserTable();
-                    alert('KullanÄ±cÄ± baÅŸarÄ±yla silindi.');
+                    alert('Kullanıcı başarıyla silindi.');
                 }
             }
         }
         
-        // Ofis dÃ¼zenle
+        // Ofis düzenle
         function editOffice(officeId) {
-            // Ofis dÃ¼zenleme formunu gÃ¶ster
+            // Ofis düzenleme formunu göster
             const office = offices.find(o => o.id === officeId);
             if (office) {
                 document.getElementById('editOfficeNo').value = office.office_no;
@@ -2681,12 +2681,12 @@
             }
         }
         
-        // Ofis dÃ¼zenleme formunu gizle
+        // Ofis düzenleme formunu gizle
         function hideOfficeEditForm() {
             document.getElementById('officeEditForm').style.display = 'none';
         }
         
-        // Ofis tablosunu oluÅŸtur ve gÃ¼ncelle
+        // Ofis tablosunu oluştur ve güncelle
         function renderOfficeTable() {
             const officeTableBody = document.getElementById('officeTableBody');
             if (!officeTableBody) return;
@@ -2701,14 +2701,14 @@
                     <td>${office.electric ? office.electric.meter_no : ''}</td>
                     <td>${office.water ? office.water.meter_no : ''}</td>
                     <td>
-                        <button class="edit-office-btn" data-id="${office.id}">DÃ¼zenle</button>
+                        <button class="edit-office-btn" data-id="${office.id}">Düzenle</button>
                     </td>
                 `;
                 officeTableBody.appendChild(row);
             });
         }
         
-        // Ofis deÄŸiÅŸikliklerini kaydet
+        // Ofis değişikliklerini kaydet
         function saveOfficeChanges(officeId) {
             const office = offices.find(o => o.id === officeId);
             if (office) {
@@ -2726,18 +2726,18 @@
                     office.water = { meter_no: document.getElementById('editWaterMeterNo').value.trim(), last_reading: 0 };
                 }
                 
-                // TablolarÄ± gÃ¼ncelle
+                // Tabloları güncelle
                 renderOfficeTable();
                 renderMeterTable();
                 
                 // Formu gizle
                 hideOfficeEditForm();
                 
-                alert('Ofis bilgileri gÃ¼ncellendi!');
+                alert('Ofis bilgileri güncellendi!');
             }
         }
         
-        // SayaÃ§ dÃ¼zenleme modalÄ±nÄ± gÃ¶ster
+        // Sayaç düzenleme modalını göster
         function showMeterEditModal(officeId, meterType) {
             const office = offices.find(o => o.id === officeId);
             if (!office) return;
@@ -2759,16 +2759,16 @@
             saveBtn.setAttribute('data-id', officeId);
             saveBtn.setAttribute('data-type', meterType);
             
-            // ModalÄ± gÃ¶ster
+            // Modalı göster
             document.getElementById('editMeterModal').style.display = 'flex';
         }
         
-        // SayaÃ§ dÃ¼zenleme modalÄ±nÄ± gizle
+        // Sayaç düzenleme modalını gizle
         function hideMeterEditModal() {
             document.getElementById('editMeterModal').style.display = 'none';
         }
         
-        // SayaÃ§ deÄŸiÅŸikliklerini kaydet
+        // Sayaç değişikliklerini kaydet
         function saveMeterChanges(officeId, meterType) {
             const office = offices.find(o => o.id === officeId);
             if (!office) return;
@@ -2783,13 +2783,13 @@
             office[meterType].meter_no = meterNo;
             office[meterType].last_reading = reading;
             
-            // TablolarÄ± gÃ¼ncelle
+            // Tabloları güncelle
             renderMeterTable();
             
-            // ModalÄ± kapat
+            // Modalı kapat
             hideMeterEditModal();
             
-            alert('SayaÃ§ bilgileri gÃ¼ncellendi!');
+            alert('Sayaç bilgileri güncellendi!');
         }
 
         // Ofisleri listele
@@ -2799,20 +2799,20 @@
             
             officeListEl.innerHTML = '';
             
-            // Ofisleri bÃ¶lgelere gÃ¶re grupla
+            // Ofisleri bölgelere göre grupla
             const officeGroups = {};
             
             offices.forEach(office => {
-                const officePrefix = office.office_no.toString().split('-')[0] || 'DiÄŸer';
+                const officePrefix = office.office_no.toString().split('-')[0] || 'Diğer';
                 if (!officeGroups[officePrefix]) {
                     officeGroups[officePrefix] = [];
                 }
                 officeGroups[officePrefix].push(office);
             });
             
-            // Her grup iÃ§in bÃ¶lÃ¼m oluÅŸtur
+            // Her grup için bölüm oluştur
             Object.keys(officeGroups).sort().forEach(prefix => {
-                // Grup baÅŸlÄ±ÄŸÄ± ekle
+                // Grup başlığı ekle
                 const groupHeader = document.createElement('div');
                 groupHeader.style.fontWeight = 'bold';
                 groupHeader.style.padding = '10px 5px';
@@ -2824,17 +2824,17 @@
                 
                 // Gruptaki ofisleri ekle
                 officeGroups[prefix].sort((a, b) => {
-                    // Ofis numaralarÄ±na gÃ¶re sÄ±ralama
+                    // Ofis numaralarına göre sıralama
                     const parts1 = a.office_no.toString().split('-');
                     const parts2 = b.office_no.toString().split('-');
                     
                     if (parts1.length > 1 && parts2.length > 1) {
-                        // Ä°ki ofis de X-Y formatÄ±nda ise, Y'yi sayÄ±sal olarak sÄ±rala
+                        // İki ofis de X-Y formatında ise, Y'yi sayısal olarak sırala
                         const num1 = parseInt(parts1[1], 10) || 0;
                         const num2 = parseInt(parts2[1], 10) || 0;
                         return num1 - num2;
                     } else {
-                        // DiÄŸer durumlarda string olarak karÅŸÄ±laÅŸtÄ±r
+                        // Diğer durumlarda string olarak karşılaştır
                         return a.office_no.localeCompare(b.office_no, undefined, {numeric: true});
                     }
                 }).forEach(office => {
@@ -2853,13 +2853,13 @@
             });
         }
         
-        // Ofis arama fonksiyonu - KullanÄ±cÄ± ara yÃ¼zÃ¼ndeki arama kutusu iÃ§in
+        // Ofis arama fonksiyonu - Kullanıcı ara yüzündeki arama kutusu için
         function searchUserOffices(searchText) {
             const searchLower = searchText.toLowerCase();
             const officeItems = document.querySelectorAll('#officeList .office-item');
             const groupHeaders = document.querySelectorAll('#officeList [data-group]');
             
-            // Ã–nce tÃ¼m grup baÅŸlÄ±klarÄ±nÄ± ve ofisleri gizle
+            // Önce tüm grup başlıklarını ve ofisleri gizle
             groupHeaders.forEach(header => {
                 header.style.display = 'none';
             });
@@ -2868,7 +2868,7 @@
                 item.style.display = 'none';
             });
             
-            // Arama kriterine uyan ofisleri gÃ¶ster
+            // Arama kriterine uyan ofisleri göster
             let visibleGroups = new Set();
             
             officeItems.forEach(item => {
@@ -2882,12 +2882,12 @@
                 }
             });
             
-            // GÃ¶rÃ¼nÃ¼r ofisi olan grup baÅŸlÄ±klarÄ±nÄ± gÃ¶ster
+            // Görünür ofisi olan grup başlıklarını göster
             visibleGroups.forEach(group => {
                 document.querySelector(`[data-group="${group}"]`).style.display = 'block';
             });
             
-            // Arama metni boÅŸsa hepsini gÃ¶ster
+            // Arama metni boşsa hepsini göster
             if (!searchText) {
                 groupHeaders.forEach(header => {
                     header.style.display = 'block';
@@ -2899,7 +2899,7 @@
             }
         }
         
-        // Admin arayÃ¼zÃ¼ndeki ofis arama
+        // Admin arayüzündeki ofis arama
         function searchAdminOffices(searchText) {
             const searchLower = searchText.toLowerCase();
             const rows = document.querySelectorAll('#officeTableBody tr');
@@ -2916,7 +2916,7 @@
             });
         }
         
-        // Admin arayÃ¼zÃ¼ndeki sayaÃ§ arama
+        // Admin arayüzündeki sayaç arama
         function searchAdminMeters(searchText) {
             const searchLower = searchText.toLowerCase();
             const rows = document.querySelectorAll('#meterTableBody tr');
@@ -2934,47 +2934,47 @@
             });
         }
 
-        // Ofis seÃ§imi
+        // Ofis seçimi
         function selectOffice(office) {
-            // Aktif ofisi gÃ¼ncelle
+            // Aktif ofisi güncelle
             document.querySelectorAll('.office-item').forEach(item => item.classList.remove('active'));
             document.querySelector(`.office-item[data-id="${office.id}"]`).classList.add('active');
 
-            // Form baÅŸlÄ±ÄŸÄ±nÄ± gÃ¼ncelle
+            // Form başlığını güncelle
             document.getElementById('officeName').textContent = office.office_no + ' - ' + office.name;
             
-            // Form alanÄ±nÄ± gÃ¶ster
+            // Form alanını göster
             document.getElementById('officeDetail').style.display = 'none';
             document.getElementById('meterForm').style.display = 'block';
             
-            // Ã–nceki deÄŸerleri yÃ¼kle
+            // Önceki değerleri yükle
             loadMeterValues(office.id);
             
-            // GeÃ§miÅŸ kayÄ±tlarÄ± gÃ¶ster
+            // Geçmiş kayıtları göster
             renderHistory(office.id);
         }
 
-        // SayaÃ§ deÄŸerlerini yÃ¼kle
+        // Sayaç değerlerini yükle
         function loadMeterValues(officeId) {
             const key = `office_${officeId}_latest`;
             const latestReading = JSON.parse(localStorage.getItem(key) || '{}');
             
-            // SeÃ§ilen ofisi bul
+            // Seçilen ofisi bul
             const selectedOffice = offices.find(office => office.id === officeId);
             
             if (selectedOffice) {
-                // SayaÃ§ numaralarÄ±nÄ± gÃ¶ster
+                // Sayaç numaralarını göster
                 document.getElementById('electricMeterNo').value = selectedOffice.electric && selectedOffice.electric.meter_no || '';
                 document.getElementById('waterMeterNo').value = selectedOffice.water && selectedOffice.water.meter_no || '';
                 
-                // Son kayÄ±tlÄ± deÄŸerleri veya ofisteki son deÄŸerleri gÃ¶ster
+                // Son kayıtlı değerleri veya ofisteki son değerleri göster
                 document.getElementById('electricMeter').value = latestReading.electric || (selectedOffice.electric && selectedOffice.electric.last_reading) || '';
                 document.getElementById('waterMeter').value = latestReading.water || (selectedOffice.water && selectedOffice.water.last_reading) || '';
                 document.getElementById('gasMeter').value = latestReading.gas || '';
             }
         }
 
-        // SayaÃ§ deÄŸerlerini kaydet
+        // Sayaç değerlerini kaydet
         function saveMeterValues(officeId) {
             const office = offices.find(o => o.id === officeId);
             
@@ -2984,12 +2984,12 @@
             const waterValue = parseInt(document.getElementById('waterMeter').value, 10) || 0;
             const gasValue = parseInt(document.getElementById('gasMeter').value, 10) || 0;
             
-            // Eski deÄŸerleri alÄ±p geÃ§miÅŸ kayÄ±tlara eklemek iÃ§in
+            // Eski değerleri alıp geçmiş kayıtlara eklemek için
             const oldElectric = office.electric ? office.electric.last_reading : 0;
             const oldWater = office.water ? office.water.last_reading : 0;
             const oldGas = office.gas ? office.gas.last_reading : 0;
             
-            // GeÃ§miÅŸ kaydÄ± ekle
+            // Geçmiş kaydı ekle
             if (!office.history) office.history = [];
             
             const history = {
@@ -3005,30 +3005,30 @@
             
             office.history.unshift(history);
             
-            // SayÄ± sÄ±nÄ±rÄ±
+            // Sayı sınırı
             if (office.history.length > 10) {
                 office.history = office.history.slice(0, 10);
             }
             
-            // Yeni deÄŸerleri kaydet
+            // Yeni değerleri kaydet
             if (office.electric) office.electric.last_reading = electricValue;
             if (office.water) office.water.last_reading = waterValue;
             if (!office.gas) office.gas = { meter_no: '', last_reading: 0 };
             office.gas.last_reading = gasValue;
             
-            // Son gÃ¼ncelleme bilgilerini ekle
+            // Son güncelleme bilgilerini ekle
             office.lastUpdatedBy = currentUser.name;
             office.lastUpdatedDate = new Date();
             
-            // GeÃ§miÅŸ tablosunu gÃ¼ncelle
+            // Geçmiş tablosunu güncelle
             renderHistoryTable(office);
             
-            // Ofis veri durumu gÃ¼ncelle
+            // Ofis veri durumu güncelle
             renderStatusTable();
             
-            // Bildirim gÃ¶ster
+            // Bildirim göster
             const notification = document.getElementById('notification');
-            notification.textContent = 'SayaÃ§ deÄŸerleri baÅŸarÄ±yla kaydedildi!';
+            notification.textContent = 'Sayaç değerleri başarıyla kaydedildi!';
             notification.style.opacity = '1';
             
             // 5 saniye sonra bildirimi kapat
@@ -3036,7 +3036,7 @@
                 notification.style.opacity = '0';
             }, 5000);
             
-            // SayaÃ§ tablosunu gÃ¼ncelle
+            // Sayaç tablosunu güncelle
             renderMeterTable();
         }
         
@@ -3048,7 +3048,7 @@
             
             if (history.length === 0) {
                 const row = document.createElement('tr');
-                row.innerHTML = `<td colspan="4">HenÃ¼z kayÄ±t bulunmamaktadÄ±r.</td>`;
+                row.innerHTML = `<td colspan="4">Henüz kayıt bulunmamaktadır.</td>`;
                 historyBodyEl.appendChild(row);
                 return;
             }
@@ -3065,12 +3065,12 @@
             });
         }
         
-        // Excel dosyasÄ±nÄ± yÃ¼kle
+        // Excel dosyasını yükle
         function importExcel() {
             document.getElementById('excelFileInput').click();
         }
         
-        // Excel dosyasÄ±nÄ± iÅŸle
+        // Excel dosyasını işle
         function processExcelFile(file) {
             const reader = new FileReader();
             
@@ -3078,44 +3078,44 @@
                 const data = new Uint8Array(e.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
                 
-                // Ä°lk sayfa adÄ±nÄ± al
+                // İlk sayfa adını al
                 const firstSheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[firstSheetName];
                 
-                // JSON'a dÃ¶nÃ¼ÅŸtÃ¼r
+                // JSON'a dönüştür
                 const jsonData = XLSX.utils.sheet_to_json(worksheet, {
                     header: 1,
                     defval: ""
                 });
                 
                 if (jsonData && jsonData.length > 0) {
-                    // BaÅŸlÄ±k satÄ±rÄ±nÄ± kontrol et ve sÃ¼tun indekslerini belirle
+                    // Başlık satırını kontrol et ve sütun indekslerini belirle
                     const headers = jsonData[0].map(h => String(h).trim().toLowerCase());
                     
                     const officeNoIndex = headers.findIndex(h => h.includes('ofis') || h.includes('no'));
-                    const nameIndex = headers.findIndex(h => h.includes('firma') || h.includes('adÄ±'));
+                    const nameIndex = headers.findIndex(h => h.includes('firma') || h.includes('adı'));
                     const electricNoIndex = headers.findIndex(h => h.includes('elektrik') && h.includes('no'));
-                    const electricValueIndex = headers.findIndex(h => h.includes('elektrik') && h.includes('deÄŸer'));
+                    const electricValueIndex = headers.findIndex(h => h.includes('elektrik') && h.includes('değer'));
                     const waterNoIndex = headers.findIndex(h => h.includes('su') && h.includes('no'));
-                    const waterValueIndex = headers.findIndex(h => h.includes('su') && h.includes('deÄŸer'));
+                    const waterValueIndex = headers.findIndex(h => h.includes('su') && h.includes('değer'));
                     
-                    // Ofis verilerini yeniden oluÅŸtur
+                    // Ofis verilerini yeniden oluştur
                     const newOffices = [];
                     
-                    // Ä°lk satÄ±r baÅŸlÄ±k olduÄŸu iÃ§in 1. indeksten baÅŸla
+                    // İlk satır başlık olduğu için 1. indeksten başla
                     for (let i = 1; i < jsonData.length; i++) {
                         const row = jsonData[i];
                         
-                        // BoÅŸ satÄ±rlarÄ± atla
+                        // Boş satırları atla
                         if (!row[officeNoIndex] && !row[nameIndex]) continue;
                         
                         const officeNo = String(row[officeNoIndex] || "").trim();
-                        const name = String(row[nameIndex] || "").trim() || "BoÅŸ";
+                        const name = String(row[nameIndex] || "").trim() || "Boş";
                         
-                        // Ofis numarasÄ± olmayan satÄ±rlarÄ± atla
+                        // Ofis numarası olmayan satırları atla
                         if (!officeNo) continue;
                         
-                        // Yeni ofis objesi oluÅŸtur
+                        // Yeni ofis objesi oluştur
                         const office = {
                             id: officeNo,
                             name: name,
@@ -3136,28 +3136,28 @@
                     // Ofisleri temizle ve yenilerini ekle
                     offices = newOffices;
                     
-                    // TablolarÄ± gÃ¼ncelle
+                    // Tabloları güncelle
                     renderOfficeTable();
                     renderMeterTable();
                     renderOfficeList();
                     
-                    alert('Excel dosyasÄ± baÅŸarÄ±yla iÃ§e aktarÄ±ldÄ±. ' + newOffices.length + ' adet ofis yÃ¼klendi.');
+                    alert('Excel dosyası başarıyla içe aktarıldı. ' + newOffices.length + ' adet ofis yüklendi.');
                 } else {
-                    alert('Excel dosyasÄ±ndan veri Ã§Ä±karÄ±lamadÄ± veya dosya boÅŸ.');
+                    alert('Excel dosyasından veri çıkarılamadı veya dosya boş.');
                 }
             };
             
             reader.onerror = function() {
-                alert('Dosya okuma hatasÄ±!');
+                alert('Dosya okuma hatası!');
             };
             
             reader.readAsArrayBuffer(file);
         }
 
-        // Ana sayfa bÃ¶lÃ¼mlerini gÃ¶sterme ve gizleme fonksiyonlarÄ±
+        // Ana sayfa bölümlerini gösterme ve gizleme fonksiyonları
         function showHeroSection(e) {
             if (e) e.preventDefault();
-            console.log('showHeroSection Ã§aÄŸrÄ±ldÄ±');
+            console.log('showHeroSection çağrıldı');
             document.getElementById('heroSection').style.display = 'flex';
             document.getElementById('aboutSection').style.display = 'none';
             document.getElementById('contactSection').style.display = 'none';
@@ -3165,7 +3165,7 @@
         
         function showAboutSection(e) {
             if (e) e.preventDefault();
-            console.log('showAboutSection Ã§aÄŸrÄ±ldÄ±');
+            console.log('showAboutSection çağrıldı');
             document.getElementById('heroSection').style.display = 'none';
             document.getElementById('aboutSection').style.display = 'flex';
             document.getElementById('contactSection').style.display = 'none';
@@ -3173,40 +3173,40 @@
         
         function showContactSection(e) {
             if (e) e.preventDefault();
-            console.log('showContactSection Ã§aÄŸrÄ±ldÄ±');
+            console.log('showContactSection çağrıldı');
             document.getElementById('heroSection').style.display = 'none';
             document.getElementById('aboutSection').style.display = 'none';
             document.getElementById('contactSection').style.display = 'flex';
         }
 
-        // Sayfa yÃ¼klendiÄŸinde
+        // Sayfa yüklendiğinde
         document.addEventListener('DOMContentLoaded', function() {
-            // Ana Sayfa GiriÅŸ Butonu
+            // Ana Sayfa Giriş Butonu
             document.getElementById('heroLoginBtn').addEventListener('click', openLoginModal);
             
-            // Navigasyon ButonlarÄ±
+            // Navigasyon Butonları
             document.getElementById('homeLink').addEventListener('click', showHeroSection);
             document.getElementById('aboutLink').addEventListener('click', showAboutSection);
             document.getElementById('contactLink').addEventListener('click', showContactSection);
             document.getElementById('backToHomeBtn').addEventListener('click', showHeroSection);
             document.getElementById('backFromContactBtn').addEventListener('click', showHeroSection);
             
-            // GiriÅŸ ModalÄ± ButonlarÄ±
+            // Giriş Modalı Butonları
             document.getElementById('submitLoginBtn').addEventListener('click', handleLogin);
             document.getElementById('closeLoginBtn').addEventListener('click', closeLoginModal);
             
-            // Enter tuÅŸu ile giriÅŸ
+            // Enter tuşu ile giriş
             document.getElementById('password').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     handleLogin();
                 }
             });
             
-            // Ã‡Ä±kÄ±ÅŸ ButonlarÄ±
+            // Çıkış Butonları
             document.getElementById('logoutButton').addEventListener('click', handleLogout);
             document.getElementById('adminLogoutButton').addEventListener('click', handleLogout);
             
-            // KullanÄ±cÄ± arayÃ¼zÃ¼ ofis arama kutusu
+            // Kullanıcı arayüzü ofis arama kutusu
             document.getElementById('userOfficeSearch').addEventListener('input', function() {
                 searchUserOffices(this.value.trim());
             });
@@ -3216,7 +3216,7 @@
                 searchAdminOffices(this.value.trim());
             });
             
-            // Admin sayaÃ§ arama kutusu
+            // Admin sayaç arama kutusu
             document.getElementById('adminMeterSearch').addEventListener('input', function() {
                 searchAdminMeters(this.value.trim());
             });
@@ -3226,7 +3226,7 @@
                 searchStatusOffices(this.value.trim());
             });
             
-            // Admin panel sekme geÃ§iÅŸleri iÃ§in olay dinleyicileri
+            // Admin panel sekme geçişleri için olay dinleyicileri
             document.querySelectorAll('.office-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const panelId = this.getAttribute('data-panel');
@@ -3234,7 +3234,7 @@
                 });
             });
             
-            // SayaÃ§ Kaydet Butonu
+            // Sayaç Kaydet Butonu
             document.getElementById('saveButton').addEventListener('click', function() {
                 const activeOfficeItem = document.querySelector('.office-item.active');
                 if (activeOfficeItem) {
@@ -3243,19 +3243,19 @@
                 }
             });
             
-            // Yeni KullanÄ±cÄ± Ekleme Ä°ÅŸlemleri
+            // Yeni Kullanıcı Ekleme İşlemleri
             document.getElementById('addUserBtn').addEventListener('click', showUserModal);
             document.getElementById('saveUserBtn').addEventListener('click', saveNewUser);
             document.getElementById('cancelUserBtn').addEventListener('click', hideUserModal);
             
-            // Ofis DÃ¼zenleme Formu ButonlarÄ±
+            // Ofis Düzenleme Formu Butonları
             document.getElementById('cancelOfficeEditBtn').addEventListener('click', hideOfficeEditForm);
             document.getElementById('saveOfficeBtn').addEventListener('click', function() {
                 const officeId = this.getAttribute('data-id');
                 saveOfficeChanges(officeId);
             });
             
-            // SayaÃ§ DÃ¼zenleme ModalÄ± ButonlarÄ±
+            // Sayaç Düzenleme Modalı Butonları
             document.getElementById('saveMeterBtn').addEventListener('click', function() {
                 const officeId = this.getAttribute('data-id');
                 const meterType = this.getAttribute('data-type');
@@ -3263,7 +3263,7 @@
             });
             document.getElementById('cancelMeterBtn').addEventListener('click', hideMeterEditModal);
             
-            // Excel iÃ§e aktarma butonlarÄ±
+            // Excel içe aktarma butonları
             document.getElementById('importExcelBtn').addEventListener('click', importExcel);
             document.getElementById('excelFileInput').addEventListener('change', function(e) {
                 if (e.target.files.length > 0) {
@@ -3271,7 +3271,7 @@
                 }
             });
             
-            // Admin Paneli Tab ButonlarÄ±
+            // Admin Paneli Tab Butonları
             document.querySelectorAll('[data-panel]').forEach(tab => {
                 tab.addEventListener('click', function() {
                     const panelId = this.getAttribute('data-panel');
@@ -3279,7 +3279,7 @@
                 });
             });
             
-            // Ana Sayfa ve YÃ¶netici Paneli Linkleri
+            // Ana Sayfa ve Yönetici Paneli Linkleri
             document.getElementById('dashboardLink').addEventListener('click', function() {
                 document.getElementById('appScreen').style.display = 'block';
                 document.getElementById('adminPanel').style.display = 'none';
@@ -3292,7 +3292,7 @@
                 showAdminPanel('userPanel');
             });
             
-            // Modal dÄ±ÅŸÄ±na tÄ±klandÄ±ÄŸÄ±nda kapat
+            // Modal dışına tıklandığında kapat
             window.addEventListener('click', function(e) {
                 if (e.target === document.getElementById('loginModal')) {
                     closeLoginModal();
@@ -3305,7 +3305,7 @@
                 }
             });
             
-            // KullanÄ±cÄ± ve ofis ve sayaÃ§ tablodaki dÃ¼zenle/sil butonlarÄ± iÃ§in olay dinleyicileri
+            // Kullanıcı ve ofis ve sayaç tablodaki düzenle/sil butonları için olay dinleyicileri
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('edit-btn')) {
                     const username = e.target.getAttribute('data-username');
@@ -3332,7 +3332,7 @@
             
             if (history.length === 0) {
                 const row = document.createElement('tr');
-                row.innerHTML = `<td colspan="4">HenÃ¼z kayÄ±t bulunmamaktadÄ±r.</td>`;
+                row.innerHTML = `<td colspan="4">Henüz kayıt bulunmamaktadır.</td>`;
                 historyBodyEl.appendChild(row);
                 return;
             }
@@ -3349,7 +3349,7 @@
             });
         }
         
-        // Ofis veri durumu tablosunu oluÅŸtur
+        // Ofis veri durumu tablosunu oluştur
         function renderStatusTable() {
             const statusTableBody = document.getElementById('statusTableBody');
             if (!statusTableBody) return;
@@ -3361,7 +3361,7 @@
                 const hasWater = office.water && office.water.last_reading > 0;
                 const status = hasElectric && hasWater ? 'success' : 'error';
                 
-                // Blok adÄ±nÄ± Ã§Ä±kar
+                // Blok adını çıkar
                 const officeBlock = office.office_no.split('-')[0];
                 
                 const row = document.createElement('tr');
@@ -3374,13 +3374,13 @@
                     <td>${hasWater ? '<span class="status-indicator success"></span> Var' : '<span class="status-indicator error"></span> Yok'}</td>
                     <td>${(hasElectric || hasWater) ? currentUser.name : '-'}</td>
                     <td>${(hasElectric || hasWater) ? new Date().toLocaleDateString('tr-TR') : '-'}</td>
-                    <td>${status === 'success' ? 'TamamlandÄ±' : 'Eksik'}</td>
+                    <td>${status === 'success' ? 'Tamamlandı' : 'Eksik'}</td>
                 `;
                 statusTableBody.appendChild(row);
             });
         }
         
-        // SayaÃ§ tablosunu oluÅŸtur ve gÃ¼ncelle
+        // Sayaç tablosunu oluştur ve güncelle
         function renderMeterTable() {
             const meterTableBody = document.getElementById('meterTableBody');
             if (!meterTableBody) return;
@@ -3388,7 +3388,7 @@
             meterTableBody.innerHTML = '';
             
             offices.forEach(office => {
-                // Elektrik sayacÄ±
+                // Elektrik sayacı
                 if (office.electric && office.electric.meter_no) {
                     const row = document.createElement('tr');
                     row.innerHTML = `
@@ -3397,13 +3397,13 @@
                         <td>${office.electric.meter_no}</td>
                         <td>${office.electric.last_reading}</td>
                         <td>
-                            <button class="edit-meter-btn" data-id="${office.id}" data-type="electric">DÃ¼zenle</button>
+                            <button class="edit-meter-btn" data-id="${office.id}" data-type="electric">Düzenle</button>
                         </td>
                     `;
                     meterTableBody.appendChild(row);
                 }
                 
-                // Su sayacÄ±
+                // Su sayacı
                 if (office.water && office.water.meter_no) {
                     const row = document.createElement('tr');
                     row.innerHTML = `
@@ -3412,7 +3412,7 @@
                         <td>${office.water.meter_no}</td>
                         <td>${office.water.last_reading}</td>
                         <td>
-                            <button class="edit-meter-btn" data-id="${office.id}" data-type="water">DÃ¼zenle</button>
+                            <button class="edit-meter-btn" data-id="${office.id}" data-type="water">Düzenle</button>
                         </td>
                     `;
                     meterTableBody.appendChild(row);
@@ -3420,7 +3420,7 @@
             });
         }
 
-        // KullanÄ±cÄ± ve ofis ve sayaÃ§ tablodaki dÃ¼zenle/sil butonlarÄ± iÃ§in olay dinleyicileri
+        // Kullanıcı ve ofis ve sayaç tablodaki düzenle/sil butonları için olay dinleyicileri
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('edit-btn')) {
                 const username = e.target.getAttribute('data-username');
@@ -3443,7 +3443,7 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="copyright">
-                Copyright &copy; 2025 GÃ¼mrÃ¼k ve Turizm Ä°ÅŸletmeleri Ticaret A.Åž.
+                Copyright &copy; 2025 Gümrük ve Turizm İşletmeleri Ticaret A.Ş.
             </div>
             <div class="developer">
                 Crafted by ADTech
