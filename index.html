@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTİ-Muratbey-Ahmet Dölen</title>
+    <title>GTİ-Muratbey</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -353,6 +353,9 @@
             text-align: center;
             font-size: 14px;
             margin-top: 40px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
         /* Mobil uyumluluk */
         @media (max-width: 768px) {
@@ -552,6 +555,8 @@
             position: relative;
             width: 100%;
             flex-shrink: 0;
+            /* Ensure footer stays at bottom */
+            bottom: 0;
         }
         .footer-content {
             display: flex;
@@ -709,9 +714,9 @@
                 </div>
             </div>
             <nav class="nav-menu">
-                <a href="#" class="nav-item" id="homeLink">Ana Sayfa</a>
-                <a href="#" class="nav-item" id="aboutLink">Hakkımızda</a>
-                <a href="#" class="nav-item" id="contactLink">İletişim</a>
+                <a href="#" class="nav-item" id="homeLink" onclick="showHeroSection(event); return false;">Ana Sayfa</a>
+                <a href="#" class="nav-item" id="aboutLink" onclick="showAboutSection(event); return false;">Hakkımızda</a>
+                <a href="#" class="nav-item" id="contactLink" onclick="showContactSection(event); return false;">İletişim</a>
             </nav>
         </header>
 
@@ -723,7 +728,7 @@
                 <div class="hero-content">
                     <h1>Ofis Sayaç-Depo Envanter Takip Sistemi</h1>
                     <p>GTİ'nin geliştirdiği bu platform, ofislerdeki elektrik, su ve doğalgaz sayaçlarının yanı sıra depo envanterlerinin de takibini kolaylaştırır. Tüm verilerinizi doğru ve güvenilir bir şekilde kayıt altına almanızı sağlayan entegre bir yönetim sistemidir.</p>
-                    <button id="heroLoginBtn" class="hero-button">Sisteme Giriş Yap</button>
+                    <button id="heroLoginBtn" class="hero-button" onclick="openLoginModal(); return false;">Sisteme Giriş Yap</button>
                 </div>
             </div>
             
@@ -733,7 +738,7 @@
                 <div class="about-content-inline">
                     <div class="about-header-inline">
                         <h1>Muratbey Gümrük Müdürlüğü Hakkında</h1>
-                        <button id="backToHomeBtn" class="back-button">Ana Sayfa'ya Dön</button>
+                        <button id="backToHomeBtn" class="back-button" onclick="showHeroSection(event); return false;">Ana Sayfa'ya Dön</button>
                     </div>
                     <div class="about-stats">
                         <div class="stat-box">
@@ -768,7 +773,7 @@
                 <div class="about-content-inline">
                     <div class="about-header-inline">
                         <h1>İletişim Bilgileri</h1>
-                        <button id="backFromContactBtn" class="back-button">Ana Sayfa'ya Dön</button>
+                        <button id="backFromContactBtn" class="back-button" onclick="showHeroSection(event); return false;">Ana Sayfa'ya Dön</button>
                     </div>
                     <div class="contact-container">
                         <div class="contact-info">
@@ -998,7 +1003,7 @@
 
                 <div class="main-content">
                     <!-- Kullanıcı Yönetimi Paneli -->
-                    <div id="userPanel" class="admin-panel-content">
+                    <div id="userPanel" class="admin-panel-content" style="background-color: white; position: relative; z-index: 10;">
                         <h1 class="page-title">Kullanıcı Yönetimi</h1>
                         
                         <div style="margin-bottom: 20px;">
@@ -1091,7 +1096,7 @@
                     </div>
                     
                     <!-- Raporlar Paneli -->
-                    <div id="reportPanel" class="admin-panel-content" style="display: none;">
+                    <div id="reportPanel" class="admin-panel-content" style="display: none; background-color: white; position: relative; z-index: 10;">
                         <h1 class="page-title">Raporlar</h1>
                         
                         <div style="margin-bottom: 20px;">
@@ -2681,6 +2686,28 @@
             document.getElementById('officeEditForm').style.display = 'none';
         }
         
+        // Ofis tablosunu oluştur ve güncelle
+        function renderOfficeTable() {
+            const officeTableBody = document.getElementById('officeTableBody');
+            if (!officeTableBody) return;
+            
+            officeTableBody.innerHTML = '';
+            
+            offices.forEach(office => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${office.office_no}</td>
+                    <td>${office.name}</td>
+                    <td>${office.electric ? office.electric.meter_no : ''}</td>
+                    <td>${office.water ? office.water.meter_no : ''}</td>
+                    <td>
+                        <button class="edit-office-btn" data-id="${office.id}">Düzenle</button>
+                    </td>
+                `;
+                officeTableBody.appendChild(row);
+            });
+        }
+        
         // Ofis değişikliklerini kaydet
         function saveOfficeChanges(officeId) {
             const office = offices.find(o => o.id === officeId);
@@ -3127,6 +3154,31 @@
             reader.readAsArrayBuffer(file);
         }
 
+        // Ana sayfa bölümlerini gösterme ve gizleme fonksiyonları
+        function showHeroSection(e) {
+            if (e) e.preventDefault();
+            console.log('showHeroSection çağrıldı');
+            document.getElementById('heroSection').style.display = 'flex';
+            document.getElementById('aboutSection').style.display = 'none';
+            document.getElementById('contactSection').style.display = 'none';
+        }
+        
+        function showAboutSection(e) {
+            if (e) e.preventDefault();
+            console.log('showAboutSection çağrıldı');
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('aboutSection').style.display = 'flex';
+            document.getElementById('contactSection').style.display = 'none';
+        }
+        
+        function showContactSection(e) {
+            if (e) e.preventDefault();
+            console.log('showContactSection çağrıldı');
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('aboutSection').style.display = 'none';
+            document.getElementById('contactSection').style.display = 'flex';
+        }
+
         // Sayfa yüklendiğinde
         document.addEventListener('DOMContentLoaded', function() {
             // Ana Sayfa Giriş Butonu
@@ -3270,6 +3322,120 @@
                     showMeterEditModal(officeId, meterType);
                 }
             });
+        });
+        
+        // Ofis veri durumu arama fonksiyonu
+        function searchStatusOffices(searchText) {
+            const rows = document.querySelectorAll('#statusTableBody tr');
+            searchText = searchText.toLowerCase();
+            historyBodyEl.innerHTML = '';
+            
+            if (history.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="4">Henüz kayıt bulunmamaktadır.</td>`;
+                historyBodyEl.appendChild(row);
+                return;
+            }
+            
+            history.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.date} ${record.time}</td>
+                    <td>${record.electric || '-'}</td>
+                    <td>${record.water || '-'}</td>
+                    <td>${record.gas || '-'}</td>
+                `;
+                historyBodyEl.appendChild(row);
+            });
+        }
+        
+        // Ofis veri durumu tablosunu oluştur
+        function renderStatusTable() {
+            const statusTableBody = document.getElementById('statusTableBody');
+            if (!statusTableBody) return;
+            
+            statusTableBody.innerHTML = '';
+            
+            offices.forEach(office => {
+                const hasElectric = office.electric && office.electric.last_reading > 0;
+                const hasWater = office.water && office.water.last_reading > 0;
+                const status = hasElectric && hasWater ? 'success' : 'error';
+                
+                // Blok adını çıkar
+                const officeBlock = office.office_no.split('-')[0];
+                
+                const row = document.createElement('tr');
+                row.className = status === 'success' ? 'status-success' : 'status-error';
+                row.innerHTML = `
+                    <td>${officeBlock}</td>
+                    <td>${office.office_no}</td>
+                    <td>${office.name}</td>
+                    <td>${hasElectric ? '<span class="status-indicator success"></span> Var' : '<span class="status-indicator error"></span> Yok'}</td>
+                    <td>${hasWater ? '<span class="status-indicator success"></span> Var' : '<span class="status-indicator error"></span> Yok'}</td>
+                    <td>${(hasElectric || hasWater) ? currentUser.name : '-'}</td>
+                    <td>${(hasElectric || hasWater) ? new Date().toLocaleDateString('tr-TR') : '-'}</td>
+                    <td>${status === 'success' ? 'Tamamlandı' : 'Eksik'}</td>
+                `;
+                statusTableBody.appendChild(row);
+            });
+        }
+        
+        // Sayaç tablosunu oluştur ve güncelle
+        function renderMeterTable() {
+            const meterTableBody = document.getElementById('meterTableBody');
+            if (!meterTableBody) return;
+            
+            meterTableBody.innerHTML = '';
+            
+            offices.forEach(office => {
+                // Elektrik sayacı
+                if (office.electric && office.electric.meter_no) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${office.office_no}</td>
+                        <td>Elektrik</td>
+                        <td>${office.electric.meter_no}</td>
+                        <td>${office.electric.last_reading}</td>
+                        <td>
+                            <button class="edit-meter-btn" data-id="${office.id}" data-type="electric">Düzenle</button>
+                        </td>
+                    `;
+                    meterTableBody.appendChild(row);
+                }
+                
+                // Su sayacı
+                if (office.water && office.water.meter_no) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${office.office_no}</td>
+                        <td>Su</td>
+                        <td>${office.water.meter_no}</td>
+                        <td>${office.water.last_reading}</td>
+                        <td>
+                            <button class="edit-meter-btn" data-id="${office.id}" data-type="water">Düzenle</button>
+                        </td>
+                    `;
+                    meterTableBody.appendChild(row);
+                }
+            });
+        }
+
+        // Kullanıcı ve ofis ve sayaç tablodaki düzenle/sil butonları için olay dinleyicileri
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('edit-btn')) {
+                const username = e.target.getAttribute('data-username');
+                editUser(username);
+            } else if (e.target.classList.contains('delete-btn')) {
+                const username = e.target.getAttribute('data-username');
+                deleteUser(username);
+            } else if (e.target.classList.contains('edit-office-btn')) {
+                const officeId = e.target.getAttribute('data-id');
+                editOffice(officeId);
+            } else if (e.target.classList.contains('edit-meter-btn')) {
+                const officeId = e.target.getAttribute('data-id');
+                const meterType = e.target.getAttribute('data-type');
+                showMeterEditModal(officeId, meterType);
+            }
         });
     </script>
     
