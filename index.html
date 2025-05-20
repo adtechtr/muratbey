@@ -1219,6 +1219,7 @@
                 <select id="newRole" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                     <option value="user">Kullanıcı</option>
                     <option value="admin">Yönetici</option>
+                    <option value="depo_yonetici">Depo Yöneticisi</option>
                 </select>
             </div>
             <div class="form-actions">
@@ -2594,6 +2595,9 @@
                 role: role
             });
             
+            // Kullanıcıları localStorage'a kaydet
+            saveUsers();
+            
             // Kullanıcı tablosunu güncelle
             renderUserTable();
             
@@ -2695,6 +2699,9 @@
                     user.password = password;
                 }
                 
+                // Kullanıcıları localStorage'a kaydet
+                saveUsers();
+                
                 // Tabloyu güncelle
                 renderUserTable();
                 
@@ -2717,6 +2724,8 @@
                 const index = users.findIndex(u => u.username === username);
                 if (index !== -1) {
                     users.splice(index, 1);
+                    // Kullanıcıları localStorage'a kaydet
+                    saveUsers();
                     renderUserTable();
                     alert('Kullanıcı başarıyla silindi.');
                 }
@@ -3000,6 +3009,11 @@
             // Form başlığını güncelle
             document.getElementById('officeName').textContent = office.office_no + ' - ' + office.name;
             
+            // Rol bazlı menü görünürlüğünü ayarla
+            if (window.currentUser && window.currentUser.role) {
+                setMenuVisibilityByRole(window.currentUser.role);
+            }
+            
             // Form alanını göster
             document.getElementById('officeDetail').style.display = 'none';
             document.getElementById('meterForm').style.display = 'block';
@@ -3009,6 +3023,46 @@
             
             // Geçmiş kayıtları göster
             renderHistory(office.id);
+        }
+        
+        // Kullanıcı rolüne göre menü görünürlüğünü ayarla
+        function setMenuVisibilityByRole(role) {
+            const menuItems = document.querySelectorAll('.office-item');
+            
+            // Önce tüm menü öğelerini gizle
+            menuItems.forEach(item => {
+                item.style.display = 'none';
+            });
+            
+            // Role göre görünürlüğü ayarla
+            if (role === 'admin') {
+                // Admin tüm menülere erişebilir
+                menuItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+            } else if (role === 'depo_yonetici') {
+                // Depo yöneticisi sadece depo paneline erişebilir
+                const depoMenuItem = document.querySelector('[data-panel="depoPanel"]');
+                if (depoMenuItem) depoMenuItem.style.display = 'block';
+                // Varsayılan olarak depo panelini göster
+                if (typeof showDepoPanel === 'function') {
+                    showDepoPanel();
+                } else {
+                    showAdminPanel('depoPanel');
+                }
+            } else {
+                // Normal kullanıcılar sadece ofis ve sayaç panellerine erişebilir
+                const officeMenuItem = document.querySelector('[data-panel="officePanel"]');
+                const meterMenuItem = document.querySelector('[data-panel="meterPanel"]');
+                
+                if (officeMenuItem) officeMenuItem.style.display = 'block';
+                if (meterMenuItem) meterMenuItem.style.display = 'block';
+                
+                // Varsayılan olarak ofis panelini göster
+                if (typeof showAdminPanel === 'function') {
+                    showAdminPanel('officePanel');
+                }
+            }
         }
 
         // Sayaç değerlerini yükle
@@ -3433,6 +3487,589 @@
                 }
             });
         });
+        
+        // Kullanıcı Kimlik Doğrulama ve Oturum Yönetimi
+        
+        // Kullanıcı verilerini localStorage'dan yükle veya varsayılan kullanıcıları oluştur
+        function loadUsers() {
+            // localStorage'dan kullanıcıları yükle
+            const savedUsers = localStorage.getItem('gti_users');
+            
+            if (savedUsers) {
+                try {
+                    // JSON olarak parse et
+                    window.users = JSON.parse(savedUsers);
+                } catch (e) {
+                    console.error('Kullanıcı verileri yüklenirken hata oluştu:', e);
+                    // Hata durumunda varsayılan kullanıcıları oluştur
+                    setDefaultUsers();
+                }
+            } else {
+                // Kaydedilmiş kullanıcı yoksa varsayılan kullanıcıları oluştur
+                setDefaultUsers();
+            }
+            
+            return window.users;
+        }
+        
+        // Varsayılan kullanıcıları ayarla
+        function setDefaultUsers() {
+            window.users = [
+                { username: 'admin', password: 'admin123', name: 'Admin Kullanıcı', role: 'admin' },
+                { username: 'depo', password: 'depo123', name: 'Depo Yöneticisi', role: 'depo_yonetici' },
+                { username: 'tekniker', password: 'teknik123', name: 'Teknik Personel', role: 'tekniker' }
+            ];
+            
+            // Varsayılan kullanıcıları localStorage'a kaydet
+            saveUsers();
+        }
+        
+        // Kullanıcıları localStorage'a kaydet
+        function saveUsers() {
+            localStorage.setItem('gti_users', JSON.stringify(window.users));
+        }
+        
+        // Uygulamayı başlatırken kullanıcıları yükle
+        loadUsers();
+        
+        // Geçerli kullanıcı bilgisi, eğer tanımlı değilse null olarak başlat
+        if (typeof window.currentUser === 'undefined') {
+            window.currentUser = null;
+        }
+        
+        // Giriş modalını aç
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+            document.getElementById('username').focus();
+            // Hata mesajını temizle
+            document.getElementById('loginError').textContent = '';
+        }
+        
+        // Giriş modalını kapat
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            // Form alanlarını sıfırla
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').textContent = '';
+        }
+        
+        // Giriş işlemini ele al
+        function handleLogin() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            // Boş alan kontrolü
+            if (!username || !password) {
+                document.getElementById('loginError').textContent = 'Kullanıcı adı ve şifre gereklidir!';
+                return;
+            }
+            
+            // Her giriş denemesinde localStorage'dan en güncel kullanıcı listesini yükle
+            loadUsers();
+            
+            console.log('Giriş yapılıyor:', username, 'Kullanıcı sayısı:', window.users.length);
+            console.log('Mevcut kullanıcılar:', JSON.stringify(window.users));
+            
+            // Kullanıcı doğrulama
+            const user = window.users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
+                // Giriş başarılı
+                window.currentUser = user;
+                
+                // Kullanıcı adını göster
+                document.getElementById('currentUsername').textContent = user.name;
+                document.getElementById('adminUsername').textContent = user.name;
+                
+                // Giriş modalını kapat
+                closeLoginModal();
+                
+                // Ana sayfa gizle, uygulama ekranını göster
+                document.getElementById('homePage').style.display = 'none';
+                
+                // Kullanıcı rolüne göre panel göster
+                if (user.role === 'admin' || user.role === 'depo_yonetici') {
+                    // Admin ve depo yöneticisi için admin panelini göster
+                    document.getElementById('appScreen').style.display = 'none';
+                    document.getElementById('adminPanel').style.display = 'block';
+                    
+                    // Rol bazlı menü görünürlüğünü ayarla
+                    setMenuVisibilityByRole(user.role);
+                    
+                    // Depo yöneticisi için direkt olarak depo panelini aç
+                    if (user.role === 'depo_yonetici') {
+                        showDepoPanel();
+                    } else {
+                        // Admin için varsayılan olarak kullanıcı panelini aç
+                        showAdminPanel('userPanel');
+                    }
+                    
+                    // Tabloları güncelle
+                    renderUserTable();
+                    renderOfficeTable();
+                    renderMeterTable();
+                    renderInventoryTable(); // Depo envanterini yükle
+                } else {
+                    // Normal kullanıcı için normal ekranı göster
+                    document.getElementById('appScreen').style.display = 'block';
+                    document.getElementById('adminPanel').style.display = 'none';
+                    
+                    // Ofis listesini güncelle
+                    renderOfficeList();
+                }
+            } else {
+                // Giriş başarısız
+                document.getElementById('loginError').textContent = 'Kullanıcı adı veya şifre hatalı!';
+            }
+        }
+        
+        // Çıkış işlemini ele al
+        function handleLogout() {
+            // Geçerli kullanıcıyı sıfırla
+            window.currentUser = null;
+            
+            // Uygulama ekranını gizle, ana sayfayı göster
+            document.getElementById('appScreen').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('homePage').style.display = 'block';
+            
+            // Hero bölümünü göster
+            showHeroSection();
+        }
+        
+        // Depo Panelini Göster
+        function showDepoPanel() {
+            showAdminPanel('depoPanel');
+            renderInventoryTable();
+        }
+        
+        // Envanter tablosunu oluştur ve güncelle
+        function renderInventoryTable() {
+            const inventoryTableBody = document.getElementById('inventoryTableBody');
+            if (!inventoryTableBody) return;
+            
+            inventoryTableBody.innerHTML = '';
+            
+            // Depoya göre filtreleme için seçilen depo
+            const selectedDepo = document.getElementById('depoFilter') ? 
+                document.getElementById('depoFilter').value : '';
+            
+            // Arama filtresi
+            const searchTerm = document.getElementById('productSearch') ? 
+                document.getElementById('productSearch').value.toLowerCase() : '';
+            
+            // Filtreleme işlemi
+            let filteredInventory = inventory;
+            
+            if (selectedDepo) {
+                filteredInventory = filteredInventory.filter(item => item.depo_id === selectedDepo);
+            }
+            
+            if (searchTerm) {
+                filteredInventory = filteredInventory.filter(item => 
+                    item.name.toLowerCase().includes(searchTerm) || 
+                    (item.description && item.description.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            // Envanter öğelerini tabloya ekle
+            filteredInventory.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unit}</td>
+                    <td>${item.depo_id}</td>
+                    <td>${item.description || '-'}</td>
+                    <td>${item.lastUpdated}</td>
+                    <td>${item.updatedBy}</td>
+                    <td>
+                        <button class="edit-product-btn" data-id="${item.id}">Düzenle</button>
+                        <button class="view-movement-btn" data-id="${item.id}">Stok Hareketleri</button>
+                    </td>
+                `;
+                inventoryTableBody.appendChild(row);
+            });
+            
+            // Ürün sayısını göster
+            const inventoryCount = document.getElementById('inventoryCount');
+            if (inventoryCount) {
+                inventoryCount.textContent = filteredInventory.length;
+            }
+        }
+        
+        // Yeni ürün ekleme modalini göster
+        function showAddProductModal() {
+            // Modalı göster
+            document.getElementById('addProductModal').style.display = 'flex';
+            
+            // Form alanlarını temizle
+            document.getElementById('newProductName').value = '';
+            document.getElementById('newProductQuantity').value = '';
+            document.getElementById('newProductUnit').value = 'Adet';
+            document.getElementById('newProductDepo').value = 'TEKNİK DEPO';
+            document.getElementById('newProductDesc').value = '';
+            
+            // Form odağını ayarla
+            document.getElementById('newProductName').focus();
+        }
+        
+        // Yeni ürün modalini gizle
+        function hideAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'none';
+        }
+        
+        // Yeni ürün kaydetme
+        function saveNewProduct() {
+            const productName = document.getElementById('newProductName').value.trim();
+            const quantity = parseInt(document.getElementById('newProductQuantity').value) || 0;
+            const unit = document.getElementById('newProductUnit').value;
+            const depoId = document.getElementById('newProductDepo').value;
+            const description = document.getElementById('newProductDesc').value.trim();
+            
+            // Boş alan kontrolü
+            if (!productName) {
+                alert('Ürün adı boş olamaz!');
+                return;
+            }
+            
+            // Yeni ürün ID'si
+            const newId = inventory.length > 0 ? Math.max(...inventory.map(item => item.id)) + 1 : 1;
+            
+            // Yeni ürün oluştur
+            const newProduct = {
+                id: newId,
+                name: productName,
+                quantity: quantity,
+                unit: unit,
+                depo_id: depoId,
+                description: description,
+                lastUpdated: new Date().toISOString().slice(0, 10),
+                updatedBy: window.currentUser ? window.currentUser.username : 'admin',
+                movements: [
+                    {
+                        date: new Date().toISOString().slice(0, 10),
+                        user: window.currentUser ? window.currentUser.username : 'admin',
+                        action: 'Ekleme',
+                        oldQuantity: 0,
+                        change: quantity,
+                        newQuantity: quantity
+                    }
+                ]
+            };
+            
+            // Envantere ekle
+            inventory.push(newProduct);
+            
+            // Tabloyu güncelle
+            renderInventoryTable();
+            
+            // Modalı kapat
+            hideAddProductModal();
+            
+            // Kullanıcıya bilgi ver
+            alert('Ürün başarıyla eklendi!');
+        }
+        
+        // Ürün düzenleme modalini göster
+        function editProduct(productId) {
+            // Ürünü bul
+            const product = inventory.find(p => p.id == productId);
+            if (!product) return;
+            
+            // Form alanlarını doldur
+            document.getElementById('editProductId').value = product.id;
+            document.getElementById('editProductName').value = product.name;
+            document.getElementById('editProductQuantity').value = product.quantity;
+            document.getElementById('editProductUnit').value = product.unit;
+            document.getElementById('editProductDepo').value = product.depo_id;
+            document.getElementById('editProductDesc').value = product.description || '';
+            
+            // Modalı göster
+            document.getElementById('editProductModal').style.display = 'flex';
+        }
+        
+        // Ürün düzenleme modalini gizle
+        function hideEditProductModal() {
+            document.getElementById('editProductModal').style.display = 'none';
+        }
+        
+        // Ürün düzenleme işlemini kaydet
+        function updateProduct() {
+            const productId = parseInt(document.getElementById('editProductId').value);
+            const product = inventory.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            const oldQuantity = product.quantity;
+            const newName = document.getElementById('editProductName').value.trim();
+            const newQuantity = parseInt(document.getElementById('editProductQuantity').value) || 0;
+            const newUnit = document.getElementById('editProductUnit').value;
+            const newDepoId = document.getElementById('editProductDepo').value;
+            const newDescription = document.getElementById('editProductDesc').value.trim();
+            
+            // Boş alan kontrolü
+            if (!newName) {
+                alert('Ürün adı boş olamaz!');
+                return;
+            }
+            
+            // Stok hareketi (miktar değiştiyse)
+            if (newQuantity !== oldQuantity) {
+                // Stok hareketi ekle
+                product.movements.push({
+                    date: new Date().toISOString().slice(0, 10),
+                    user: window.currentUser ? window.currentUser.username : 'admin',
+                    action: newQuantity > oldQuantity ? 'Ekleme' : 'Çıkarma',
+                    oldQuantity: oldQuantity,
+                    change: Math.abs(newQuantity - oldQuantity) * (newQuantity > oldQuantity ? 1 : -1),
+                    newQuantity: newQuantity
+                });
+            }
+            
+            // Ürünü güncelle
+            product.name = newName;
+            product.quantity = newQuantity;
+            product.unit = newUnit;
+            product.depo_id = newDepoId;
+            product.description = newDescription;
+            product.lastUpdated = new Date().toISOString().slice(0, 10);
+            product.updatedBy = window.currentUser ? window.currentUser.username : 'admin';
+            
+            // Tabloyu güncelle
+            renderInventoryTable();
+            
+            // Modalı kapat
+            hideEditProductModal();
+            
+            // Kullanıcıya bilgi ver
+            alert('Ürün başarıyla güncellendi!');
+        }
+        
+        // Stok hareketlerini görüntüle
+        function viewStockMovements(productId) {
+            const product = inventory.find(p => p.id == productId);
+            if (!product) return;
+            
+            // Ürün adını göster
+            document.getElementById('movementProductName').textContent = product.name;
+            
+            // Stok hareketleri tablosunu doldur
+            const movementTableBody = document.getElementById('movementTableBody');
+            movementTableBody.innerHTML = '';
+            
+            // Eğer hareket yoksa
+            if (!product.movements || product.movements.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="6">Bu ürün için henüz stok hareketi bulunmamaktadır.</td>`;
+                movementTableBody.appendChild(row);
+            } else {
+                // Hareketleri terse sırala (en yeni en üstte)
+                const sortedMovements = [...product.movements].reverse();
+                
+                // Hareketleri tabloya ekle
+                sortedMovements.forEach(movement => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${movement.date}</td>
+                        <td>${movement.user}</td>
+                        <td>${movement.action}</td>
+                        <td>${movement.oldQuantity}</td>
+                        <td>${movement.change > 0 ? '+' + movement.change : movement.change}</td>
+                        <td>${movement.newQuantity}</td>
+                    `;
+                    movementTableBody.appendChild(row);
+                });
+            }
+            
+            // Modalı göster
+            document.getElementById('stockMovementModal').style.display = 'flex';
+        }
+        
+        // Stok hareketi modalini gizle
+        function hideStockMovementModal() {
+            document.getElementById('stockMovementModal').style.display = 'none';
+        }
+        
+        // Şablon dosyasını indirme fonksiyonu
+        function downloadTemplate() {
+            // Excel çalışma kitabı oluştur
+            const wb = XLSX.utils.book_new();
+            
+            // Örnek veri
+            const data = [
+                ['Ürün Adı', 'Miktar', 'Birim', 'Depo', 'Açıklama'],
+                ['Elektrik Kablosu', 100, 'Metre', 'TEKNİK DEPO', '2x2.5mm kesitli NYM kablo'],
+                ['Düy (Ampul Soket)', 50, 'Adet', 'TEKNİK DEPO', 'E27 duy'],
+                ['Priz', 30, 'Adet', 'İŞLETME DEPO', 'Topraklı priz']
+            ];
+            
+            // Çalışma sayfası oluştur
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            
+            // Çalışma kitabına sayfayı ekle
+            XLSX.utils.book_append_sheet(wb, ws, 'Ürünler');
+            
+            // Dosyayı indir
+            XLSX.writeFile(wb, 'Toplu_Urun_Yukleme_Sablonu.xlsx');
+        }
+        
+        // Yüklenen Excel/CSV dosyasını işle ve önizle
+        function previewBulkUpload() {
+            const fileInput = document.getElementById('bulkUploadFile');
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert('Lütfen bir dosya seçin!');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    // Veriyi oku
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    
+                    // İlk sayfayı al
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    
+                    // JSON'a dönüştür
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                    
+                    // Başlık satırı kontrolü
+                    if (jsonData.length < 2) {
+                        alert('Dosya boş veya geçersiz format!');
+                        return;
+                    }
+                    
+                    // Önizleme tablosunu temizle
+                    const previewTableBody = document.getElementById('previewTableBody');
+                    previewTableBody.innerHTML = '';
+                    
+                    // Başlık satırını atlayarak verileri önizle
+                    for (let i = 1; i < jsonData.length; i++) {
+                        const row = jsonData[i];
+                        if (row.length < 2 || !row[0]) continue; // Ürün adı yoksa atla
+                        
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row[0] || '-'}</td>
+                            <td>${row[1] || '0'}</td>
+                            <td>${row[2] || 'Adet'}</td>
+                            <td>${row[3] || 'TEKNİK DEPO'}</td>
+                        `;
+                        previewTableBody.appendChild(tr);
+                    }
+                    
+                    // Önizleme sayısını göster
+                    const validRowCount = jsonData.length - 1;
+                    document.getElementById('previewCount').textContent = validRowCount;
+                    
+                    // Önizleme alanını göster
+                    document.getElementById('uploadPreview').style.display = 'block';
+                    
+                } catch (error) {
+                    console.error('Dosya işleme hatası:', error);
+                    alert('Dosya işlenirken bir hata oluştu!');
+                }
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+        
+        // Toplu ürün yüklemesini işle
+        function processBulkUpload() {
+            const fileInput = document.getElementById('bulkUploadFile');
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert('Lütfen bir dosya seçin!');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    // Veriyi oku
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    
+                    // İlk sayfayı al
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    
+                    // JSON'a dönüştür
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                    
+                    // Başlık satırı kontrolü
+                    if (jsonData.length < 2) {
+                        alert('Dosya boş veya geçersiz format!');
+                        return;
+                    }
+                    
+                    // Eklenen ürün sayısı
+                    let addedCount = 0;
+                    let errorCount = 0;
+                    
+                    // Yeni ürün için başlangıç ID'si
+                    const startId = inventory.length > 0 ? Math.max(...inventory.map(item => item.id)) + 1 : 1;
+                    
+                    // Başlık satırını atlayarak verileri işle
+                    for (let i = 1; i < jsonData.length; i++) {
+                        const row = jsonData[i];
+                        if (row.length < 2 || !row[0]) {
+                            errorCount++;
+                            continue; // Ürün adı yoksa atla
+                        }
+                        
+                        // Yeni ürün oluştur
+                        const newProduct = {
+                            id: startId + addedCount,
+                            name: row[0],
+                            quantity: parseInt(row[1]) || 0,
+                            unit: row[2] || 'Adet',
+                            depo_id: row[3] || 'TEKNİK DEPO',
+                            description: row[4] || '',
+                            lastUpdated: new Date().toISOString().slice(0, 10),
+                            updatedBy: window.currentUser ? window.currentUser.username : 'admin',
+                            movements: [
+                                {
+                                    date: new Date().toISOString().slice(0, 10),
+                                    user: window.currentUser ? window.currentUser.username : 'admin',
+                                    action: 'Ekleme',
+                                    oldQuantity: 0,
+                                    change: parseInt(row[1]) || 0,
+                                    newQuantity: parseInt(row[1]) || 0
+                                }
+                            ]
+                        };
+                        
+                        // Envantere ekle
+                        inventory.push(newProduct);
+                        addedCount++;
+                    }
+                    
+                    // Tabloyu güncelle
+                    renderInventoryTable();
+                    
+                    // Modalı kapat
+                    document.getElementById('bulkUploadModal').style.display = 'none';
+                    
+                    // Kullanıcıya bilgi ver
+                    alert(`Toplu yükleme tamamlandı: ${addedCount} ürün başarıyla eklendi. ${errorCount} satır atlandı.`);
+                    
+                } catch (error) {
+                    console.error('Dosya işleme hatası:', error);
+                    alert('Dosya işlenirken bir hata oluştu!');
+                }
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
         
         // Ofis veri durumu arama fonksiyonu
         function searchStatusOffices(searchText) {
