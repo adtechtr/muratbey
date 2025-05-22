@@ -1077,6 +1077,7 @@
                         <div class="office-item" data-panel="reportPanel">Raporlar</div>
                         <div class="office-item" data-panel="statusPanel">Ofis Veri Durumu</div>
                         <div class="office-item" data-panel="depoPanel">Depo Yönetimi</div>
+                        <div class="office-item" data-panel="documentsPanel">Doküman Yönetimi</div>
                     </div>
                 </div>
 
@@ -1184,6 +1185,86 @@
                         
                         <div id="reportResult" class="result-container">
                             <p>Raporlarınız burada görüntülenecektir.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Doküman Yönetimi Paneli -->
+                    <div id="documentsPanel" class="admin-panel-content" style="display: none; background-color: white; position: relative; z-index: 10;">
+                        <h1 class="page-title">Doküman Yönetimi</h1>
+                        
+                        <div class="document-upload-section" style="margin-bottom: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 5px;">
+                            <h3>Yeni Doküman Yükle</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+                                <div style="flex: 1; min-width: 250px;">
+                                    <label for="documentTitle" style="display: block; margin-bottom: 5px; font-weight: bold;">Doküman Başlığı:</label>
+                                    <input type="text" id="documentTitle" placeholder="Doküman başlığını girin" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                </div>
+                                <div style="flex: 1; min-width: 250px;">
+                                    <label for="documentCategory" style="display: block; margin-bottom: 5px; font-weight: bold;">Kategori:</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <select id="documentCategory" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                            <option value="">Kategori Seçin</option>
+                                            <option value="Talimatlar">Talimatlar</option>
+                                            <option value="Faturalar">Faturalar</option>
+                                            <option value="Sözleşmeler">Sözleşmeler</option>
+                                            <option value="Raporlar">Raporlar</option>
+                                            <option value="Diğer">Diğer</option>
+                                        </select>
+                                        <button id="addCategoryBtn" type="button" style="padding: 10px; background-color: #1e2738; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                            <span>+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <label for="documentDescription" style="display: block; margin-bottom: 5px; font-weight: bold;">Açıklama:</label>
+                                <textarea id="documentDescription" placeholder="Doküman hakkında açıklama girin" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; resize: vertical;" rows="3"></textarea>
+                            </div>
+                            <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 15px;">
+                                <div style="flex: 1; min-width: 250px;">
+                                    <label for="documentFile" style="display: block; margin-bottom: 5px; font-weight: bold;">PDF Dosyası:</label>
+                                    <input type="file" id="documentFile" accept=".pdf" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" multiple>
+                                    <small style="display: block; margin-top: 5px; color: #666;">Toplu yükleme için birden fazla dosya seçebilirsiniz (CTRL tuşuna basarak)</small>
+                                </div>
+                                <div style="flex: 1; min-width: 250px; display: flex; align-items: flex-end;">
+                                    <button id="uploadDocumentBtn" class="login-button" style="width: 100%; margin-top: 24px;">Dokümanı Yükle</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-search-section" style="margin-bottom: 20px;">
+                            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                <div style="flex: 1;">
+                                    <input type="text" id="documentSearch" placeholder="Doküman ara..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <select id="categoryFilter" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                        <option value="">Tüm Kategoriler</option>
+                                        <option value="Talimatlar">Talimatlar</option>
+                                        <option value="Faturalar">Faturalar</option>
+                                        <option value="Sözleşmeler">Sözleşmeler</option>
+                                        <option value="Raporlar">Raporlar</option>
+                                        <option value="Diğer">Diğer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="documents-list">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background-color: #1e2738; color: white;">
+                                        <th style="padding: 12px; text-align: left;">Başlık</th>
+                                        <th style="padding: 12px; text-align: left;">Kategori</th>
+                                        <th style="padding: 12px; text-align: left;">Açıklama</th>
+                                        <th style="padding: 12px; text-align: left;">Yüklenme Tarihi</th>
+                                        <th style="padding: 12px; text-align: center;">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="documentsTableBody">
+                                    <!-- Dokümanlar burada listelenecek -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     
@@ -1466,6 +1547,22 @@
         </div>
     </div>
 
+    <!-- Yeni Kategori Ekleme Modal -->
+    <div id="newCategoryModal" class="login-modal">
+        <div class="login-modal-content" style="max-width: 450px;">
+            <span class="close-button" id="closeCategoryModal">&times;</span>
+            <h2>Yeni Kategori Ekle</h2>
+            <div class="form-group">
+                <label for="newCategoryName" style="display: block; margin-bottom: 5px;">Kategori Adı:</label>
+                <input type="text" id="newCategoryName" placeholder="Yeni kategori adı" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div class="form-actions" style="margin-top: 20px;">
+                <button id="saveCategoryBtn" class="login-button">Kategori Ekle</button>
+                <button id="cancelCategoryBtn" class="close-button">Vazgeç</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Stok Hareketi Modal -->
     <div id="stockMovementModal" class="login-modal">
         <div class="login-form" style="width: 600px; max-width: 90%;">
@@ -2922,6 +3019,36 @@
         }
 
         // Admin panel işlemleri
+        // Paneller arası geçiş için event listener
+        document.querySelectorAll('.office-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const panelId = this.getAttribute('data-panel');
+                document.querySelectorAll('.admin-panel-content').forEach(panel => {
+                    panel.style.display = 'none';
+                });
+                document.getElementById(panelId).style.display = 'block';
+                document.querySelectorAll('.office-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Panel içeriğini güncelle
+                if (panelId === 'userPanel') {
+                    renderUserTable();
+                } else if (panelId === 'officePanel') {
+                    renderOfficeTable();
+                } else if (panelId === 'meterPanel') {
+                    renderMeterTable();
+                } else if (panelId === 'statusPanel') {
+                    renderStatusTable();
+                } else if (panelId === 'depoPanel') {
+                    renderInventoryTable();
+                } else if (panelId === 'documentsPanel') {
+                    updateDocumentsTable();
+                }
+            });
+        });
+        
         function showAdminPanel(panelId) {
             document.querySelectorAll('.admin-panel-content').forEach(panel => {
                 panel.style.display = 'none';
@@ -2949,9 +3076,292 @@
                 renderStatusTable();
             } else if (panelId === 'depoPanel') {
                 renderInventoryTable();
+            } else if (panelId === 'documentsPanel') {
+                updateDocumentsTable();
             }
         }
-
+        
+        // Doküman Yönetimi için gerekli değişkenler
+        let documents = [];
+        let categories = ["Talimatlar", "Faturalar", "Sözleşmeler", "Raporlar", "Diğer"];
+        
+        // Kategorileri yönetme
+        function updateCategoryOptions() {
+            // Kategori dropdown menülerini güncelleme
+            const categorySelects = [document.getElementById('documentCategory'), document.getElementById('categoryFilter')];
+            
+            categorySelects.forEach(select => {
+                if (!select) return;
+                
+                // İlk seçenek dışındaki tüm seçenekleri temizle
+                while (select.options.length > 1) {
+                    select.remove(1);
+                }
+                
+                // Kategorileri ekle
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    select.appendChild(option);
+                });
+            });
+            
+            // localStorage'e kategorileri kaydet
+            localStorage.setItem('categories', JSON.stringify(categories));
+        }
+        
+        // Yeni kategori ekleme işlemi
+        function addNewCategory(categoryName) {
+            if (!categoryName) return;
+            
+            // Kategori zaten varsa ekleme
+            if (categories.includes(categoryName)) {
+                alert('Bu kategori zaten mevcut!');
+                return;
+            }
+            
+            // Yeni kategoriyi ekle
+            categories.push(categoryName);
+            
+            // Kategori listesini güncelle
+            updateCategoryOptions();
+            
+            // Modalı kapat
+            document.getElementById('newCategoryModal').style.display = 'none';
+            document.getElementById('newCategoryName').value = '';
+            
+            alert('Yeni kategori başarıyla eklendi!');
+        }
+        
+        // Yeni kategori modalını açma
+        document.getElementById('addCategoryBtn').addEventListener('click', function() {
+            document.getElementById('newCategoryModal').style.display = 'flex';
+            document.getElementById('newCategoryName').focus();
+        });
+        
+        // Yeni kategori modalını kapatma
+        document.getElementById('closeCategoryModal').addEventListener('click', function() {
+            document.getElementById('newCategoryModal').style.display = 'none';
+            document.getElementById('newCategoryName').value = '';
+        });
+        
+        document.getElementById('cancelCategoryBtn').addEventListener('click', function() {
+            document.getElementById('newCategoryModal').style.display = 'none';
+            document.getElementById('newCategoryName').value = '';
+        });
+        
+        // Yeni kategori kaydetme
+        document.getElementById('saveCategoryBtn').addEventListener('click', function() {
+            const categoryName = document.getElementById('newCategoryName').value.trim();
+            if (!categoryName) {
+                alert('Lütfen kategori adı girin!');
+                return;
+            }
+            
+            addNewCategory(categoryName);
+        });
+        
+        // Kategori adı giriş alanı için enter tuşu olayı
+        document.getElementById('newCategoryName').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const categoryName = this.value.trim();
+                if (!categoryName) {
+                    alert('Lütfen kategori adı girin!');
+                    return;
+                }
+                
+                addNewCategory(categoryName);
+            }
+        });
+        
+        // Doküman yükleme işlemi
+        document.getElementById('uploadDocumentBtn').addEventListener('click', function() {
+            const title = document.getElementById('documentTitle').value;
+            const category = document.getElementById('documentCategory').value;
+            const description = document.getElementById('documentDescription').value;
+            const fileInput = document.getElementById('documentFile');
+            
+            if (!title || !category || !fileInput.files.length) {
+                alert('Lütfen başlık, kategori ve en az bir PDF dosyası seçin.');
+                return;
+            }
+            
+            // Toplu yükleme için files array'ini işleme
+            const totalFiles = fileInput.files.length;
+            let processedFiles = 0;
+            let successCount = 0;
+            
+            // Yükleme işlemi başladığında yükleme düğmesini devre dışı bırak
+            const uploadButton = document.getElementById('uploadDocumentBtn');
+            uploadButton.disabled = true;
+            uploadButton.textContent = '0/' + totalFiles + ' Yükleniyor...';
+            
+            // Her dosya için
+            Array.from(fileInput.files).forEach((file, index) => {
+                if (!file.type.includes('pdf')) {
+                    processedFiles++;
+                    uploadButton.textContent = processedFiles + '/' + totalFiles + ' Yükleniyor...';
+                    if (processedFiles === totalFiles) {
+                        completeUpload();
+                    }
+                    return; // PDF değilse atla
+                }
+                
+                // Dosyanın Base64 formatına dönüştürülmesi
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Data = e.target.result;
+                    
+                    // Yeni doküman objesi oluşturma
+                    const newDocument = {
+                        id: Date.now() + index, // Benzersiz ID
+                        title: totalFiles > 1 ? title + ' (' + file.name + ')' : title, // Toplu yükleme durumunda dosya adını ekle
+                        category: category,
+                        description: description,
+                        uploadDate: new Date().toLocaleDateString('tr-TR'),
+                        fileData: base64Data,
+                        fileName: file.name
+                    };
+                    
+                    // Dokümanı listeye ekleme
+                    documents.push(newDocument);
+                    successCount++;
+                    
+                    // İşlenen dosya sayısını artır
+                    processedFiles++;
+                    uploadButton.textContent = processedFiles + '/' + totalFiles + ' Yükleniyor...';
+                    
+                    // Tüm dosyalar işlendiyse temizleme yap
+                    if (processedFiles === totalFiles) {
+                        completeUpload();
+                    }
+                };
+                
+                reader.onerror = function() {
+                    processedFiles++;
+                    uploadButton.textContent = processedFiles + '/' + totalFiles + ' Yükleniyor...';
+                    if (processedFiles === totalFiles) {
+                        completeUpload();
+                    }
+                };
+                
+                reader.readAsDataURL(file);
+            });
+            
+            // Yükleme tamamlandığında yapılacak işlemler
+            function completeUpload() {
+                // Dokümanları localStorage'e kaydetme
+                localStorage.setItem('documents', JSON.stringify(documents));
+                
+                // Formu temizleme
+                document.getElementById('documentTitle').value = '';
+                document.getElementById('documentCategory').value = '';
+                document.getElementById('documentDescription').value = '';
+                document.getElementById('documentFile').value = '';
+                
+                // Tabloyu güncelleme
+                updateDocumentsTable();
+                
+                // Yükleme düğmesini sıfırla
+                uploadButton.disabled = false;
+                uploadButton.textContent = 'Dokümanı Yükle';
+                
+                // Bilgilendirme mesajı
+                alert(totalFiles + ' dosyadan ' + successCount + ' tanesi başarıyla yüklendi!');
+            }
+        });
+        
+        // Dokümanları tablodan silme
+        function deleteDocument(id) {
+            if(confirm('Bu dokümanı silmek istediğinize emin misiniz?')) {
+                documents = documents.filter(doc => doc.id !== id);
+                localStorage.setItem('documents', JSON.stringify(documents));
+                updateDocumentsTable();
+            }
+        }
+        
+        // Dokümanı görüntüleme
+        function viewDocument(id) {
+            const document = documents.find(doc => doc.id === id);
+            if (document) {
+                // Base64 PDF verisi ile yeni bir sekme açma
+                const newWindow = window.open();
+                newWindow.document.write(`
+                    <iframe width="100%" height="100%" src="${document.fileData}" frameborder="0"></iframe>
+                `);
+            }
+        }
+        
+        // Doküman tablosunu güncelleme
+        function updateDocumentsTable() {
+            const tableBody = document.getElementById('documentsTableBody');
+            if (!tableBody) return;
+            
+            const searchTerm = document.getElementById('documentSearch')?.value.toLowerCase() || '';
+            const categoryFilter = document.getElementById('categoryFilter')?.value || '';
+            
+            // Tabloyu temizleme
+            tableBody.innerHTML = '';
+            
+            // Filtreleme işlemi
+            const filteredDocuments = documents.filter(doc => {
+                const matchesSearch = doc.title.toLowerCase().includes(searchTerm) || 
+                                    doc.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = categoryFilter === '' || doc.category === categoryFilter;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            // Filtrelenmiş dokümanları tabloya ekleme
+            if (filteredDocuments.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px;">Gösterilecek doküman bulunamadı</td></tr>`;
+            } else {
+                filteredDocuments.forEach(doc => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">${doc.title}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">${doc.category}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">${doc.description}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;">${doc.uploadDate}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd; text-align: center;">
+                            <button onclick="viewDocument(${doc.id})" class="edit-btn" style="background-color: #4CAF50;">Görüntüle</button>
+                            <button onclick="deleteDocument(${doc.id})" class="delete-btn">Sil</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        }
+        
+        // Arama kutusu ve kategori filtresi için event listener'lar
+        document.getElementById('documentSearch')?.addEventListener('input', updateDocumentsTable);
+        document.getElementById('categoryFilter')?.addEventListener('change', updateDocumentsTable);
+        
+        // Sayfa yüklendiğinde localStorage'den dokümanları ve kategorileri alma
+        function initializeDocuments() {
+            // Dokümanları yükle
+            const savedDocuments = localStorage.getItem('documents');
+            if (savedDocuments) {
+                documents = JSON.parse(savedDocuments);
+                updateDocumentsTable();
+            }
+            
+            // Kategorileri yükle
+            const savedCategories = localStorage.getItem('categories');
+            if (savedCategories) {
+                categories = JSON.parse(savedCategories);
+            }
+            
+            // Kategori listelerini güncelle
+            updateCategoryOptions();
+        }
+        
+        // Sayfa yüklendiğinde initialiazation çağır
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDocuments();
+        });
+            
         // Kullanıcı yönetimi
         function renderUserTable() {
             const userTableBody = document.getElementById('userTableBody');
