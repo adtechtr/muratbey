@@ -1660,22 +1660,47 @@
 
         // Kullanıcı verileri - localStorage'dan yüklenir veya varsayılan değerler kullanılır
         function initializeUsers() {
-            // Önceden kaydedilmiş kullanıcıları localStorage'dan al
-            const savedUsers = localStorage.getItem('users');
-            
-            if (savedUsers) {
-                // Kaydedilmiş kullanıcılar varsa onları kullan
-                users = JSON.parse(savedUsers);
-            } else {
-                // Kaydedilmiş kullanıcı yoksa varsayılan kullanıcıları oluştur
-                users = [
-                    { username: "admin", password: "admin123", name: "Admin Kullanıcı", role: "admin" },
-                    { username: "teknik", password: "teknik123", name: "Teknik Personel", role: "teknik" },
-                    { username: "depo", password: "depo123", name: "Depo Personeli", role: "depo" }
-                ];
+            try {
+                // Önceden kaydedilmiş kullanıcıları localStorage'dan al
+                const savedUsers = localStorage.getItem('users');
                 
-                // Varsayılan kullanıcıları localStorage'a kaydet
-                localStorage.setItem('users', JSON.stringify(users));
+                if (savedUsers && savedUsers !== 'undefined') {
+                    // Kaydedilmiş kullanıcılar varsa onları kullan
+                    try {
+                        users = JSON.parse(savedUsers);
+                        console.log('Kullanıcılar başarıyla yüklendi:', users.length, 'kullanıcı');
+                    } catch (e) {
+                        console.error('Kullanıcı verileri ayrıştırılamadı:', e);
+                        resetToDefaultUsers();
+                    }
+                } else {
+                    // Kaydedilmiş kullanıcı yoksa varsayılan kullanıcıları oluştur
+                    resetToDefaultUsers();
+                }
+            } catch (e) {
+                console.error('localStorage erişiminde hata:', e);
+                // localStorage erişilemiyorsa, sadece memory'de varsayılan kullanıcıları oluştur
+                resetToDefaultUsers(false);
+            }
+        }
+
+        // Varsayılan kullanıcıları oluştur ve kaydet
+        function resetToDefaultUsers(saveToStorage = true) {
+            console.log('Varsayılan kullanıcılar oluşturuluyor...');
+            users = [
+                { username: "admin", password: "admin123", name: "Admin Kullanıcı", role: "admin" },
+                { username: "teknik", password: "teknik123", name: "Teknik Personel", role: "teknik" },
+                { username: "depo", password: "depo123", name: "Depo Personeli", role: "depo" }
+            ];
+            
+            if (saveToStorage) {
+                try {
+                    // Varsayılan kullanıcıları localStorage'a kaydet
+                    localStorage.setItem('users', JSON.stringify(users));
+                    console.log('Varsayılan kullanıcılar localStorage\'a kaydedildi');
+                } catch (e) {
+                    console.error('Varsayılan kullanıcılar kaydedilemedi:', e);
+                }
             }
         }
 
@@ -3539,19 +3564,40 @@
                 return;
             }
 
-            users.push({
+            // Yeni kullanıcıyı ekle
+            const newUser = {
                 username: username,
                 password: password,
                 name: fullName,
                 role: role
-            });
+            };
             
-            // Kullanıcıları localStorage'a kaydet
-            localStorage.setItem('users', JSON.stringify(users));
-
-            renderUserTable();
-            hideUserModal();
-            alert('Kullanıcı başarıyla eklendi!');
+            users.push(newUser);
+            
+            // Kullanıcıları localStorage'a kaydet - hata yakalama ile
+            try {
+                localStorage.setItem('users', JSON.stringify(users));
+                console.log('Kullanıcı başarıyla localStorage\'a kaydedildi:', username);
+                
+                // Cookie olarak da kaydet (alternatif yöntem olarak)
+                try {
+                    document.cookie = 'usersSaved=true; path=/; max-age=31536000'; // 1 yıl süreyle
+                    document.cookie = 'lastSave=' + new Date().toISOString() + '; path=/; max-age=31536000';
+                } catch (cookieErr) {
+                    console.warn('Cookie kaydederken hata:', cookieErr);
+                }
+                
+                renderUserTable();
+                hideUserModal();
+                alert('Kullanıcı başarıyla eklendi!');
+            } catch (e) {
+                console.error('Kullanıcı kaydedilirken localStorage hatası:', e);
+                
+                // Hata durumunda kullanıcı bilgilerini geri al (kullanıcıyı ekleyelim ama bilgi verelim)
+                alert('Kullanıcı eklendi ama kalıcı olarak kaydedilemedi. Sayfayı yenilediğinizde kaybolabilir!');
+                renderUserTable();
+                hideUserModal();
+            }
         }
 
         function editUser(username) {
