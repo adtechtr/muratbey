@@ -1658,13 +1658,25 @@
         let offices = [];
         let inventory = [];
 
-        // Kullanıcı verileri - gerçek uygulamada veritabanında saklanmalı
+        // Kullanıcı verileri - localStorage'dan yüklenir veya varsayılan değerler kullanılır
         function initializeUsers() {
-            users = [
-                { username: "admin", password: "admin123", name: "Admin Kullanıcı", role: "admin" },
-                { username: "teknik", password: "teknik123", name: "Teknik Personel", role: "teknik" },
-                { username: "depo", password: "depo123", name: "Depo Personeli", role: "depo" }
-            ];
+            // Önceden kaydedilmiş kullanıcıları localStorage'dan al
+            const savedUsers = localStorage.getItem('users');
+            
+            if (savedUsers) {
+                // Kaydedilmiş kullanıcılar varsa onları kullan
+                users = JSON.parse(savedUsers);
+            } else {
+                // Kaydedilmiş kullanıcı yoksa varsayılan kullanıcıları oluştur
+                users = [
+                    { username: "admin", password: "admin123", name: "Admin Kullanıcı", role: "admin" },
+                    { username: "teknik", password: "teknik123", name: "Teknik Personel", role: "teknik" },
+                    { username: "depo", password: "depo123", name: "Depo Personeli", role: "depo" }
+                ];
+                
+                // Varsayılan kullanıcıları localStorage'a kaydet
+                localStorage.setItem('users', JSON.stringify(users));
+            }
         }
 
         // Ofis verileri
@@ -3081,9 +3093,11 @@
             }
         }
         
+        // Dokümanlar ve kategoriler için localStorage kullanımı
+        
         // Doküman Yönetimi için gerekli değişkenler
-        let documents = [];
-        let categories = ["Talimatlar", "Faturalar", "Sözleşmeler", "Raporlar", "Diğer"];
+        let documents = JSON.parse(localStorage.getItem('documents') || '[]');
+        let categories = JSON.parse(localStorage.getItem('categories') || '["Talimatlar", "Faturalar", "Sözleşmeler", "Raporlar", "Diğer"]');
         
         // Kategorileri yönetme
         function updateCategoryOptions() {
@@ -3175,6 +3189,114 @@
             }
         });
         
+        // Kullanıcı ekleme fonksiyonu
+        function addUser(userData) {
+            // Kullanıcıyı users dizisine ekle
+            users.push(userData);
+            
+            // localStorage'e kaydet
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Kullanıcı tablosunu güncelle (eğer fonksiyon mevcutsa)
+            if (typeof renderUserTable === 'function') {
+                renderUserTable();
+            }
+            
+            return true;
+        }
+        
+        // Kullanıcıyı düzenleme fonksiyonu
+        function editUser(username) {
+            // Kullanıcıyı bul
+            const userIndex = users.findIndex(user => user.username === username);
+            if (userIndex === -1) return false;
+            
+            // Form verilerini al ve kullanıcıyı güncelle
+            // Not: Bu kısım, gerçek form alanlarınıza göre düzenlenmelidir
+            const userData = {
+                // Form verilerini buraya ekleyin
+                username: document.getElementById('editUsername').value,
+                // Diğer alanlar...
+            };
+            
+            users[userIndex] = userData;
+            
+            // localStorage'e kaydet
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Kullanıcı tablosunu güncelle
+            renderUserTable();
+            
+            return true;
+        }
+        
+        // Kullanıcıyı silme fonksiyonu
+        function deleteUser(username) {
+            // Kullanıcı silme onayı
+            if (!confirm(`${username} kullanıcısını silmek istediğinizden emin misiniz?`)) {
+                return false;
+            }
+            
+            // Kullanıcıyı bul ve sil
+            users = users.filter(user => user.username !== username);
+            
+            // localStorage'e kaydet
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Kullanıcı tablosunu güncelle
+            renderUserTable();
+            
+            return true;
+        }
+        
+        // Kullanıcı tablosunu render etme fonksiyonu
+        function renderUserTable() {
+            const userTable = document.getElementById('userTable');
+            if (!userTable) return;
+            
+            // Tablo başlığını hazırla
+            let tableHTML = `
+                <thead>
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <th>Ad Soyad</th>
+                        <th>E-posta</th>
+                        <th>Rol</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+            
+            // Kullanıcı yoksa bilgi mesajı göster
+            if (users.length === 0) {
+                tableHTML += `
+                    <tr>
+                        <td colspan="5" class="text-center">Henüz kullanıcı eklenmemiş.</td>
+                    </tr>
+                `;
+            } else {
+                // Her kullanıcı için bir satır oluştur
+                users.forEach(user => {
+                    tableHTML += `
+                        <tr>
+                            <td>${user.username}</td>
+                            <td>${user.fullName || '-'}</td>
+                            <td>${user.email || '-'}</td>
+                            <td>${user.role || 'Kullanıcı'}</td>
+                            <td>
+                                <button class="edit-btn" data-username="${user.username}">Düzenle</button>
+                                <button class="delete-btn" data-username="${user.username}">Sil</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+            
+            tableHTML += '</tbody>';
+            userTable.innerHTML = tableHTML;
+        }
+        
         // Doküman yükleme işlemi
         document.getElementById('uploadDocumentBtn').addEventListener('click', function() {
             const title = document.getElementById('documentTitle').value;
@@ -3213,19 +3335,24 @@
                 reader.onload = function(e) {
                     const base64Data = e.target.result;
                     
-                    // Yeni doküman objesi oluşturma
-                    const newDocument = {
-                        id: Date.now() + index, // Benzersiz ID
-                        title: totalFiles > 1 ? title + ' (' + file.name + ')' : title, // Toplu yükleme durumunda dosya adını ekle
-                        category: category,
-                        description: description,
-                        uploadDate: new Date().toLocaleDateString('tr-TR'),
-                        fileData: base64Data,
-                        fileName: file.name
-                    };
+                    // Belge nesnesini oluştur
+                const docItem = {
+                    id: Date.now() + '-' + index,
+                    title: title,
+                    category: category,
+                    description: description,
+                    fileName: file.name,
+                    fileSize: file.size,
+                    uploadDate: new Date().toISOString(),
+                    fileData: reader.result
+                };
+                
+                // Doküman listesine ekle
+                documents.push(docItem);
+                
+                // Belgeleri localStorage'e kaydet
+                localStorage.setItem('documents', JSON.stringify(documents));
                     
-                    // Dokümanı listeye ekleme
-                    documents.push(newDocument);
                     successCount++;
                     
                     // İşlenen dosya sayısını artır
