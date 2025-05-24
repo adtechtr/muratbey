@@ -1815,42 +1815,56 @@
     </div>
 
     <!-- Scripts -->
-    <!-- External Libraries - Load these first with defer attribute -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    
-    <!-- Library Check Script - Runs before our main script -->
+    <!-- Simple initialization script to prepare essential functions -->
     <script>
-        // Fallbacks for external libraries
-        window.addEventListener('DOMContentLoaded', function() {
-            // Create fallbacks for required external libraries
-            console.log('Setting up library fallbacks if needed...');
-            
-            // Chart.js fallback
-            setTimeout(function() {
-                if (typeof Chart === 'undefined') {
-                    console.warn('Chart.js not loaded, creating fallback...');
-                    window.Chart = function() { 
-                        console.warn('Using Chart.js fallback');
-                        return { destroy: function() {} }; 
-                    };
-                } else {
-                    console.log('Chart.js loaded successfully');
-                }
-                
-                // XLSX fallback
-                if (typeof XLSX === 'undefined') {
-                    console.warn('XLSX not loaded, creating fallback...');
-                    window.XLSX = {
-                        utils: { book_new: function(){}, aoa_to_sheet: function(){}, book_append_sheet: function(){} },
-                        write: function(){ return ""; }
-                    };
-                } else {
-                    console.log('XLSX loaded successfully');
-                }
-            }, 500); // Small delay to ensure DOM is ready
+        // Error tracking for debugging
+        console.log('Document loading started');
+        
+        // Define a simple error handler early
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error('JavaScript error:', message, 'at', source, 'line', lineno);
+            if (error && error.stack) {
+                console.error('Error stack:', error.stack);
+            }
+            return false;
+        };
+        
+        // Basic DOM helper functions - defined early to be available everywhere
+        window.select = function(selector) {
+            return document.querySelector(selector);
+        };
+        
+        window.selectAll = function(selector) {
+            return document.querySelectorAll(selector);
+        };
+
+        // For backward compatibility - check if not already defined by libraries
+        if (typeof window.$ === 'undefined') {
+            window.$ = window.select;
+        }
+        
+        if (typeof window.$$ === 'undefined') {
+            window.$$ = window.selectAll;
+        }
+        
+        // Safe function to hide loading screen
+        window.hideLoadingScreen = function() {
+            var loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.style.display = 'none';
+                console.log('Loading screen hidden');
+            }
+        };
+        
+        // Fallback to hide loading screen after timeout
+        window.addEventListener('load', function() {
+            setTimeout(window.hideLoadingScreen, 3000);
         });
     </script>
+    
+    <!-- External Libraries with defer attribute -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
         // Application State
         const AppState = {
