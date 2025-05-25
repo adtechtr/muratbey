@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muratbey Ofis Sayaç ve Depo Takip Sistemi</title>
+    <title>Muratbey Ofis Sayaç Takip Sistemi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#1e2738">
     <style>
-        /* Root Variables - Only Dark Theme */
         :root {
-            --primary-color: #3b82f6;
-            --secondary-color: #f87171;
-            --success-color: #4ade80;
-            --warning-color: #fbbf24;
-            --error-color: #f87171;
-            --bg-color: #1f2937;
-            --card-bg: #111827;
+            --primary-color: #1e2738;
+            --secondary-color: #d42f2f;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #3b82f6;
+            --bg-color: #111827;
+            --card-bg: #1f2937;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             --border-color: #374151;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
-            --transition: all 0.2s ease-in-out;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * {
@@ -33,11 +33,6 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             color: var(--text-primary);
             line-height: 1.6;
             transition: var(--transition);
@@ -96,14 +91,9 @@
             gap: 1rem;
         }
         
-        .logo {
-            height: 50px;
-            object-fit: contain;
-        }
-        
         .logo-text h1 {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-primary);
             margin: 0;
         }
@@ -119,25 +109,6 @@
             display: flex;
             gap: 1rem;
             align-items: center;
-        }
-        
-        /* Theme Toggle */
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--border-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-        
-        .theme-toggle:hover {
-            border-color: var(--secondary-color);
-            transform: rotate(180deg);
         }
         
         /* User Menu */
@@ -196,6 +167,9 @@
             cursor: pointer;
             transition: var(--transition);
             border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .user-dropdown-item:last-child {
@@ -242,6 +216,16 @@
             color: white;
         }
         
+        .btn-warning {
+            background: var(--warning-color);
+            color: white;
+        }
+        
+        .btn-info {
+            background: var(--info-color);
+            color: white;
+        }
+        
         .btn-outline {
             background: transparent;
             border: 2px solid var(--border-color);
@@ -251,6 +235,11 @@
         .btn-outline:hover {
             border-color: var(--secondary-color);
             color: var(--secondary-color);
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
         }
         
         /* Card Styles */
@@ -338,6 +327,10 @@
             border-left: 4px solid var(--warning-color);
         }
         
+        .toast.info {
+            border-left: 4px solid var(--info-color);
+        }
+        
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
@@ -355,7 +348,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--bg-color);
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
             padding: 2rem;
         }
         
@@ -366,23 +361,26 @@
             box-shadow: var(--shadow-lg);
             width: 100%;
             max-width: 400px;
+            backdrop-filter: blur(10px);
         }
         
         .login-logo {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
         
         .login-logo img {
             height: 80px;
-            margin-bottom: 1rem;
+            max-width: 100%;
+            object-fit: contain;
         }
         
         .login-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 0.5rem;
+            color: var(--secondary-color);
         }
         
         .login-subtitle {
@@ -405,6 +403,8 @@
             margin-bottom: 2rem;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
         }
         
         .tab {
@@ -414,14 +414,20 @@
             transition: var(--transition);
             font-weight: 500;
             position: relative;
+            white-space: nowrap;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
         }
         
         .tab:hover {
             background: var(--bg-color);
+            color: var(--text-primary);
         }
         
         .tab.active {
             color: var(--secondary-color);
+            background: var(--bg-color);
         }
         
         .tab.active::after {
@@ -434,135 +440,251 @@
             background: var(--secondary-color);
         }
         
-        /* Office Grid */
-        .office-grid {
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Office Categories */
+        .office-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
         
-        .office-card {
-            background-color: var(--card-bg, #2d3748);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .category-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
         }
         
-        .office-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        .category-card:hover {
+            box-shadow: var(--shadow-lg);
         }
         
-        .office-card.complete {
-            border-left: 4px solid var(--success-color, #28a745);
-        }
-        
-        .office-card.incomplete {
-            border-left: 4px solid var(--warning-color, #ffc107);
-        }
-        
-        .office-card .card-title {
-            font-size: 1.25rem;
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 1.5rem;
             font-weight: 600;
+            font-size: 1.125rem;
         }
         
-        .office-card .card-content {
-            flex: 1;
-            font-size: 0.9rem;
+        .category-offices {
+            padding: 1rem;
         }
         
-        .office-card .card-actions {
+        .office-item {
             display: flex;
             justify-content: space-between;
-            margin-top: 1rem;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
         }
         
-        .office-card.complete {
+        .office-item:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .office-item.complete {
             border-color: var(--success-color);
             background: rgba(34, 197, 94, 0.05);
         }
         
-        .office-card.incomplete {
-            border-color: var(--error-color);
-            background: rgba(239, 68, 68, 0.05);
+        .office-item.incomplete {
+            border-color: var(--warning-color);
+            background: rgba(245, 158, 11, 0.05);
         }
         
-        .office-card-header {
+        .office-info {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
+            flex-direction: column;
         }
         
         .office-no {
-            font-size: 1.125rem;
             font-weight: 600;
             color: var(--text-primary);
-        }
-        
-        .office-status {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        
-        .office-status.complete {
-            background: var(--success-color);
-        }
-        
-        .office-status.incomplete {
-            background: var(--error-color);
+            font-size: 1rem;
         }
         
         .office-name {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
             font-size: 0.875rem;
+            margin-top: 0.25rem;
         }
         
         .office-meters {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .meter-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .meter-item:last-child {
-            border-bottom: none;
-        }
-        
-        .meter-type {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-        
-        .meter-value {
-            font-weight: 500;
-            color: var(--text-primary);
+            gap: 0.25rem;
+            margin-top: 0.5rem;
         }
         
         .meter-info {
             font-size: 0.75rem;
             color: var(--text-secondary);
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
         }
         
-        .office-action {
+        .office-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .status-dot.complete {
+            background: var(--success-color);
+        }
+        
+        .status-dot.incomplete {
+            background: var(--warning-color);
+        }
+        
+        .status-dot.pending {
+            background: var(--error-color);
+        }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .stat-icon.primary {
+            background: rgba(30, 39, 56, 0.3);
+            color: var(--primary-color);
+        }
+        
+        .stat-icon.success {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+        
+        .stat-icon.warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        
+        .stat-icon.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error-color);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        /* Warehouse */
+        .warehouse-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .warehouse-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .warehouse-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .warehouse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .warehouse-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* History Table */
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 1rem;
-            text-align: center;
         }
         
-        /* Meter Entry Modal */
+        .history-table th {
+            background: var(--bg-color);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .history-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .history-table tr:hover {
+            background: var(--bg-color);
+        }
+        
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -570,11 +692,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 9999;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(4px);
         }
         
         .modal.show {
@@ -589,18 +710,6 @@
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--shadow-lg);
-            animation: modalSlideIn 0.3s ease-out;
-        }
-        
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
         
         .modal-header {
@@ -667,10 +776,14 @@
             transition: var(--transition);
             text-align: center;
             font-weight: 500;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
         }
         
         .meter-tab:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-primary);
         }
         
         .meter-tab.active {
@@ -759,111 +872,34 @@
             gap: 0.5rem;
         }
         
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
+        /* Badge */
+        .badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
         
-        .stat-icon.primary {
-            background: rgba(30, 39, 56, 0.1);
-            color: var(--primary-color);
-        }
-        
-        .stat-icon.success {
-            background: rgba(34, 197, 94, 0.1);
+        .badge-success {
+            background: rgba(34, 197, 94, 0.2);
             color: var(--success-color);
         }
         
-        .stat-icon.warning {
-            background: rgba(245, 158, 11, 0.1);
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
             color: var(--warning-color);
         }
         
-        .stat-icon.error {
-            background: rgba(239, 68, 68, 0.1);
+        .badge-error {
+            background: rgba(239, 68, 68, 0.2);
             color: var(--error-color);
         }
         
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-        
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .dashboard {
-                padding: 0 1rem;
-            }
-            
-            .office-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .user-management {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 4rem;
-            color: var(--text-secondary);
-        }
-        
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        
-        .empty-state-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .empty-state-text {
-            margin-bottom: 1.5rem;
+        .badge-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--info-color);
         }
         
         /* Search */
@@ -895,158 +931,114 @@
             color: var(--text-secondary);
         }
         
-        /* Badge */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .dashboard {
+                padding: 0 1rem;
+            }
+            
+            .office-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-management {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .warehouse-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .developer-credit {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .footer {
+                padding: 1.5rem 1rem;
+            }
+            
+            .footer-text {
+                font-size: 0.8rem;
+            }
+            
+            .footer-copyright {
+                font-size: 0.8rem;
+            }
         }
         
-        .badge-success {
-            background: rgba(34, 197, 94, 0.1);
+        /* Hide by default */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Developer Credit */
+        .developer-credit {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .developer-credit:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        
+        .developer-credit a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .developer-credit a:hover {
             color: var(--success-color);
         }
         
-        .badge-warning {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning-color);
-        }
-        
-        .badge-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error-color);
-        }
-        
-        /* History Styles */
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        
-        .history-table th {
-            background: var(--bg-color);
-            padding: 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .history-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .history-table tr:hover {
-            background: var(--bg-color);
-        }
-
-        /* Warehouse Styles */
-        .warehouse-subtab {
-            margin-top: 1.5rem;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-            width: 100%;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .action-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--bg-color);
-            border: none;
-            color: var(--text-primary);
-        }
-
-        .action-btn:hover {
-            background: var(--border-color);
-        }
-
-        .action-btn.edit {
-            color: var(--primary-color);
-        }
-
-        .action-btn.delete {
-            color: var(--error-color);
-        }
-
-        .inventory-category {
-            margin-bottom: 2rem;
-        }
-
-        .inventory-category-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-            color: var(--primary-color);
-        }
-
-        .office-category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .office-category-item {
+        /* Footer */
+        .footer {
             background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .office-category-item:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
         }
         
-        .history-type {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.75rem;
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
         }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
+        .footer-copyright {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.875rem;
         }
     </style>
 </head>
@@ -1066,7 +1058,7 @@
                 <img src="gti-logo.svg" alt="GTİ Logo">
             </div>
             <h1 class="login-title">Muratbey</h1>
-            <p class="login-subtitle">Ofis Sayaç ve Depo Takip Sistemi</p>
+            <p class="login-subtitle">Ofis Sayaç Takip Sistemi</p>
             
             <form id="loginForm">
                 <div class="form-group">
@@ -1083,22 +1075,21 @@
                     Giriş Yap
                 </button>
             </form>
-            
-            <div style="margin-top: 2rem; text-align: center;">
-                <small style="color: var(--text-secondary);">
-                    Sorun yaşıyorsanız 
-                    <a href="#" onclick="clearLocalStorage()" style="color: var(--secondary-color);">
-                        verileri temizleyin
-                    </a>
-                </small>
-                <div style="margin-top: 1rem;">
-                    <small style="color: var(--text-secondary);">
-                        Test kullanıcıları:<br>
-                        admin / admin123<br>
-                        teknik / teknik123
-                    </small>
-                </div>
-            </div>
+        </div>
+        
+        <!-- Left Description for Login -->
+        <div style="position: fixed; bottom: 60px; left: 20px; color: var(--text-secondary); font-size: 0.75rem; max-width: 300px; line-height: 1.4;">
+            Ofis sayaç takibi ve depo envanter yönetimi için geliştirilen dijital takip sistemidir.
+        </div>
+        
+        <!-- Developer Credit for Login -->
+        <div class="developer-credit">
+            Developed by <a href="https://www.linkedin.com/in/ahmet-dolen/" target="_blank" rel="noopener noreferrer">ADTech</a>
+        </div>
+        
+        <!-- Footer for Login -->
+        <div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); text-align: center; color: var(--text-secondary); font-size: 0.75rem;">
+            © 2025 Muratbey
         </div>
     </div>
 
@@ -1108,16 +1099,11 @@
         <header class="header">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="gti-logo.svg" alt="GTİ Logo" class="logo">
                     <div class="logo-text">
-                        <h1>Muratbey</h1>
-                        <p>Ofis Sayaç ve Depo Takip Sistemi</p>
+                        <h1>🏢 Ofis Sayaçları</h1>
                     </div>
                 </div>
                 <nav class="nav-menu">
-                    <button class="theme-toggle" id="themeToggle">
-                        <span id="themeIcon">🌙</span>
-                    </button>
                     <div class="user-menu">
                         <div class="user-info" id="userInfo">
                             <div class="user-avatar" id="userAvatar">T</div>
@@ -1127,8 +1113,14 @@
                             </div>
                         </div>
                         <div class="user-dropdown" id="userDropdown">
-                            <div class="user-dropdown-item" id="userManagementBtn" style="display: none; cursor: pointer;">
+                            <div class="user-dropdown-item hidden" id="userManagementBtn">
                                 <span>👥</span> Kullanıcı Yönetimi
+                            </div>
+                            <div class="user-dropdown-item hidden" id="warehouseManagementBtn">
+                                <span>🏪</span> Depo Yönetimi
+                            </div>
+                            <div class="user-dropdown-item hidden" id="officeManagementBtn">
+                                <span>🏢</span> Ofis Yönetimi
                             </div>
                             <div class="user-dropdown-item" id="logoutBtn">
                                 <span>🚪</span> Çıkış Yap
@@ -1143,15 +1135,18 @@
         <main class="dashboard">
             <!-- Tabs -->
             <div class="tabs" id="mainTabs">
-                <div class="tab active" data-tab="offices">
+                <button class="tab hidden" data-tab="offices" id="officesTabBtn">
                     <span>🏢</span> Ofis Sayaçları
-                </div>
-                <div class="tab" data-tab="warehouse">
-                    <span>📦</span> Depo Yönetimi
-                </div>
-                <div class="tab" data-tab="stats">
-                    <span>📊</span> İstatistikler
-                </div>
+                </button>
+                <button class="tab hidden" data-tab="warehouse" id="warehouseTabBtn">
+                    <span>📦</span> Depo Envanteri
+                </button>
+                <button class="tab hidden" data-tab="history" id="historyTabBtn">
+                    <span>📊</span> Geçmiş
+                </button>
+                <button class="tab hidden" data-tab="stats" id="statsTabBtn">
+                    <span>📈</span> İstatistikler
+                </button>
             </div>
 
             <!-- Office Tab Content -->
@@ -1162,154 +1157,39 @@
                     <input type="text" class="search-input" id="officeSearch" placeholder="Ofis ara...">
                 </div>
 
-                <!-- Office Grid -->
-                <div class="office-grid" id="officeGrid">
-                    <!-- Office cards will be populated here -->
+                <!-- Office Categories -->
+                <div class="office-categories" id="officeCategories">
+                    <!-- Office categories will be populated here -->
                 </div>
             </div>
 
             <!-- Warehouse Tab Content -->
-            <div id="warehouseTab" class="tab-content" style="display: none;">
-                <div class="tabs">
-                    <div class="tab active" data-tab="inventory">
-                        <span>📜</span> Envanter
-                    </div>
-                    <div class="tab" data-tab="warehouseManagement">
-                        <span>🏢</span> Depo Yönetimi
-                    </div>
-                    <div class="tab" data-tab="importExport">
-                        <span>📥</span> İçe/Dışa Aktar
-                    </div>
+            <div id="warehouseTab" class="tab-content">
+                <!-- Warehouse Grid -->
+                <div class="warehouse-grid" id="warehouseGrid">
+                    <!-- Warehouse cards will be populated here -->
                 </div>
+            </div>
 
-                <!-- Inventory Content -->
-                <div id="inventoryContent" class="warehouse-subtab">
-                    <!-- Search -->
-                    <div class="search-container">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" class="search-input" id="inventorySearch" placeholder="Ürün ara...">
-                    </div>
-
-                    <!-- Warehouse Selection -->
-                    <div class="form-group">
-                        <label class="form-label" for="warehouseSelect">Depo Seçin</label>
-                        <select class="form-input" id="warehouseSelect">
-                            <option value="all">Tüm Depolar</option>
-                            <!-- Warehouse options will be populated here -->
-                        </select>
-                    </div>
-
-                    <!-- Inventory Table -->
-                    <div class="card" style="margin-top: 1.5rem;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                            <h3>Envanter Listesi</h3>
-                            <div style="display: flex; gap: 1rem;">
-                                <button class="btn btn-primary" id="addProductBtn">
-                                    <span>➕</span> Ürün Ekle
-                                </button>
-                                <button class="btn btn-primary" id="exportInventoryBtn">
-                                    <span>💾</span> Excel'e Aktar
-                                </button>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="history-table" id="inventoryTable">
-                                <thead>
-                                    <tr>
-                                        <th>Ürün Kodu</th>
-                                        <th>Ürün Adı</th>
-                                        <th>Depo</th>
-                                        <th>Miktar</th>
-                                        <th>Birim</th>
-                                        <th>Son Güncelleme</th>
-                                        <th>İşlemler</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="inventoryTableBody">
-                                    <!-- Inventory items will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Warehouse Management Content -->
-                <div id="warehouseManagementContent" class="warehouse-subtab" style="display: none;">
-                    <div class="user-management">
-                        <!-- Warehouse Form -->
-                        <div class="card user-form-card">
-                            <h3 style="margin-bottom: 1.5rem;">Depo Yönetimi</h3>
-                            <form id="warehouseForm">
-                                <div class="form-group">
-                                    <label class="form-label" for="warehouseName">Depo Adı</label>
-                                    <input type="text" class="form-input" id="warehouseName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="warehouseDescription">Açıklama</label>
-                                    <input type="text" class="form-input" id="warehouseDescription">
-                                </div>
-                                <input type="hidden" id="warehouseId" value="">
-                                <div style="display: flex; gap: 0.5rem;">
-                                    <button type="submit" class="btn btn-primary" style="flex: 1;">
-                                        <span id="warehouseFormBtn">Depo Ekle</span>
-                                    </button>
-                                    <button type="button" class="btn btn-outline" id="warehouseFormReset" style="display: none;">
-                                        İptal
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Warehouse List -->
-                        <div class="user-list">
-                            <div class="user-list-header">
-                                <h3 class="user-list-title">Mevcut Depolar</h3>
-                                <span class="badge badge-success" id="warehouseCount">0 Depo</span>
-                            </div>
-                            <div id="warehouseList">
-                                <!-- Warehouse list will be populated here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Import/Export Content -->
-                <div id="importExportContent" class="warehouse-subtab" style="display: none;">
-                    <div class="card" style="margin-bottom: 2rem;">
-                        <h3 style="margin-bottom: 1rem;">Toplu Ürün Girişi</h3>
-                        <p style="margin-bottom: 1rem; color: var(--text-secondary);">
-                            Excel dosyası kullanarak toplu ürün girişi yapabilirsiniz. Önce şablonu indirin, doldurun ve yükleme yapın.
-                        </p>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="#" class="btn btn-outline" id="downloadTemplateBtn">
-                                <span>💾</span> Excel Şablonunu İndir
-                            </a>
-                            <label for="excelFileInput" class="btn btn-primary">
-                                <span>📝</span> Excel Dosyası Yükle
-                            </label>
-                            <input type="file" id="excelFileInput" style="display: none;" accept=".xlsx, .xls">
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3 style="margin-bottom: 1rem;">Raporlar</h3>
-                        <p style="margin-bottom: 1rem; color: var(--text-secondary);">
-                            Sistem verilerini Excel raporu olarak indirebilirsiniz.
-                        </p>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <button class="btn btn-outline" id="exportInventoryReportBtn">
-                                <span>📊</span> Envanter Raporu
-                            </button>
-                            <button class="btn btn-outline" id="exportMeterReportBtn">
-                                <span>📈</span> Sayaç Raporu
-                            </button>
-                        </div>
+            <!-- History Tab Content -->
+            <div id="historyTab" class="tab-content">
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;">📊 Sayaç Okuma Geçmişi</h3>
+                    <div id="historyContent">
+                        <!-- History will be populated here -->
                     </div>
                 </div>
             </div>
 
             <!-- Stats Tab Content -->
-            <div id="statsTab" class="tab-content" style="display: none;">
+            <div id="statsTab" class="tab-content">
+                <!-- Export Button -->
+                <div style="margin-bottom: 2rem;">
+                    <button class="btn btn-success" onclick="exportToExcel()">
+                        📊 Excel'e Aktar
+                    </button>
+                </div>
+
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon primary">🏢</div>
@@ -1332,10 +1212,15 @@
                         <div class="stat-label">Tamamlanma Oranı</div>
                     </div>
                 </div>
+
+                <!-- Alerts Section -->
+                <div id="alertsSection">
+                    <!-- Alerts will be populated here -->
+                </div>
             </div>
 
             <!-- User Management Tab Content -->
-            <div id="userManagementTab" class="tab-content" style="display: none;">
+            <div id="userManagementTab" class="tab-content">
                 <div class="user-management">
                     <!-- User Creation Form -->
                     <div class="card user-form-card">
@@ -1357,7 +1242,7 @@
                                 <label class="form-label" for="newRole">Rol</label>
                                 <select class="form-input" id="newRole" required>
                                     <option value="teknik">Teknik Personel</option>
-                                    <option value="depo">Depo Personeli</option>
+                                    <option value="depoPersoneli">Depo Personeli</option>
                                     <option value="admin">Yönetici</option>
                                 </select>
                             </div>
@@ -1379,6 +1264,41 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Warehouse Management Tab Content -->
+            <div id="warehouseManagementTab" class="tab-content">
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;">Depo Yönetimi</h3>
+                    
+                    <!-- Add Warehouse Form -->
+                    <form id="warehouseForm" style="margin-bottom: 2rem;">
+                        <div class="form-group">
+                            <label class="form-label" for="warehouseName">Depo Adı</label>
+                            <input type="text" class="form-input" id="warehouseName" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Depo Ekle
+                        </button>
+                    </form>
+
+                    <!-- Warehouse List -->
+                    <div id="warehouseManagementList">
+                        <!-- Warehouse management list will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Office Management Tab Content -->
+            <div id="officeManagementTab" class="tab-content">
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;">Ofis ve Sayaç Yönetimi</h3>
+                    
+                    <!-- Office List -->
+                    <div id="officeManagementList">
+                        <!-- Office management list will be populated here -->
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -1392,15 +1312,15 @@
             <div class="modal-body">
                 <!-- Meter Type Tabs -->
                 <div class="meter-tabs">
-                    <div class="meter-tab active" data-meter="electric" onclick="switchMeterTab('electric')">
+                    <button class="meter-tab active" data-meter="electric" type="button">
                         <span>⚡</span> Elektrik
-                    </div>
-                    <div class="meter-tab" data-meter="water" onclick="switchMeterTab('water')">
+                    </button>
+                    <button class="meter-tab" data-meter="water" type="button">
                         <span>💧</span> Su
-                    </div>
-                    <div class="meter-tab" data-meter="gas" onclick="switchMeterTab('gas')">
+                    </button>
+                    <button class="meter-tab" data-meter="gas" type="button">
                         <span>🔥</span> Doğalgaz
-                    </div>
+                    </button>
                 </div>
 
                 <!-- Meter Forms -->
@@ -1410,24 +1330,36 @@
                     <!-- Electric Meter -->
                     <div id="electricMeterForm" class="meter-form">
                         <div class="form-group">
-                            <label class="form-label" for="electricReading">Elektrik Sayaç Değeri (kWh)</label>
+                            <label class="form-label" for="electricReading">
+                                Elektrik Sayaç Değeri (kWh)
+                                <span id="electricMeterNo" style="font-size: 0.75rem; color: var(--text-secondary);"></span>
+                            </label>
                             <input type="number" class="form-input" id="electricReading" step="0.01" min="0">
+                            <div id="electricPreviousValue" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
                         </div>
                     </div>
 
                     <!-- Water Meter -->
                     <div id="waterMeterForm" class="meter-form" style="display: none;">
                         <div class="form-group">
-                            <label class="form-label" for="waterReading">Su Sayaç Değeri (m³)</label>
+                            <label class="form-label" for="waterReading">
+                                Su Sayaç Değeri (m³)
+                                <span id="waterMeterNo" style="font-size: 0.75rem; color: var(--text-secondary);"></span>
+                            </label>
                             <input type="number" class="form-input" id="waterReading" step="0.01" min="0">
+                            <div id="waterPreviousValue" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
                         </div>
                     </div>
 
                     <!-- Gas Meter -->
                     <div id="gasMeterForm" class="meter-form" style="display: none;">
                         <div class="form-group">
-                            <label class="form-label" for="gasReading">Doğalgaz Sayaç Değeri (m³)</label>
+                            <label class="form-label" for="gasReading">
+                                Doğalgaz Sayaç Değeri (m³)
+                                <span id="gasMeterNo" style="font-size: 0.75rem; color: var(--text-secondary);"></span>
+                            </label>
                             <input type="number" class="form-input" id="gasReading" step="0.01" min="0">
+                            <div id="gasPreviousValue" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
                         </div>
                     </div>
                 </form>
@@ -1439,181 +1371,169 @@
         </div>
     </div>
 
-    <!-- History Modal -->
-    <div class="modal" id="historyModal">
+    <!-- Edit Office Modal -->
+    <div class="modal" id="editOfficeModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="historyModalTitle">Sayaç Geçmişi</h2>
-                <button class="modal-close" onclick="closeModal('historyModal')">×</button>
+                <h2 class="modal-title">Ofis ve Sayaç Düzenle</h2>
+                <button class="modal-close" onclick="closeModal('editOfficeModal')">×</button>
             </div>
             <div class="modal-body">
-                <div id="historyContent">
-                    <!-- History will be populated here -->
-                </div>
+                <form id="editOfficeForm">
+                    <input type="hidden" id="editOfficeId">
+                    <div class="form-group">
+                        <label class="form-label" for="editOfficeName">Ofis Adı</label>
+                        <input type="text" class="form-input" id="editOfficeName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="editOfficeNo">Ofis No</label>
+                        <input type="text" class="form-input" id="editOfficeNo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="editElectricMeterNo">Elektrik Sayaç No</label>
+                        <input type="text" class="form-input" id="editElectricMeterNo">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="editWaterMeterNo">Su Sayaç No</label>
+                        <input type="text" class="form-input" id="editWaterMeterNo">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="editGasMeterNo">Doğalgaz Sayaç No</label>
+                        <input type="text" class="form-input" id="editGasMeterNo">
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="closeModal('historyModal')">Kapat</button>
+                <button class="btn btn-outline" onclick="closeModal('editOfficeModal')">İptal</button>
+                <button class="btn btn-primary" onclick="saveOfficeEdit()">Kaydet</button>
             </div>
         </div>
     </div>
 
-    <!-- Product Modal -->
-    <div class="modal" id="productModal">
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="productModalTitle">Yeni Ürün Ekle</h2>
-                <button class="modal-close" onclick="closeModal('productModal')">×</button>
+                <h2 class="modal-title" id="addProductModalTitle">Ürün Ekle</h2>
+                <button class="modal-close" onclick="closeModal('addProductModal')">×</button>
             </div>
             <div class="modal-body">
-                <form id="productForm">
-                    <div class="form-group">
-                        <label class="form-label" for="productCode">Ürün Kodu</label>
-                        <input type="text" class="form-input" id="productCode" required>
-                    </div>
+                <form id="addProductForm">
+                    <input type="hidden" id="currentWarehouseId">
                     <div class="form-group">
                         <label class="form-label" for="productName">Ürün Adı</label>
                         <input type="text" class="form-input" id="productName" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="productWarehouse">Depo</label>
-                        <select id="productWarehouse" class="form-input" required>
-                            <option value="">Depo Seçiniz</option>
-                        </select>
+                        <label class="form-label" for="productCategory">Kategori</label>
+                        <input type="text" class="form-input" id="productCategory" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="productQuantity">Miktar</label>
-                        <input type="number" id="productQuantity" class="form-input" min="0" value="0">
+                        <input type="number" class="form-input" id="productQuantity" min="1" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="productUnit">Birim</label>
-                        <select id="productUnit" class="form-input">
+                        <select class="form-input" id="productUnit" required>
                             <option value="Adet">Adet</option>
-                            <option value="Kg">Kilogram</option>
-                            <option value="Lt">Litre</option>
-                            <option value="Mt">Metre</option>
-                            <option value="Paket">Paket</option>
                             <option value="Kutu">Kutu</option>
+                            <option value="Paket">Paket</option>
+                            <option value="Kg">Kg</option>
+                            <option value="Litre">Litre</option>
+                            <option value="Metre">Metre</option>
+                            <option value="Diğer">Diğer</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="productDescription">Açıklama</label>
-                        <textarea class="form-input" id="productDescription" rows="3"></textarea>
-                    </div>
-                    <input type="hidden" id="productId" value="">
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('productModal')">İptal</button>
-                <button class="btn btn-primary" id="saveProductBtn">Kaydet</button>
+                <button class="btn btn-outline" onclick="closeModal('addProductModal')">İptal</button>
+                <button class="btn btn-primary" onclick="saveProduct()">Kaydet</button>
             </div>
         </div>
     </div>
 
-    <!-- Inventory History Modal -->
-    <div class="modal" id="inventoryHistoryModal">
+    <!-- Warehouse Items Modal -->
+    <div class="modal" id="warehouseItemsModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="inventoryHistoryModalTitle">Ürün Hareketi Geçmişi</h2>
-                <button class="modal-close" onclick="closeModal('inventoryHistoryModal')">×</button>
+                <h2 class="modal-title" id="warehouseItemsModalTitle">Depo Ürünleri</h2>
+                <button class="modal-close" onclick="closeModal('warehouseItemsModal')">×</button>
             </div>
             <div class="modal-body">
-                <div id="inventoryHistoryContent">
-                    <!-- Inventory history will be populated here -->
+                <div id="warehouseItemsList">
+                    <!-- Warehouse items will be populated here -->
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="closeModal('inventoryHistoryModal')">Kapat</button>
+                <button class="btn btn-primary" onclick="closeModal('warehouseItemsModal')">Kapat</button>
             </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
-        // Application State
-        const AppState = {
-            data: {
-                currentUser: null,
-                offices: [],
-                users: [],
-                meterReadings: [],
-                warehouses: [],
-                inventory: [],
-                currentTheme: 'light'
-            },
-            
-            setState(newState) {
-                this.data = { ...this.data, ...newState };
-                this.saveToLocalStorage();
-            },
-            
-            saveToLocalStorage() {
-                try {
-                    localStorage.setItem('appState', JSON.stringify(this.data));
-                } catch (e) {
-                    console.warn('LocalStorage save failed:', e);
-                }
-            },
-            
-            loadFromLocalStorage() {
-                try {
-                    const saved = localStorage.getItem('appState');
-                    if (saved) {
-                        const parsedData = JSON.parse(saved);
-                        if (parsedData && typeof parsedData === 'object') {
-                            // Don't overwrite users with empty array
-                            if (parsedData.users && parsedData.users.length === 0) {
-                                delete parsedData.users;
-                            }
-                            this.data = { ...this.data, ...parsedData };
-                        }
-                    }
-                } catch (e) {
-                    console.warn('LocalStorage load failed:', e);
-                    // Clear corrupted data
-                    localStorage.removeItem('appState');
-                }
-            }
+        // Global variables
+        let AppData = {
+            currentUser: null,
+            offices: [],
+            users: [],
+            meterReadings: [],
+            warehouses: []
         };
 
-        // Utility Functions
-        function $(selector) {
-            return document.querySelector(selector);
-        }
+        // Office Categories
+        const OFFICE_CATEGORIES = {
+            '100 Numaralı Ofisler': ['100', '101', '102', '103', '104', '105'],
+            '1B Blok Ofisleri': ['1B-17', '1B-18', '1B-19', '1B-20', '1B-21'],
+            '20 Blok Ofisleri': ['20-01', '20-02', '20-03', '20-04', '20-05'],
+            '20A Blok Ofisleri': ['20A-01', '20A-02', '20A-03', '20A-04'],
+            '2B Blok Ofisleri': ['2B-01', '2B-02', '2B-03', '2B-04', '2B-05'],
+            '2B01 Blok Ofisleri': ['2B01-A', '2B01-B', '2B01-C', '2B01-D'],
+            '3B Blok Ofisleri': ['3B-01', '3B-02', '3B-03', '3B-04', '3B-05'],
+            'ATM Blokları': ['ATM-01', 'ATM-02', 'ATM-03'],
+            'ID Blok Ofisleri': ['ID-01', 'ID-02', 'ID-03', 'ID-04'],
+            'MD1 Blok Ofisleri': ['MD1-01', 'MD1-02', 'MD1-03'],
+            'MD2 Blok Ofisleri': ['MD2-01', 'MD2-02', 'MD2-03'],
+            'SD1 Blok Ofisleri': ['SD1-01', 'SD1-02', 'SD1-03'],
+            'SD2 Blok Ofisleri': ['SD2-01', 'SD2-02', 'SD2-03']
+        };
 
-        function $$(selector) {
-            return document.querySelectorAll(selector);
-        }
+        const DEFAULT_WAREHOUSES = [
+            'SARI OTOPARK 5 NOLU DEPO',
+            'SARI OTOPARK PEYZAJ DEPOSU',
+            'YEŞİL OTOPARK DEPO',
+            'YAKIT DEPOSU',
+            'YEŞİL OTOPARK 5 NOLU DEPO',
+            'ZEMİN 30 OFİS',
+            '-1.KAT DEPO',
+            'ZEMİN KAT DEPO',
+            'İŞLETME DEPO',
+            'TEKNİK DEPO'
+        ];
 
+        // Utility functions
         function showToast(message, type = 'success') {
-            const toastContainer = $('#toastContainer');
-            if (!toastContainer) return;
-            
+            const toastContainer = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
             toast.innerHTML = `
-                <span>${type === 'success' ? '✓' : type === 'error' ? '✕' : '⚠️'}</span>
+                <span>${type === 'success' ? '✓' : type === 'error' ? '✕' : type === 'warning' ? '⚠️' : 'ℹ️'}</span>
                 <span>${message}</span>
             `;
-            
             toastContainer.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            setTimeout(() => toast.remove(), 3000);
         }
 
         function showModal(modalId) {
-            const modal = $(`#${modalId}`);
-            if (modal) modal.classList.add('show');
+            document.getElementById(modalId).classList.add('show');
         }
 
         function closeModal(modalId) {
-            const modal = $(`#${modalId}`);
-            if (modal) modal.classList.remove('show');
+            document.getElementById(modalId).classList.remove('show');
         }
 
         function hashPassword(password) {
-            // Simple hash for demo - use bcrypt in production
             return btoa(password);
         }
 
@@ -1621,32 +1541,22 @@
             return hashPassword(password) === hash;
         }
 
-        function formatDate(date) {
-            return new Date(date).toLocaleDateString('tr-TR');
-        }
-
         function formatDateTime(date) {
             return new Date(date).toLocaleString('tr-TR');
         }
 
-        // Theme System
-        function setTheme(theme) {
-            // Always use dark theme regardless of input
-            document.documentElement.setAttribute('data-theme', 'dark');
-            AppState.setState({ currentTheme: 'dark' });
-            
-            const themeIcon = $('#themeIcon');
-            if (themeIcon) themeIcon.textContent = '☀️';
-        }
-        
-        // Toggle Theme - now only sets dark theme
-        function toggleTheme() {
-            setTheme('dark');
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('tr-TR');
         }
 
-        // Initialize Default Users
-        function initializeUsers() {
-            const defaultUsers = [
+        function generateId() {
+            return Date.now().toString() + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Initialize default data
+        function initializeDefaultData() {
+            // Users
+            AppData.users = [
                 {
                     username: 'admin',
                     password: hashPassword('admin123'),
@@ -1663,763 +1573,367 @@
                     username: 'depo',
                     password: hashPassword('depo123'),
                     fullName: 'Depo Personeli',
-                    role: 'depo'
+                    role: 'depoPersoneli'
                 }
             ];
-            
-            AppState.setState({ users: defaultUsers });
-        }
-        
-        // Initialize Default Warehouses
-        function initializeWarehouses() {
-            const defaultWarehouses = [
-                {
-                    id: '1',
-                    name: 'SARI OTOPARK 5 NOLU DEPO',
-                    description: 'Ana depo alanı'
-                },
-                {
-                    id: '2',
-                    name: 'SARI OTOPARK PEYZAJ DEPOSU',
-                    description: 'Peyzaj malzemeleri deposu'
-                },
-                {
-                    id: '3',
-                    name: 'YEŞİL OTOPARK DEPO',
-                    description: 'Yeşil otopark bölgesi deposu'
-                },
-                {
-                    id: '4',
-                    name: 'YAKIT DEPOSU',
-                    description: 'Yakıt ve petrol ürünleri deposu'
-                },
-                {
-                    id: '5',
-                    name: 'YEŞİL OTOPARK 5 NOLU DEPO',
-                    description: 'Yeşil otopark 5 numaralı depo'
-                },
-                {
-                    id: '6',
-                    name: 'ZEMİN 30 OFİS',
-                    description: 'Zemin kat 30 numaralı ofis deposu'
-                },
-                {
-                    id: '7',
-                    name: '-1.KAT DEPO',
-                    description: 'Birinci bodrum kat deposu'
-                },
-                {
-                    id: '8',
-                    name: 'ZEMİN KAT DEPO',
-                    description: 'Zemin kat ana depo'
-                },
-                {
-                    id: '9',
-                    name: 'İŞLETME DEPO',
-                    description: 'İşletme için kullanılan depo'
-                },
-                {
-                    id: '10',
-                    name: 'TEKNİK DEPO',
-                    description: 'Teknik malzemeler deposu'
-                }
-            ];
-            
-            // Only initialize if warehouses are empty
-            if (AppState.data.warehouses.length === 0) {
-                AppState.setState({ warehouses: defaultWarehouses });
-            }
-        }
 
-        // Load Offices from JSON
-        async function loadOffices() {
-            try {
-                // For demo, we'll use hardcoded data with new format
-                const offices = [
-                    { 
-                        id: "1", 
-                        office_no: "1B-21", 
-                        name: "Halit Demirkan", 
-                        electric: { meter_no: "39296823", last_reading: 0 },
-                        water: { meter_no: "5185306", last_reading: 0 },
+            // Offices with meter numbers
+            AppData.offices = [];
+            let id = 1;
+            Object.entries(OFFICE_CATEGORIES).forEach(([category, officeNos]) => {
+                officeNos.forEach(officeNo => {
+                    AppData.offices.push({
+                        id: id.toString(),
+                        office_no: officeNo,
+                        name: '',
+                        category: category,
+                        electric: { 
+                            meter_no: `ELE${String(id).padStart(6, '0')}`, 
+                            last_reading: 0 
+                        },
+                        water: { 
+                            meter_no: `SU${String(id).padStart(6, '0')}`, 
+                            last_reading: 0 
+                        },
+                        gas: { 
+                            meter_no: `GAZ${String(id).padStart(6, '0')}`, 
+                            last_reading: 0 
+                        },
                         history: []
-                    },
-                    { 
-                        id: "2", 
-                        office_no: "1B-20", 
-                        name: "His Gümrük Müşavirliği LTD.ŞTİ.", 
-                        electric: { meter_no: "39297205", last_reading: 0 },
-                        water: { meter_no: "5185291", last_reading: 0 },
-                        history: []
-                    },
-                    { 
-                        id: "3", 
-                        office_no: "1B-19", 
-                        name: "", 
-                        electric: { meter_no: "", last_reading: 0 },
-                        water: { meter_no: "5185285", last_reading: 0 },
-                        history: []
-                    },
-                    { 
-                        id: "4", 
-                        office_no: "1B-18", 
-                        name: "Narin Gümrük Müşavirliği", 
-                        electric: { meter_no: "39296915", last_reading: 0 },
-                        water: { meter_no: "5185331", last_reading: 0 },
-                        history: []
-                    },
-                    { 
-                        id: "5", 
-                        office_no: "1B-17", 
-                        name: "OMN Gümrük Müşavirliği LTD.ŞTİ.", 
-                        electric: { meter_no: "39296908", last_reading: 0 },
-                        water: { meter_no: "", last_reading: 0 },
-                        history: []
-                    }
-                ];
-                
-                AppState.setState({ offices });
-                
-                // In production, uncomment this:
-                // const response = await fetch('offices.json');
-                // const offices = await response.json();
-                // AppState.setState({ offices });
-            } catch (error) {
-                console.error('Error loading offices:', error);
-                showToast('Ofis verileri yüklenemedi', 'error');
-            }
+                    });
+                    id++;
+                });
+            });
+
+            // Warehouses
+            AppData.warehouses = DEFAULT_WAREHOUSES.map((name, index) => ({
+                id: (index + 1).toString(),
+                name: name,
+                items: []
+            }));
+
+            AppData.meterReadings = [];
+            AppData.warehouseItems = [];
         }
 
         // Authentication
         function handleLogin(e) {
             e.preventDefault();
             
-            const username = $('#username').value.trim();
-            const password = $('#password').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
             
-            // Clear errors
-            $('#usernameError').textContent = '';
-            $('#passwordError').textContent = '';
-            
-            // Validation
-            if (!username) {
-                $('#usernameError').textContent = 'Kullanıcı adı gereklidir';
+            if (!username || !password) {
+                showToast('Kullanıcı adı ve şifre gereklidir', 'error');
                 return;
             }
             
-            if (!password) {
-                $('#passwordError').textContent = 'Şifre gereklidir';
-                return;
-            }
-            
-            // Debug: Show current users
-            console.log('Available users:', AppState.data.users);
-            
-            // Find user
-            const user = AppState.data.users.find(u => 
+            const user = AppData.users.find(u => 
                 u.username === username && verifyPassword(password, u.password)
             );
             
             if (user) {
-                AppState.setState({ currentUser: user });
+                AppData.currentUser = user;
                 showDashboard();
                 showToast(`Hoş geldiniz, ${user.fullName}!`, 'success');
             } else {
-                $('#passwordError').textContent = 'Geçersiz kullanıcı adı veya şifre';
-                console.log('Login failed for:', username);
+                showToast('Geçersiz kullanıcı adı veya şifre', 'error');
             }
         }
 
         function handleLogout() {
-            AppState.setState({ currentUser: null });
+            AppData.currentUser = null;
             showLoginPage();
             showToast('Başarıyla çıkış yaptınız', 'success');
         }
 
         // Page Navigation
         function showLoginPage() {
-            $('#loginPage').style.display = 'flex';
-            $('#app').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('app').style.display = 'none';
         }
 
         function showDashboard() {
-            $('#loginPage').style.display = 'none';
-            $('#app').style.display = 'block';
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
             
-            // Update user info
-            const user = AppState.data.currentUser;
-            $('#userName').textContent = user.fullName;
+            const user = AppData.currentUser;
+            document.getElementById('userName').textContent = user.fullName;
+            document.getElementById('userAvatar').textContent = user.fullName.charAt(0).toUpperCase();
             
-            // Update role display
-            let roleDisplay = '';
+            let roleText = '';
             switch(user.role) {
+                case 'admin': roleText = 'Yönetici'; break;
+                case 'teknik': roleText = 'Teknik Personel'; break;
+                case 'depoPersoneli': roleText = 'Depo Personeli'; break;
+                default: roleText = 'Kullanıcı';
+            }
+            document.getElementById('userRole').textContent = roleText;
+            
+            setupRoleBasedAccess(user.role);
+            renderOffices();
+            renderWarehouses();
+            renderHistory();
+            updateStats();
+        }
+
+        function setupRoleBasedAccess(role) {
+            // Hide all tabs and menu items first
+            const allTabs = document.querySelectorAll('.tab');
+            const allMenuItems = document.querySelectorAll('#userManagementBtn, #warehouseManagementBtn, #officeManagementBtn');
+            
+            allTabs.forEach(tab => tab.classList.add('hidden'));
+            allMenuItems.forEach(item => item.classList.add('hidden'));
+            
+            // Show tabs based on role
+            switch(role) {
                 case 'admin':
-                    roleDisplay = 'Yönetici';
+                    document.getElementById('officesTabBtn').classList.remove('hidden');
+                    document.getElementById('warehouseTabBtn').classList.remove('hidden');
+                    document.getElementById('historyTabBtn').classList.remove('hidden');
+                    document.getElementById('statsTabBtn').classList.remove('hidden');
+                    document.getElementById('userManagementBtn').classList.remove('hidden');
+                    document.getElementById('warehouseManagementBtn').classList.remove('hidden');
+                    document.getElementById('officeManagementBtn').classList.remove('hidden');
+                    switchTab('offices');
                     break;
                 case 'teknik':
-                    roleDisplay = 'Teknik Personel';
+                    document.getElementById('officesTabBtn').classList.remove('hidden');
+                    document.getElementById('historyTabBtn').classList.remove('hidden');
+                    document.getElementById('statsTabBtn').classList.remove('hidden');
+                    switchTab('offices');
                     break;
-                case 'depo':
-                    roleDisplay = 'Depo Personeli';
+                case 'depoPersoneli':
+                    document.getElementById('warehouseTabBtn').classList.remove('hidden');
+                    switchTab('warehouse');
                     break;
-                default:
-                    roleDisplay = user.role;
-            }
-            
-            $('#userRole').textContent = roleDisplay;
-            $('#userAvatar').textContent = user.fullName.charAt(0).toUpperCase();
-            
-            // Handle role-based access control
-            if (user.role === 'admin') {
-                // Admin can access everything
-                $('#userManagementBtn').style.display = 'flex';
-                $$('.tab').forEach(tab => tab.style.display = 'flex');
-            } else if (user.role === 'teknik') {
-                // Teknik can only access offices tab
-                $('#userManagementBtn').style.display = 'none';
-                $$('.tab').forEach(tab => {
-                    if (tab.getAttribute('data-tab') === 'offices') {
-                        tab.style.display = 'flex';
-                    } else {
-                        tab.style.display = 'none';
-                    }
-                });
-            } else if (user.role === 'depo') {
-                // Depo can only access warehouse tab
-                $('#userManagementBtn').style.display = 'none';
-                $$('.tab').forEach(tab => {
-                    if (tab.getAttribute('data-tab') === 'warehouse') {
-                        tab.style.display = 'flex';
-                    } else {
-                        tab.style.display = 'none';
-                    }
-                });
-            }
-            
-            // Initialize warehouses if needed
-            initializeWarehouses();
-            
-            // Load data based on role
-            if (user.role === 'admin' || user.role === 'teknik') {
-                renderOffices();
-                updateStats();
-            }
-            
-            if (user.role === 'admin' || user.role === 'depo') {
-                renderWarehouses();
-                renderInventory();
-            }
-            
-            // Set active tab based on role
-            if (user.role === 'depo') {
-                changeTab('warehouse');
-            } else {
-                changeTab('offices');
             }
         }
 
-        // Tab switching function
-        function changeTab(tabId) {
-            // Hide all tab contents
-            $$('.tab-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Remove active class from all tabs
-            $$('.tab').forEach(tab => {
+        // Tab switching
+        function switchTab(tabName) {
+            // Remove active from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Show selected tab content
-            $(`#${tabId}Tab`).style.display = 'block';
+            // Hide all content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
             
-            // Add active class to selected tab
-            $$('.tab').forEach(tab => {
-                if (tab.getAttribute('data-tab') === tabId) {
-                    tab.classList.add('active');
+            // Show selected tab and content
+            const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
+            const selectedContent = document.getElementById(`${tabName}Tab`);
+            
+            if (selectedTab && selectedContent) {
+                selectedTab.classList.add('active');
+                selectedContent.classList.add('active');
+            }
+            
+            // Update content based on tab
+            if (tabName === 'stats') {
+                updateStats();
+            } else if (tabName === 'warehouse') {
+                renderWarehouses();
+            } else if (tabName === 'offices') {
+                renderOffices();
+            } else if (tabName === 'history') {
+                renderHistory();
+            } else if (tabName === 'userManagement') {
+                renderUsers();
+            } else if (tabName === 'warehouseManagement') {
+                renderWarehouseManagement();
+            } else if (tabName === 'officeManagement') {
+                renderOfficeManagement();
+            }
+        }
+
+        // Render functions
+        function renderOffices() {
+            const container = document.getElementById('officeCategories');
+            const searchTerm = document.getElementById('officeSearch').value.toLowerCase();
+            
+            let html = '';
+            
+            Object.entries(OFFICE_CATEGORIES).forEach(([category, officeNos]) => {
+                const categoryOffices = AppData.offices.filter(office => 
+                    office.category === category &&
+                    (searchTerm === '' || 
+                     office.office_no.toLowerCase().includes(searchTerm) ||
+                     office.name.toLowerCase().includes(searchTerm))
+                );
+                
+                if (categoryOffices.length === 0 && searchTerm) return;
+                
+                html += `
+                    <div class="category-card">
+                        <div class="category-header">${category}</div>
+                        <div class="category-offices">
+                `;
+                
+                categoryOffices.forEach(office => {
+                    const readings = getTodayReadings(office.id);
+                    const hasReadings = readings.electric || readings.water || readings.gas;
+                    const statusClass = hasReadings ? 'complete' : 'incomplete';
+                    
+                    html += `
+                        <div class="office-item ${statusClass}" onclick="openMeterModal('${office.id}')">
+                            <div class="office-info">
+                                <div class="office-no">${office.office_no}</div>
+                                <div class="office-name">${office.name || 'Boş Ofis'}</div>
+                                <div class="office-meters">
+                                    ${readings.electric ? `<div class="meter-info"><span>⚡ ${readings.electric.value} kWh</span><span>${readings.electric.user}</span></div>` : ''}
+                                    ${readings.water ? `<div class="meter-info"><span>💧 ${readings.water.value} m³</span><span>${readings.water.user}</span></div>` : ''}
+                                    ${readings.gas ? `<div class="meter-info"><span>🔥 ${readings.gas.value} m³</span><span>${readings.gas.user}</span></div>` : ''}
+                                </div>
+                            </div>
+                            <div class="office-status">
+                                <div class="status-dot ${statusClass}"></div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function getTodayReadings(officeId) {
+            const today = new Date().toDateString();
+            const todayReadings = AppData.meterReadings.filter(r => 
+                r.officeId === officeId && 
+                new Date(r.date).toDateString() === today
+            );
+            
+            const readings = {};
+            todayReadings.forEach(reading => {
+                readings[reading.type] = {
+                    value: reading.value,
+                    user: reading.user,
+                    date: reading.date
+                };
+            });
+            
+            return readings;
+        }
+
+        function renderWarehouses() {
+            const container = document.getElementById('warehouseGrid');
+            
+            const html = AppData.warehouses.map(warehouse => {
+                const itemCount = AppData.warehouseItems.filter(item => item.warehouseId === warehouse.id).length;
+                
+                return `
+                    <div class="warehouse-card">
+                        <div class="warehouse-header">
+                            <div class="warehouse-name">${warehouse.name}</div>
+                            <span class="badge badge-info">${itemCount} Ürün</span>
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button class="btn btn-primary btn-sm" onclick="openAddProductModal('${warehouse.id}')">
+                                ➕ Ürün Ekle
+                            </button>
+                            <button class="btn btn-info btn-sm" onclick="viewWarehouseItems('${warehouse.id}')">
+                                📦 Ürünleri Gör
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = html;
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('historyContent');
+            
+            if (AppData.meterReadings.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                        <div style="font-size: 1.25rem; margin-bottom: 0.5rem;">Henüz Kayıt Yok</div>
+                        <div>Sayaç okumalarınız burada görüntülenecek.</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Group readings by office and type
+            const groupedReadings = {};
+            AppData.meterReadings.forEach(reading => {
+                const office = AppData.offices.find(o => o.id === reading.officeId);
+                if (!office) return;
+                
+                const key = `${office.office_no} - ${office.name || 'Boş Ofis'}`;
+                if (!groupedReadings[key]) {
+                    groupedReadings[key] = {
+                        electric: [],
+                        water: [],
+                        gas: []
+                    };
                 }
+                groupedReadings[key][reading.type].push(reading);
             });
-        }
-
-        // Office Categories
-        window.OFFICE_CATEGORIES = [
-            { id: 'cat100', name: '100 Numaralı Ofisler' },
-            { id: 'cat1b', name: '1B Blok Ofisleri' },
-            { id: 'cat20', name: '20 Blok Ofisleri' },
-            { id: 'cat20a', name: '20A Blok Ofisleri' },
-            { id: 'cat2b', name: '2B Blok Ofisleri' },
-            { id: 'cat2b01', name: '2B01 Blok Ofisleri' },
-            { id: 'cat3b', name: '3B Blok Ofisleri' },
-            { id: 'catAtm', name: 'ATM Blokları' },
-            { id: 'catId', name: 'ID Blok Ofisleri' },
-            { id: 'catMd1', name: 'MD1 Blok Ofisleri' },
-            { id: 'catMd2', name: 'MD2 Blok Ofisleri' },
-            { id: 'catSd1', name: 'SD1 Blok Ofisleri' },
-            { id: 'catSd2', name: 'SD2 Blok Ofisleri' }
-        ];
-
-        // Get category for an office
-        function getOfficeCategory(officeNo) {
-            if (!officeNo) return OFFICE_CATEGORIES[0];
             
-            const officeLower = officeNo.toLowerCase();
-            
-            if (officeLower.includes('100')) return OFFICE_CATEGORIES[0];
-            if (officeLower.includes('1b')) return OFFICE_CATEGORIES[1];
-            if (officeLower.includes('20a')) return OFFICE_CATEGORIES[3];
-            if (officeLower.includes('20')) return OFFICE_CATEGORIES[2];
-            if (officeLower.includes('2b01')) return OFFICE_CATEGORIES[5];
-            if (officeLower.includes('2b')) return OFFICE_CATEGORIES[4];
-            if (officeLower.includes('3b')) return OFFICE_CATEGORIES[6];
-            if (officeLower.includes('atm')) return OFFICE_CATEGORIES[7];
-            if (officeLower.includes('id')) return OFFICE_CATEGORIES[8];
-            if (officeLower.includes('md1')) return OFFICE_CATEGORIES[9];
-            if (officeLower.includes('md2')) return OFFICE_CATEGORIES[10];
-            if (officeLower.includes('sd1')) return OFFICE_CATEGORIES[11];
-            if (officeLower.includes('sd2')) return OFFICE_CATEGORIES[12];
-            
-            // Default to first category if no match
-            return OFFICE_CATEGORIES[0];
-        }
-
-        // Office Categories
-        window.OFFICE_CATEGORIES = [
-            { id: 'cat100', name: '100 Numaralı Ofisler' },
-            { id: 'cat1b', name: '1B Blok Ofisleri' },
-            { id: 'cat20', name: '20 Blok Ofisleri' },
-            { id: 'cat20a', name: '20A Blok Ofisleri' },
-            { id: 'cat2b', name: '2B Blok Ofisleri' },
-            { id: 'cat2b01', name: '2B01 Blok Ofisleri' },
-            { id: 'cat3b', name: '3B Blok Ofisleri' },
-            { id: 'catAtm', name: 'ATM Blokları' },
-            { id: 'catId', name: 'ID Blok Ofisleri' },
-            { id: 'catMd1', name: 'MD1 Blok Ofisleri' },
-            { id: 'catMd2', name: 'MD2 Blok Ofisleri' },
-            { id: 'catSd1', name: 'SD1 Blok Ofisleri' },
-            { id: 'catSd2', name: 'SD2 Blok Ofisleri' }
-        ];
-
-        // Get category for an office
-        function getOfficeCategory(officeNo) {
-            officeNo = officeNo.toLowerCase();
-            
-            if (officeNo.includes('100')) return OFFICE_CATEGORIES[0];
-            if (officeNo.includes('1b')) return OFFICE_CATEGORIES[1];
-            if (officeNo.includes('20a')) return OFFICE_CATEGORIES[3];
-            if (officeNo.includes('20')) return OFFICE_CATEGORIES[2];
-            if (officeNo.includes('2b01')) return OFFICE_CATEGORIES[5];
-            if (officeNo.includes('2b')) return OFFICE_CATEGORIES[4];
-            if (officeNo.includes('3b')) return OFFICE_CATEGORIES[6];
-            if (officeNo.includes('atm')) return OFFICE_CATEGORIES[7];
-            if (officeNo.includes('id')) return OFFICE_CATEGORIES[8];
-            if (officeNo.includes('md1')) return OFFICE_CATEGORIES[9];
-            if (officeNo.includes('md2')) return OFFICE_CATEGORIES[10];
-            if (officeNo.includes('sd1')) return OFFICE_CATEGORIES[11];
-            if (officeNo.includes('sd2')) return OFFICE_CATEGORIES[12];
-            
-            // Default to first category if no match
-            return OFFICE_CATEGORIES[0];
-        }
-
-        // Get category name by ID
-        function getCategoryName(categoryId) {
-            const category = OFFICE_CATEGORIES.find(c => c.id === categoryId);
-            return category ? category.name : 'Diğer';
-        }
-    return OFFICE_CATEGORIES[0];
-}
-
-// Get category name by ID
-function getCategoryName(categoryId) {
-    const category = OFFICE_CATEGORIES.find(c => c.id === categoryId);
-    return category ? category.name : 'Diğer';
-}
-
-// Render Offices
-function renderOffices(offices = AppState.data.offices) {
-    const officeGrid = $('#officeGrid');
-    const officeSearchInput = $('#officeSearch');
-    const productSearchInput = $('#productSearch');
-    
-    // Add badge styles if they don't exist
-    if (!$('#badgeStyles')) {
-        const style = document.createElement('style');
-        style.id = 'badgeStyles';
-        style.textContent = `
-            .badge {
-                display: inline-block;
-                padding: 0.25em 0.6em;
-                font-size: 0.75rem;
-                font-weight: 600;
-                line-height: 1;
-                text-align: center;
-                white-space: nowrap;
-                vertical-align: baseline;
-                border-radius: 10px;
-            }
-            .badge-success {
-                background-color: var(--success-color, #28a745);
-                color: white;
-            }
-            .badge-warning {
-                background-color: var(--warning-color, #ffc107);
-                color: #212529;
-            }
-            .text-muted {
-                color: var(--muted-color, #6c757d);
-                font-weight: 600;
-                margin-right: 5px;
-            }
-            .btn-small {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.8rem;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    
-    if (productSearchInput) {
-        productSearchInput.addEventListener('input', () => {
-            const query = productSearchInput.value.toLowerCase().trim();
-            const products = AppState.data.inventory || [];
-            
-            // If query is empty, show all products
-            if (!query) {
-                renderInventory(products);
-                return;
-            }
-            
-            // Filter products by name, code, or warehouse
-            const filteredProducts = products.filter(product => 
-                (product.name && product.name.toLowerCase().includes(query)) || 
-                (product.code && product.code.toLowerCase().includes(query)) || 
-                (product.warehouse && product.warehouse.toLowerCase().includes(query))
-            );
-            
-            renderInventory(filteredProducts);
-        });
-    }
-    
-    if (officeSearchInput) {
-        officeSearchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            const filteredOffices = offices.filter(office => 
-                (office.office_no && office.office_no.toLowerCase().includes(query)) || 
-                (office.name && office.name.toLowerCase().includes(query))
-            );
-            
-            renderOffices(filteredOffices);
-        });
-    }
-    
-    const searchTerm = officeSearchInput?.value?.toLowerCase() || '';
-    let filteredOffices = offices;
-    
-    if (searchTerm) {
-        filteredOffices = filteredOffices.filter(office => 
-            (office.office_no && office.office_no.toLowerCase().includes(searchTerm)) ||
-            (office.name && office.name.toLowerCase().includes(searchTerm))
-        );
-        
-        // Render all matching offices in a flat list
-        officeGrid.innerHTML = `<div class="office-grid">${filteredOffices.map(office => {
-            const readings = getOfficeReadings(office.id);
-            const isComplete = readings.electric || readings.water || readings.gas;
-            
-            return `
-                <div class="office-card ${isComplete ? 'complete' : 'incomplete'}">
-                    <div class="card-title">${office.office_no}</div>
-                    <div class="card-content">
-                        <div><span class="text-muted">Durum:</span> ${isComplete ? '<span class="badge badge-success">Güncel</span>' : '<span class="badge badge-warning">Bekliyor</span>'}</div>
-                        <div><span class="text-muted">Kategori:</span> ${getCategoryName(office.category)}</div>
-                        <div><span class="text-muted">Konum:</span> ${office.location || 'Belirtilmemiş'}</div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn btn-small btn-primary" onclick="openMeterModal('${office.id}')">Sayaç Ekle</button>
-                        <button class="btn btn-small btn-outline" onclick="openHistoryModal('${office.id}')">Geçmiş</button>
-                    </div>
-                </div>
-            `;
-        }).join('')}</div>`;
-    } else {
-        // Clear the container first
-        officeGrid.innerHTML = '';
-        
-        // Group offices by category
-        const officesByCategory = {};
-        
-        // Initialize categories
-        OFFICE_CATEGORIES.forEach(category => {
-            officesByCategory[category.id] = {
-                name: category.name,
-                offices: []
-            };
-        });
-        
-        // Group offices
-        filteredOffices.forEach(office => {
-            const category = getOfficeCategory(office.office_no);
-            if (category && category.id) {
-                officesByCategory[category.id].offices.push(office);
-            }
-        });
-        
-        // Generate HTML for each category
-        OFFICE_CATEGORIES.forEach(category => {
-            const categoryData = officesByCategory[category.id];
-            
-            if (categoryData.offices.length > 0) {
-                // Create a category container
-                const categoryContainer = document.createElement('div');
-                categoryContainer.className = 'inventory-category';
+            let html = '';
+            Object.entries(groupedReadings).forEach(([officeKey, readings]) => {
+                html += `<h4 style="margin: 1.5rem 0 1rem; color: var(--secondary-color);">${officeKey}</h4>`;
                 
-                // Add category title
-                const categoryTitle = document.createElement('h3');
-                categoryTitle.className = 'inventory-category-title';
-                categoryTitle.textContent = categoryData.name;
-                categoryContainer.appendChild(categoryTitle);
-                
-                // Create office grid for this category
-                const categoryGrid = document.createElement('div');
-                categoryGrid.className = 'office-grid';
-                
-                // Add office cards to the grid
-                categoryData.offices.forEach(office => {
-                    const readings = getOfficeReadings(office.id);
-                    const isComplete = readings.electric || readings.water || readings.gas;
-                    
-                    // Create office card
-                    const card = document.createElement('div');
-                    card.className = `office-card ${isComplete ? 'complete' : 'incomplete'}`;
-                    
-                    // Card title
-                    const cardTitle = document.createElement('div');
-                    cardTitle.className = 'card-title';
-                    cardTitle.textContent = office.office_no;
-                    card.appendChild(cardTitle);
-                    
-                    // Card content
-                    const cardContent = document.createElement('div');
-                    cardContent.className = 'card-content';
-                    
-                    // Status
-                    const statusDiv = document.createElement('div');
-                    const statusLabel = document.createElement('span');
-                    statusLabel.className = 'text-muted';
-                    statusLabel.textContent = 'Durum:';
-                    statusDiv.appendChild(statusLabel);
-                    
-                    const statusBadge = document.createElement('span');
-                    statusBadge.className = isComplete ? 'badge badge-success' : 'badge badge-warning';
-                    statusBadge.textContent = isComplete ? 'Güncel' : 'Bekliyor';
-                    statusDiv.appendChild(document.createTextNode(' '));
-                    statusDiv.appendChild(statusBadge);
-                    cardContent.appendChild(statusDiv);
-                    
-                    // Category
-                    const categoryDiv = document.createElement('div');
-                    const categoryLabel = document.createElement('span');
-                    categoryLabel.className = 'text-muted';
-                    categoryLabel.textContent = 'Kategori:';
-                    categoryDiv.appendChild(categoryLabel);
-                    categoryDiv.appendChild(document.createTextNode(' ' + getCategoryName(office.category)));
-                    cardContent.appendChild(categoryDiv);
-                    
-                    // Location
-                    const locationDiv = document.createElement('div');
-                    const locationLabel = document.createElement('span');
-                    locationLabel.className = 'text-muted';
-                    locationLabel.textContent = 'Konum:';
-                    locationDiv.appendChild(locationLabel);
-                    locationDiv.appendChild(document.createTextNode(' ' + (office.location || 'Belirtilmemiş')));
-                    cardContent.appendChild(locationDiv);
-                    
-                    card.appendChild(cardContent);
-                    
-                    // Card actions
-                    const cardActions = document.createElement('div');
-                    cardActions.className = 'card-actions';
-                    
-                    // Add meter button
-                    const addButton = document.createElement('button');
-                    addButton.className = 'btn btn-small btn-primary';
-                    addButton.textContent = 'Sayaç Ekle';
-                    addButton.onclick = function() { openMeterModal(office.id); };
-                    cardActions.appendChild(addButton);
-                    
-                    // History button
-                    const historyButton = document.createElement('button');
-                    historyButton.className = 'btn btn-small btn-outline';
-                    historyButton.textContent = 'Geçmiş';
-                    historyButton.onclick = function() { openHistoryModal(office.id); };
-                    cardActions.appendChild(historyButton);
-                    
-                    card.appendChild(cardActions);
-                    
-                    // Add the card to the grid
-                    categoryGrid.appendChild(card);
+                ['electric', 'water', 'gas'].forEach(type => {
+                    if (readings[type].length > 0) {
+                        const typeNames = { electric: 'Elektrik', water: 'Su', gas: 'Doğalgaz' };
+                        const typeIcons = { electric: '⚡', water: '💧', gas: '🔥' };
+                        const typeUnits = { electric: 'kWh', water: 'm³', gas: 'm³' };
+                        
+                        html += `
+                            <h5 style="margin: 1rem 0 0.5rem; color: var(--text-primary);">
+                                ${typeIcons[type]} ${typeNames[type]} Sayaç Geçmişi
+                            </h5>
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tarih</th>
+                                        <th>Değer (${typeUnits[type]})</th>
+                                        <th>Personel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${readings[type].sort((a, b) => new Date(b.date) - new Date(a.date)).map(r => `
+                                        <tr>
+                                            <td>${formatDateTime(r.date)}</td>
+                                            <td>${r.value}</td>
+                                            <td>${r.user}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        `;
+                    }
                 });
-                
-                // Add the grid to the category container
-                categoryContainer.appendChild(categoryGrid);
-                
-                // Add the category to the main container
-                officeGrid.appendChild(categoryContainer);
-            }
-                });
-                
-                // Add the grid to the category container
-                categoryContainer.appendChild(categoryGrid);
-                
-                // Add the category to the main container
-                officeGrid.appendChild(categoryContainer);
-            }
-        });
-            
-            const completedOffices = new Set(todayReadings.map(r => r.officeId)).size;
-            const totalOffices = offices.length;
-            const pendingOffices = totalOffices - completedOffices;
-            const completionRate = totalOffices > 0 ? Math.round((completedOffices / totalOffices) * 100) : 0;
-            
-            $('#totalOffices').textContent = totalOffices;
-            $('#completedOffices').textContent = completedOffices;
-            $('#pendingOffices').textContent = pendingOffices;
-            $('#completionRate').textContent = completionRate + '%';
-        }
-
-        // Switch between meter tabs
-        function switchMeterTab(meterType) {
-            // Hide all meter forms
-            $$('.meter-form').forEach(form => form.style.display = 'none');
-            
-            // Show the selected meter form
-            $(`#${meterType}MeterForm`).style.display = 'block';
-            
-            // Update active tab
-            $$('.meter-tab').forEach(tab => tab.classList.remove('active'));
-            $(`.meter-tab[data-meter="${meterType}"]`).classList.add('active');
-        }
-        
-        // Meter Entry
-        function openMeterModal(officeId) {
-            const office = AppState.data.offices.find(o => o.id === officeId);
-            if (!office) return;
-            
-            $('#meterModalTitle').textContent = `${office.office_no} - Sayaç Girişi`;
-            $('#currentOfficeId').value = officeId;
-            
-            // Reset form
-            $('#electricReading').value = '';
-            $('#waterReading').value = '';
-            $('#gasReading').value = '';
-            
-            // Show first tab
-            $$('.meter-tab').forEach(tab => tab.classList.remove('active'));
-            $$('.meter-tab')[0].classList.add('active');
-            $$('.meter-form').forEach(form => form.style.display = 'none');
-            $('#electricMeterForm').style.display = 'block';
-            
-            showModal('meterModal');
-        }
-
-        function saveMeterReading() {
-            const officeId = $('#currentOfficeId').value;
-            const currentUser = AppState.data.currentUser;
-            
-            const activeTab = $('.meter-tab.active').dataset.meter;
-            const readingInput = $(`#${activeTab}Reading`);
-            const value = parseFloat(readingInput.value);
-            
-            if (isNaN(value) || value < 0) {
-                showToast('Geçerli bir değer giriniz', 'error');
-                return;
-            }
-            
-            // Find office and update its history
-            const offices = [...AppState.data.offices];
-            const officeIndex = offices.findIndex(o => o.id === officeId);
-            
-            if (officeIndex === -1) return;
-            
-            const office = offices[officeIndex];
-            const reading = {
-                id: Date.now().toString(),
-                officeId: officeId,
-                type: activeTab,
-                value: value,
-                user: currentUser.fullName,
-                date: new Date().toISOString()
-            };
-            
-            // Update office's last reading
-            if (activeTab === 'electric' && office.electric) {
-                office.electric.last_reading = value;
-            } else if (activeTab === 'water' && office.water) {
-                office.water.last_reading = value;
-            } else if (activeTab === 'gas' && office.gas) {
-                office.gas.last_reading = value;
-            }
-            
-            // Add to history
-            if (!office.history) office.history = [];
-            office.history.push({
-                type: activeTab,
-                value: value,
-                user: currentUser.fullName,
-                date: new Date().toISOString()
             });
             
-            // Update global meter readings
-            const meterReadings = [...AppState.data.meterReadings, reading];
-            
-            AppState.setState({ 
-                offices: offices,
-                meterReadings: meterReadings 
-            });
-            
-            closeModal('meterModal');
-            renderOffices();
-            updateStats();
-            showToast('Sayaç değeri kaydedildi', 'success');
-        }
-
-        // User Management
-        function handleUserCreation(e) {
-            e.preventDefault();
-            
-            const username = $('#newUsername').value.trim();
-            const password = $('#newPassword').value.trim();
-            const fullName = $('#newFullName').value.trim();
-            const role = $('#newRole').value;
-            
-            // Check if username exists
-            if (AppState.data.users.find(u => u.username === username)) {
-                showToast('Bu kullanıcı adı zaten kullanılıyor', 'error');
-                return;
-            }
-            
-            const newUser = {
-                username,
-                password: hashPassword(password),
-                fullName,
-                role
-            };
-            
-            const users = [...AppState.data.users, newUser];
-            AppState.setState({ users });
-            
-            $('#userForm').reset();
-            renderUsers();
-            showToast('Kullanıcı başarıyla eklendi', 'success');
+            container.innerHTML = html;
         }
 
         function renderUsers() {
-            const userList = $('#userList');
-            const users = AppState.data.users;
+            const userList = document.getElementById('userList');
+            const users = AppData.users;
             
-            $('#userCount').textContent = `${users.length} Kullanıcı`;
+            document.getElementById('userCount').textContent = `${users.length} Kullanıcı`;
             
-            userList.innerHTML = users.map(user => `
+            const roleNames = {
+                admin: 'Yönetici',
+                teknik: 'Teknik Personel',
+                depoPersoneli: 'Depo Personeli'
+            };
+            
+            const html = users.map(user => `
                 <div class="user-item">
                     <div class="user-item-info">
                         <div class="user-item-avatar">
@@ -2427,9 +1941,7 @@ function renderOffices(offices = AppState.data.offices) {
                         </div>
                         <div class="user-item-details">
                             <div class="user-item-name">${user.fullName}</div>
-                            <div class="user-item-role">
-                                ${user.role === 'admin' ? 'Yönetici' : 'Teknik Personel'}
-                            </div>
+                            <div class="user-item-role">${roleNames[user.role] || user.role}</div>
                         </div>
                     </div>
                     <div class="user-item-actions">
@@ -2441,432 +1953,274 @@ function renderOffices(offices = AppState.data.offices) {
                     </div>
                 </div>
             `).join('');
+            
+            userList.innerHTML = html;
         }
 
-        function deleteUser(username) {
-            if (confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?')) {
-                const users = AppState.data.users.filter(u => u.username !== username);
-                AppState.setState({ users });
-                renderUsers();
-                showToast('Kullanıcı silindi', 'success');
-            }
-        }
-        
-        // Warehouse Management
-        function renderWarehouses() {
-            const warehouseSelect = $('#warehouseSelect');
-            const productWarehouse = $('#productWarehouse');
-            const warehouseList = $('#warehouseList');
-            const warehouses = AppState.data.warehouses || [];
+        function renderWarehouseManagement() {
+            const container = document.getElementById('warehouseManagementList');
             
-            // Update warehouse count
-            $('#warehouseCount').textContent = `${warehouses.length} Depo`;
-            
-            // Clear existing options
-            if (warehouseSelect) {
-                const allOption = warehouseSelect.querySelector('option[value="all"]');
-                warehouseSelect.innerHTML = '';
-                if (allOption) warehouseSelect.appendChild(allOption);
-                
-                // Add warehouse options
-                warehouses.forEach(warehouse => {
-                    const option = document.createElement('option');
-                    option.value = warehouse.id;
-                    option.textContent = warehouse.name;
-                    warehouseSelect.appendChild(option);
-                });
-            }
-            
-            // Update product modal warehouse dropdown
-            if (productWarehouse) {
-                productWarehouse.innerHTML = '';
-                warehouses.forEach(warehouse => {
-                    const option = document.createElement('option');
-                    option.value = warehouse.id;
-                    option.textContent = warehouse.name;
-                    productWarehouse.appendChild(option);
-                });
-            }
-            
-            // Render warehouse list
-            if (warehouseList) {
-                warehouseList.innerHTML = warehouses.map(warehouse => `
-                    <div class="user-item">
-                        <div class="user-item-info">
-                            <div class="user-item-avatar" style="background: var(--primary-color)">
-                                🏢
-                            </div>
-                            <div class="user-item-details">
-                                <div class="user-item-name">${warehouse.name}</div>
-                                <div class="user-item-role">${warehouse.description || 'Depo'}</div>
-                            </div>
-                        </div>
-                        <div class="user-item-actions">
-                            <button class="action-btn edit" onclick="editWarehouse('${warehouse.id}')">
-                                ✏️
-                            </button>
-                            <button class="action-btn delete" onclick="deleteWarehouse('${warehouse.id}')">
-                                🗮
-                            </button>
+            const html = AppData.warehouses.map(warehouse => `
+                <div class="user-item">
+                    <div class="user-item-info">
+                        <div class="user-item-avatar">🏪</div>
+                        <div class="user-item-details">
+                            <div class="user-item-name">${warehouse.name}</div>
                         </div>
                     </div>
-                `).join('');
-            }
+                    <div class="user-item-actions">
+                        <button class="btn btn-sm btn-outline" onclick="deleteWarehouse('${warehouse.id}')">
+                            Sil
+                        </button>
+                    </div>
+                </div>
+            `).join('');
             
-            renderInventory();
+            container.innerHTML = html;
         }
-        
-        function handleWarehouseForm(e) {
-            e.preventDefault();
+
+        function renderOfficeManagement() {
+            const container = document.getElementById('officeManagementList');
             
-            const name = $('#warehouseName').value.trim();
-            const description = $('#warehouseDescription').value.trim();
-            const warehouseId = $('#warehouseId').value;
+            const html = AppData.offices.map(office => `
+                <div class="user-item">
+                    <div class="user-item-info">
+                        <div class="user-item-avatar">🏢</div>
+                        <div class="user-item-details">
+                            <div class="user-item-name">${office.office_no} - ${office.name || 'Boş Ofis'}</div>
+                            <div class="user-item-role">
+                                ⚡ ${office.electric.meter_no} | 💧 ${office.water.meter_no} | 🔥 ${office.gas.meter_no}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-item-actions">
+                        <button class="btn btn-sm btn-info" onclick="editOffice('${office.id}')">
+                            Düzenle
+                        </button>
+                    </div>
+                </div>
+            `).join('');
             
-            if (!name) {
-                showToast('Depo adı gereklidir', 'error');
+            container.innerHTML = html;
+        }
+
+        function updateStats() {
+            const offices = AppData.offices;
+            const today = new Date().toDateString();
+            const todayReadings = AppData.meterReadings.filter(r => 
+                new Date(r.date).toDateString() === today
+            );
+            
+            const completedOffices = new Set(todayReadings.map(r => r.officeId)).size;
+            const totalOffices = offices.length;
+            const pendingOffices = totalOffices - completedOffices;
+            const completionRate = totalOffices > 0 ? Math.round((completedOffices / totalOffices) * 100) : 0;
+            
+            document.getElementById('totalOffices').textContent = totalOffices;
+            document.getElementById('completedOffices').textContent = completedOffices;
+            document.getElementById('pendingOffices').textContent = pendingOffices;
+            document.getElementById('completionRate').textContent = completionRate + '%';
+        }
+
+        // Meter Entry
+        function openMeterModal(officeId) {
+            const office = AppData.offices.find(o => o.id === officeId);
+            if (!office) return;
+            
+            document.getElementById('meterModalTitle').textContent = `${office.office_no} - Sayaç Girişi`;
+            document.getElementById('currentOfficeId').value = officeId;
+            
+            // Update meter numbers
+            document.getElementById('electricMeterNo').textContent = office.electric.meter_no ? `(Sayaç No: ${office.electric.meter_no})` : '';
+            document.getElementById('waterMeterNo').textContent = office.water.meter_no ? `(Sayaç No: ${office.water.meter_no})` : '';
+            document.getElementById('gasMeterNo').textContent = office.gas.meter_no ? `(Sayaç No: ${office.gas.meter_no})` : '';
+            
+            // Reset form
+            document.getElementById('electricReading').value = '';
+            document.getElementById('waterReading').value = '';
+            document.getElementById('gasReading').value = '';
+            
+            // Update previous values
+            updatePreviousValues(officeId);
+            
+            // Show first tab
+            document.querySelectorAll('.meter-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.meter-form').forEach(form => form.style.display = 'none');
+            document.querySelector('.meter-tab').classList.add('active');
+            document.getElementById('electricMeterForm').style.display = 'block';
+            
+            showModal('meterModal');
+        }
+
+        function updatePreviousValues(officeId) {
+            const previousReadings = AppData.meterReadings
+                .filter(r => r.officeId === officeId)
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            ['electric', 'water', 'gas'].forEach(type => {
+                const previousReading = previousReadings.find(r => r.type === type);
+                const element = document.getElementById(`${type}PreviousValue`);
+                if (element) {
+                    if (previousReading) {
+                        element.textContent = `Son okunan: ${previousReading.value} (${formatDateTime(previousReading.date)} - ${previousReading.user})`;
+                    } else {
+                        element.textContent = 'Daha önce okuma yapılmamış';
+                    }
+                }
+            });
+        }
+
+        function saveMeterReading() {
+            const officeId = document.getElementById('currentOfficeId').value;
+            const currentUser = AppData.currentUser;
+            
+            const activeTab = document.querySelector('.meter-tab.active').dataset.meter;
+            const readingInput = document.getElementById(`${activeTab}Reading`);
+            const value = parseFloat(readingInput.value);
+            
+            if (isNaN(value) || value < 0) {
+                showToast('Geçerli bir değer giriniz', 'error');
                 return;
             }
             
-            if (warehouseId) {
-                // Update existing warehouse
-                const warehouses = [...AppState.data.warehouses];
-                const index = warehouses.findIndex(w => w.id === warehouseId);
-                
-                if (index !== -1) {
-                    warehouses[index] = { ...warehouses[index], name, description };
-                    AppState.setState({ warehouses });
-                    showToast('Depo güncellendi', 'success');
-                }
-            } else {
-                // Create new warehouse
-                const newWarehouse = {
-                    id: Date.now().toString(),
-                    name,
-                    description
-                };
-                
-                const warehouses = [...(AppState.data.warehouses || []), newWarehouse];
-                AppState.setState({ warehouses });
-                showToast('Depo eklendi', 'success');
+            const reading = {
+                id: generateId(),
+                officeId: officeId,
+                type: activeTab,
+                value: value,
+                user: currentUser.fullName,
+                date: new Date().toISOString()
+            };
+            
+            AppData.meterReadings.push(reading);
+            
+            // Update office's last reading
+            const office = AppData.offices.find(o => o.id === officeId);
+            if (office && office[activeTab]) {
+                office[activeTab].last_reading = value;
             }
             
-            // Reset form
-            $('#warehouseForm').reset();
-            $('#warehouseId').value = '';
-            $('#warehouseFormBtn').textContent = 'Depo Ekle';
-            $('#warehouseFormReset').style.display = 'none';
-            
-            renderWarehouses();
-        }
-        
-        function editWarehouse(warehouseId) {
-            const warehouse = AppState.data.warehouses.find(w => w.id === warehouseId);
-            if (!warehouse) return;
-            
-            $('#warehouseName').value = warehouse.name;
-            $('#warehouseDescription').value = warehouse.description || '';
-            $('#warehouseId').value = warehouse.id;
-            $('#warehouseFormBtn').textContent = 'Güncelle';
-            $('#warehouseFormReset').style.display = 'block';
-        }
-        
-        function deleteWarehouse(warehouseId) {
-            if (!confirm('Bu depoyu silmek istediğinizden emin misiniz?')) return;
-            
-            // Check if warehouse has inventory items
-            const hasItems = AppState.data.inventory?.some(item => item.warehouseId === warehouseId);
-            
-            if (hasItems) {
-                if (!confirm('Bu depoda ürünler bulunuyor. Silmek istediğinizden emin misiniz?')) return;
-                
-                // Delete inventory items belonging to this warehouse
-                const inventory = AppState.data.inventory.filter(item => item.warehouseId !== warehouseId);
-                AppState.setState({ inventory });
-            }
-            
-            const warehouses = AppState.data.warehouses.filter(w => w.id !== warehouseId);
-            AppState.setState({ warehouses });
-            
-            showToast('Depo silindi', 'success');
-            renderWarehouses();
-        }
-        
-        // Inventory Management
-        function renderInventory() {
-            const inventoryTableBody = $('#inventoryTableBody');
-            const warehouseSelect = $('#warehouseSelect');
-            const searchTerm = $('#inventorySearch')?.value?.toLowerCase() || '';
-            
-            if (!inventoryTableBody) return;
-            
-            let filteredInventory = AppState.data.inventory || [];
-            const selectedWarehouse = warehouseSelect?.value;
-            
-            // Filter by warehouse
-            if (selectedWarehouse && selectedWarehouse !== 'all') {
-                filteredInventory = filteredInventory.filter(item => item.warehouseId === selectedWarehouse);
-            }
-            
-            // Filter by search term
-            if (searchTerm) {
-                filteredInventory = filteredInventory.filter(item => 
-                    item.code.toLowerCase().includes(searchTerm) ||
-                    item.name.toLowerCase().includes(searchTerm) ||
-                    (item.description && item.description.toLowerCase().includes(searchTerm))
-                );
-            }
-            
-            // Render inventory table
-            inventoryTableBody.innerHTML = filteredInventory.length > 0 ? 
-                filteredInventory.map(item => {
-                    const warehouse = AppState.data.warehouses.find(w => w.id === item.warehouseId);
-                    
-                    return `
-                        <tr>
-                            <td>${item.code}</td>
-                            <td>${item.name}</td>
-                            <td>${warehouse ? warehouse.name : '-'}</td>
-                            <td>${item.quantity} ${item.unit}</td>
-                            <td>${item.unit}</td>
-                            <td>${formatDateTime(item.updatedAt)}</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="action-btn edit" onclick="editProduct('${item.id}')">
-                                        ✏️
-                                    </button>
-                                    <button class="action-btn" onclick="viewProductHistory('${item.id}')">
-                                        📃
-                                    </button>
-                                    <button class="action-btn delete" onclick="deleteProduct('${item.id}')">
-                                        🗮
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    `;
-                }).join('') : 
-                `<tr><td colspan="7" style="text-align: center;">Kayıt bulunamadı</td></tr>`;
+            closeModal('meterModal');
+            renderOffices();
+            renderHistory();
+            updateStats();
+            showToast('Sayaç değeri kaydedildi', 'success');
         }
 
-        // Event Listeners
+        // Office Management
+        function editOffice(officeId) {
+            const office = AppData.offices.find(o => o.id === officeId);
+            if (!office) return;
+            
+            document.getElementById('editOfficeId').value = officeId;
+            document.getElementById('editOfficeName').value = office.name;
+            document.getElementById('editOfficeNo').value = office.office_no;
+            document.getElementById('editElectricMeterNo').value = office.electric.meter_no;
+            document.getElementById('editWaterMeterNo').value = office.water.meter_no;
+            document.getElementById('editGasMeterNo').value = office.gas.meter_no;
+            
+            showModal('editOfficeModal');
+        }
+
+        function saveOfficeEdit() {
+            const officeId = document.getElementById('editOfficeId').value;
+            const name = document.getElementById('editOfficeName').value.trim();
+            const officeNo = document.getElementById('editOfficeNo').value.trim();
+            const electricMeterNo = document.getElementById('editElectricMeterNo').value.trim();
+            const waterMeterNo = document.getElementById('editWaterMeterNo').value.trim();
+            const gasMeterNo = document.getElementById('editGasMeterNo').value.trim();
+            
+            if (!name || !officeNo) {
+                showToast('Ofis adı ve no gereklidir', 'error');
+                return;
+            }
+            
+            const office = AppData.offices.find(o => o.id === officeId);
+            if (office) {
+                office.name = name;
+                office.office_no = officeNo;
+                office.electric.meter_no = electricMeterNo;
+                office.water.meter_no = waterMeterNo;
+                office.gas.meter_no = gasMeterNo;
+                
+                closeModal('editOfficeModal');
+                renderOffices();
+                renderOfficeManagement();
+                showToast('Ofis bilgileri güncellendi', 'success');
+            }
+        }
+
+        // Event listeners setup
         function setupEventListeners() {
-            // Login form
-            $('#loginForm').addEventListener('submit', handleLogin);
-            
-            // Logout
-            $('#logoutBtn').addEventListener('click', handleLogout);
-            
-            // Theme toggle
-            $('#themeToggle').addEventListener('click', () => {
-                const currentTheme = AppState.data.currentTheme;
-                setTheme(currentTheme === 'light' ? 'dark' : 'light');
-            });
+            // Login
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
             
             // User menu
-            $('#userInfo').addEventListener('click', () => {
-                $('#userDropdown').classList.toggle('show');
+            document.getElementById('userInfo').addEventListener('click', () => {
+                document.getElementById('userDropdown').classList.toggle('show');
             });
             
-            // Main tabs
-            $$('#mainTabs .tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabId = tab.getAttribute('data-tab');
-                    if (tabId) {
-                        changeTab(tabId);
-                    }
-                });
-            });
-            
-            // Warehouse subtabs
-            $$('.tabs [data-tab]').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabId = tab.getAttribute('data-tab');
-                    if (tabId && tabId !== 'offices' && tabId !== 'stats' && tabId !== 'warehouse') {
-                        // Hide all subtabs
-                        $$('.warehouse-subtab').forEach(content => {
-                            content.style.display = 'none';
-                        });
-                        
-                        // Show selected subtab
-                        $(`#${tabId}Content`).style.display = 'block';
-                        
-                        // Update active tab
-                        tab.parentNode.querySelectorAll('.tab').forEach(t => {
-                            t.classList.remove('active');
-                        });
-                        tab.classList.add('active');
-                    }
-                });
-            });
-            
-            // Warehouse form
-            const warehouseForm = $('#warehouseForm');
-            if (warehouseForm) {
-                warehouseForm.addEventListener('submit', handleWarehouseForm);
-            }
-            
-            // Reset warehouse form
-            const warehouseFormReset = $('#warehouseFormReset');
-            if (warehouseFormReset) {
-                warehouseFormReset.addEventListener('click', () => {
-                    $('#warehouseForm').reset();
-                    $('#warehouseId').value = '';
-                    $('#warehouseFormBtn').textContent = 'Depo Ekle';
-                    $('#warehouseFormReset').style.display = 'none';
-                });
-            }
-            
-            // Add warehouse button
-            $('#addWarehouseBtn')?.addEventListener('click', () => {
-                showModal('warehouseModal');
-                $('#warehouseModalTitle').textContent = 'Yeni Depo Ekle';
-                $('#warehouseId').value = '';
-                $('#warehouseName').value = '';
-                $('#warehouseLocation').value = '';
-                $('#warehouseDescription').value = '';
-            });
-            
-            // Add product button
-            $('#addProductBtn')?.addEventListener('click', () => {
-                showModal('productModal');
-                $('#productModalTitle').textContent = 'Yeni Ürün Ekle';
-                $('#productId').value = '';
-                $('#productName').value = '';
-                $('#productCode').value = '';
-                $('#productQuantity').value = '0';
-                $('#productUnit').value = 'Adet';
-                
-                // Populate warehouse dropdown
-                const warehouseSelect = $('#productWarehouse');
-                if (warehouseSelect) {
-                    warehouseSelect.innerHTML = '';
-                    
-                    // Add empty option
-                    const emptyOption = document.createElement('option');
-                    emptyOption.value = '';
-                    emptyOption.textContent = 'Depo Seçiniz';
-                    warehouseSelect.appendChild(emptyOption);
-                    
-                    // Add warehouse options
-                    AppState.data.warehouses.forEach(warehouse => {
-                        const option = document.createElement('option');
-                        option.value = warehouse.id;
-                        option.textContent = warehouse.name;
-                        warehouseSelect.appendChild(option);
-                    });
-                }
-            });
-            
-            // Inventory search
-            const inventorySearch = $('#inventorySearch');
-            if (inventorySearch) {
-                inventorySearch.addEventListener('input', renderInventory);
-            }
-            
-            // Warehouse select filter
-            const warehouseSelect = $('#warehouseSelect');
-            if (warehouseSelect) {
-                warehouseSelect.addEventListener('change', renderInventory);
-            }
-            
-            // Add product button
-            const addProductBtn = $('#addProductBtn');
-            if (addProductBtn) {
-                addProductBtn.addEventListener('click', () => openProductModal());
-            }
-            
-            // Save product button
-            const saveProductBtn = $('#saveProductBtn');
-            if (saveProductBtn) {
-                saveProductBtn.addEventListener('click', saveProduct);
-            }
-            
-            // Export inventory button
-            const exportInventoryBtn = $('#exportInventoryBtn');
-            if (exportInventoryBtn) {
-                exportInventoryBtn.addEventListener('click', exportInventory);
-            }
-            
-            // Excel import/export buttons
-            const downloadTemplateBtn = $('#downloadTemplateBtn');
-            if (downloadTemplateBtn) {
-                downloadTemplateBtn.addEventListener('click', downloadTemplate);
-            }
-            
-            const exportInventoryReportBtn = $('#exportInventoryReportBtn');
-            if (exportInventoryReportBtn) {
-                exportInventoryReportBtn.addEventListener('click', exportInventory);
-            }
-            
-            const exportMeterReportBtn = $('#exportMeterReportBtn');
-            if (exportMeterReportBtn) {
-                exportMeterReportBtn.addEventListener('click', () => {
-                    showToast('Sayaç verileri Excel olarak indiriliyor...', 'success');
-                });
-            }
-            
-            // Excel file input
-            const excelFileInput = $('#excelFileInput');
-            if (excelFileInput) {
-                excelFileInput.addEventListener('change', (e) => {
-                    if (e.target.files.length > 0) {
-                        showToast('Excel dosyası yükleniyor...', 'success');
-                        // In a real implementation, we would process the Excel file here
-                        setTimeout(() => {
-                            showToast('Excel verisi başarıyla içe aktarıldı', 'success');
-                            e.target.value = '';
-                        }, 1500);
-                    }
-                });
-            }
-            
-            // User management
-            $('#userManagementBtn').addEventListener('click', () => {
-                $('#userDropdown').classList.remove('show');
+            // Menu items
+            document.getElementById('userManagementBtn').addEventListener('click', () => {
+                document.getElementById('userDropdown').classList.remove('show');
                 showUserManagement();
             });
             
-            // Tabs
-            $$('.tab').forEach(tab => {
+            document.getElementById('warehouseManagementBtn').addEventListener('click', () => {
+                document.getElementById('userDropdown').classList.remove('show');
+                showWarehouseManagement();
+            });
+            
+            document.getElementById('officeManagementBtn').addEventListener('click', () => {
+                document.getElementById('userDropdown').classList.remove('show');
+                showOfficeManagement();
+            });
+            
+            // Tab clicks
+            document.querySelectorAll('.tab').forEach(tab => {
                 tab.addEventListener('click', () => {
                     const tabName = tab.dataset.tab;
-                    switchTab(tabName);
+                    if (tabName) switchTab(tabName);
                 });
             });
             
             // Meter tabs
-            const meterTabs = $$('.meter-tab');
-            if (meterTabs.length > 0) {
-                meterTabs.forEach(tab => {
-                    tab.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        // Remove active class from all tabs
-                        meterTabs.forEach(t => t.classList.remove('active'));
-                        // Add active class to clicked tab
-                        tab.classList.add('active');
-                        
-                        const meterType = tab.getAttribute('data-meter');
-                        if (meterType) {
-                            // Hide all meter forms
-                            $$('.meter-form').forEach(form => form.style.display = 'none');
-                            // Show selected meter form
-                            const selectedForm = $(`#${meterType}MeterForm`);
-                            if (selectedForm) {
-                                selectedForm.style.display = 'block';
-                            }
-                        }
-                    });
+            document.querySelectorAll('.meter-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.meter-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const meterType = tab.dataset.meter;
+                    document.querySelectorAll('.meter-form').forEach(form => form.style.display = 'none');
+                    document.getElementById(`${meterType}MeterForm`).style.display = 'block';
+                    
+                    // Update previous values
+                    const officeId = document.getElementById('currentOfficeId').value;
+                    if (officeId) updatePreviousValues(officeId);
                 });
-            }
-            
-            // Office search
-            $('#officeSearch').addEventListener('input', () => {
-                renderOffices();
             });
             
+            // Office search
+            document.getElementById('officeSearch').addEventListener('input', renderOffices);
+            
             // User form
-            $('#userForm').addEventListener('submit', handleUserCreation);
+            document.getElementById('userForm').addEventListener('submit', handleUserCreation);
+            
+            // Warehouse form
+            document.getElementById('warehouseForm').addEventListener('submit', handleWarehouseCreation);
+            
+            // Office edit form
+            document.getElementById('editOfficeForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveOfficeEdit();
+            });
+            
+            // Product form
+            document.getElementById('addProductForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveProduct();
+            });
             
             // Close modals on outside click
             window.addEventListener('click', (e) => {
@@ -2874,103 +2228,303 @@ function renderOffices(offices = AppState.data.offices) {
                     e.target.classList.remove('show');
                 }
                 
-                // Close user dropdown
                 if (!e.target.closest('.user-menu')) {
-                    $('#userDropdown').classList.remove('show');
+                    document.getElementById('userDropdown').classList.remove('show');
                 }
             });
-        }
-
-        function switchTab(tabName) {
-            // Update tab active state
-            $$('.tab').forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.dataset.tab === tabName) {
-                    tab.classList.add('active');
-                }
-            });
-            
-            // Show/hide content
-            $$('.tab-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            $(`#${tabName}Tab`).style.display = 'block';
-            
-            // Update content
-            if (tabName === 'stats') {
-                updateStats();
-            }
         }
 
         function showUserManagement() {
-            // Hide all tab contents
-            $$('.tab-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Show user management tab content
-            $('#userManagementTab').style.display = 'block';
-            
-            // Update active class on tabs
-            $$('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            renderUsers();
+            if (!document.querySelector('.tab[data-tab="userManagement"]')) {
+                const tab = document.createElement('button');
+                tab.className = 'tab';
+                tab.dataset.tab = 'userManagement';
+                tab.innerHTML = '<span>👥</span> Kullanıcı Yönetimi';
+                tab.addEventListener('click', () => switchTab('userManagement'));
+                document.getElementById('mainTabs').appendChild(tab);
+            }
+            switchTab('userManagement');
         }
 
-        // Initialize Application
+        function showWarehouseManagement() {
+            if (!document.querySelector('.tab[data-tab="warehouseManagement"]')) {
+                const tab = document.createElement('button');
+                tab.className = 'tab';
+                tab.dataset.tab = 'warehouseManagement';
+                tab.innerHTML = '<span>🏪</span> Depo Yönetimi';
+                tab.addEventListener('click', () => switchTab('warehouseManagement'));
+                document.getElementById('mainTabs').appendChild(tab);
+            }
+            switchTab('warehouseManagement');
+        }
+
+        function showOfficeManagement() {
+            if (!document.querySelector('.tab[data-tab="officeManagement"]')) {
+                const tab = document.createElement('button');
+                tab.className = 'tab';
+                tab.dataset.tab = 'officeManagement';
+                tab.innerHTML = '<span>🏢</span> Ofis Yönetimi';
+                tab.addEventListener('click', () => switchTab('officeManagement'));
+                document.getElementById('mainTabs').appendChild(tab);
+            }
+            switchTab('officeManagement');
+        }
+
+        function handleUserCreation(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('newUsername').value.trim();
+            const password = document.getElementById('newPassword').value.trim();
+            const fullName = document.getElementById('newFullName').value.trim();
+            const role = document.getElementById('newRole').value;
+            
+            if (AppData.users.find(u => u.username === username)) {
+                showToast('Bu kullanıcı adı zaten kullanılıyor', 'error');
+                return;
+            }
+            
+            AppData.users.push({
+                username,
+                password: hashPassword(password),
+                fullName,
+                role
+            });
+            
+            document.getElementById('userForm').reset();
+            renderUsers();
+            showToast('Kullanıcı başarıyla eklendi', 'success');
+        }
+
+        function handleWarehouseCreation(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('warehouseName').value.trim();
+            
+            if (!name) {
+                showToast('Depo adı gereklidir', 'error');
+                return;
+            }
+            
+            AppData.warehouses.push({
+                id: generateId(),
+                name: name,
+                items: []
+            });
+            
+            document.getElementById('warehouseForm').reset();
+            renderWarehouseManagement();
+            renderWarehouses();
+            showToast('Depo başarıyla eklendi', 'success');
+        }
+
+        function deleteUser(username) {
+            if (confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?')) {
+                AppData.users = AppData.users.filter(u => u.username !== username);
+                renderUsers();
+                showToast('Kullanıcı silindi', 'success');
+            }
+        }
+
+        function deleteWarehouse(warehouseId) {
+            if (confirm('Bu depoyu silmek istediğinizden emin misiniz?')) {
+                AppData.warehouses = AppData.warehouses.filter(w => w.id !== warehouseId);
+                // Also remove all items from this warehouse
+                AppData.warehouseItems = AppData.warehouseItems.filter(item => item.warehouseId !== warehouseId);
+                renderWarehouseManagement();
+                renderWarehouses();
+                showToast('Depo silindi', 'success');
+            }
+        }
+
+        // Warehouse Item Management
+        function openAddProductModal(warehouseId) {
+            const warehouse = AppData.warehouses.find(w => w.id === warehouseId);
+            if (!warehouse) return;
+            
+            document.getElementById('addProductModalTitle').textContent = `${warehouse.name} - Ürün Ekle`;
+            document.getElementById('currentWarehouseId').value = warehouseId;
+            
+            // Reset form
+            document.getElementById('addProductForm').reset();
+            
+            showModal('addProductModal');
+        }
+
+        function saveProduct() {
+            const warehouseId = document.getElementById('currentWarehouseId').value;
+            const name = document.getElementById('productName').value.trim();
+            const category = document.getElementById('productCategory').value.trim();
+            const quantity = parseInt(document.getElementById('productQuantity').value);
+            const unit = document.getElementById('productUnit').value;
+            
+            if (!name || !category || !quantity || quantity <= 0) {
+                showToast('Tüm alanları doğru şekilde doldurunuz', 'error');
+                return;
+            }
+            
+            const newItem = {
+                id: generateId(),
+                warehouseId: warehouseId,
+                name: name,
+                category: category,
+                quantity: quantity,
+                unit: unit,
+                date: new Date().toISOString(),
+                addedBy: AppData.currentUser.fullName
+            };
+            
+            AppData.warehouseItems.push(newItem);
+            
+            closeModal('addProductModal');
+            renderWarehouses();
+            showToast('Ürün başarıyla eklendi', 'success');
+        }
+
+        function viewWarehouseItems(warehouseId) {
+            const warehouse = AppData.warehouses.find(w => w.id === warehouseId);
+            if (!warehouse) return;
+            
+            const items = AppData.warehouseItems.filter(item => item.warehouseId === warehouseId);
+            
+            document.getElementById('warehouseItemsModalTitle').textContent = `${warehouse.name} - Ürünler`;
+            
+            const container = document.getElementById('warehouseItemsList');
+            
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
+                        <div style="font-size: 1.25rem; margin-bottom: 0.5rem;">Henüz Ürün Yok</div>
+                        <div>Bu depoda henüz ürün bulunmuyor.</div>
+                    </div>
+                `;
+            } else {
+                const html = `
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>Kategori</th>
+                                <th>Miktar</th>
+                                <th>Birim</th>
+                                <th>Ekleyen</th>
+                                <th>Tarih</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${items.map(item => `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.category}</td>
+                                    <td>${item.quantity}</td>
+                                    <td>${item.unit}</td>
+                                    <td>${item.addedBy}</td>
+                                    <td>${formatDateTime(item.date)}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline" onclick="deleteWarehouseItem('${item.id}')" style="color: var(--error-color); border-color: var(--error-color);">
+                                            🗑️ Sil
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                container.innerHTML = html;
+            }
+            
+            showModal('warehouseItemsModal');
+        }
+
+        function deleteWarehouseItem(itemId) {
+            if (confirm('Bu ürünü silmek istediğinizden emin misiniz?')) {
+                AppData.warehouseItems = AppData.warehouseItems.filter(item => item.id !== itemId);
+                renderWarehouses();
+                // Refresh the modal if it's open
+                const modalTitle = document.getElementById('warehouseItemsModalTitle').textContent;
+                if (modalTitle.includes(' - Ürünler')) {
+                    const warehouseName = modalTitle.split(' - Ürünler')[0];
+                    const warehouse = AppData.warehouses.find(w => w.name === warehouseName);
+                    if (warehouse) {
+                        viewWarehouseItems(warehouse.id);
+                    }
+                }
+                showToast('Ürün silindi', 'success');
+            }
+        }
+
+        // Excel Export Function
+        function exportToExcel() {
+            if (AppData.meterReadings.length === 0) {
+                showToast('Henüz kayıt bulunmuyor', 'warning');
+                return;
+            }
+            
+            const data = [];
+            
+            // Header
+            data.push(['Tarih', 'Ofis No', 'Ofis Adı', 'Sayaç Türü', 'Sayaç No', 'Değer', 'Birim', 'Okuyan Personel']);
+            
+            // Data
+            AppData.meterReadings.forEach(reading => {
+                const office = AppData.offices.find(o => o.id === reading.officeId);
+                if (office) {
+                    const meterType = reading.type === 'electric' ? 'Elektrik' : 
+                                    reading.type === 'water' ? 'Su' : 'Doğalgaz';
+                    const meterNo = office[reading.type]?.meter_no || '';
+                    const unit = reading.type === 'electric' ? 'kWh' : 'm³';
+                    
+                    data.push([
+                        formatDateTime(reading.date),
+                        office.office_no,
+                        office.name || 'Boş Ofis',
+                        meterType,
+                        meterNo,
+                        reading.value,
+                        unit,
+                        reading.user
+                    ]);
+                }
+            });
+            
+            // Sort by date (newest first)
+            data.slice(1).sort((a, b) => new Date(b[0]) - new Date(a[0]));
+            
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Sayaç Verileri');
+            
+            const fileName = `sayac_verileri_${new Date().toISOString().split('T')[0]}.xlsx`;
+            XLSX.writeFile(wb, fileName);
+            showToast('Excel raporu indirildi', 'success');
+        }
+
+        // Make functions global
+        window.openMeterModal = openMeterModal;
+        window.saveMeterReading = saveMeterReading;
+        window.closeModal = closeModal;
+        window.editOffice = editOffice;
+        window.saveOfficeEdit = saveOfficeEdit;
+        window.deleteUser = deleteUser;
+        window.deleteWarehouse = deleteWarehouse;
+        window.openAddProductModal = openAddProductModal;
+        window.saveProduct = saveProduct;
+        window.viewWarehouseItems = viewWarehouseItems;
+        window.deleteWarehouseItem = deleteWarehouseItem;
+        window.exportToExcel = exportToExcel;
+
+        // Initialize app
         function initializeApp() {
             try {
-                // First initialize default users
-                initializeUsers();
-                
-                // Then load saved state (but preserve users if empty)
-                const savedUsers = [...AppState.data.users];
-                AppState.loadFromLocalStorage();
-                
-                // If no users in saved state, restore default users
-                if (!AppState.data.users || AppState.data.users.length === 0) {
-                    AppState.setState({ users: savedUsers });
-                }
-                
-                // Initialize warehouses if not exists
-                if (!AppState.data.warehouses || AppState.data.warehouses.length === 0) {
-                    initializeWarehouses();
-                }
-                
-                // Initialize inventory if not exists
-                if (!AppState.data.inventory) {
-                    AppState.setState({ inventory: [] });
-                }
-                
-                // Initialize meter readings if not exists
-                if (!AppState.data.meterReadings) {
-                    AppState.setState({ meterReadings: [] });
-                }
-                
-                // Apply theme
-                setTheme(AppState.data.currentTheme);
-                
-                // Load offices
-                loadOffices();
-                
-                // Setup event listeners
+                initializeDefaultData();
                 setupEventListeners();
-                
-                // Check if user is logged in
-                if (AppState.data.currentUser) {
-                    showDashboard();
-                } else {
-                    showLoginPage();
-                }
+                showLoginPage();
             } catch (error) {
                 console.error('Initialization error:', error);
             } finally {
-                // Hide loading screen
                 setTimeout(() => {
-                    const loadingScreen = $('#loadingScreen');
+                    const loadingScreen = document.getElementById('loadingScreen');
                     if (loadingScreen) {
                         loadingScreen.style.opacity = '0';
                         setTimeout(() => {
@@ -2980,184 +2534,6 @@ function renderOffices(offices = AppState.data.offices) {
                 }, 500);
             }
         }
-
-        // Clear Local Storage
-        function clearLocalStorage() {
-            if (confirm('Tüm kayıtlı veriler silinecek. Emin misiniz?')) {
-                localStorage.removeItem('appState');
-                location.reload();
-            }
-        }
-
-        // Show History Modal
-        function openHistoryModal(officeId) {
-            const office = AppState.data.offices.find(o => o.id === officeId);
-            if (!office) return;
-            
-            $('#historyModalTitle').textContent = `${office.number || office.office_no} Sayaç Geçmişi`;
-            
-            const historyContent = $('#historyContent');
-            historyContent.innerHTML = '';
-            
-            const readings = AppState.data.meterReadings.filter(r => r.officeId === officeId);
-            if (!readings || readings.length === 0) {
-                historyContent.innerHTML = '<p class="text-center">Henüz kayıt bulunmuyor.</p>';
-                showModal('historyModal');
-                return;
-            }
-            
-            // Group readings by type
-            const electricReadings = readings.filter(r => r.type === 'electric').sort((a, b) => new Date(b.date) - new Date(a.date));
-            const waterReadings = readings.filter(r => r.type === 'water').sort((a, b) => new Date(b.date) - new Date(a.date));
-            const gasReadings = readings.filter(r => r.type === 'gas').sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            // Create HTML for tabs
-            let html = `
-                <div class="meter-tabs history-tabs">
-                    <div class="meter-tab active" data-history="electric" onclick="switchHistoryTab('electric')">
-                        <span>⚡</span> Elektrik
-                    </div>
-                    <div class="meter-tab" data-history="water" onclick="switchHistoryTab('water')">
-                        <span>💧</span> Su
-                    </div>
-                    <div class="meter-tab" data-history="gas" onclick="switchHistoryTab('gas')">
-                        <span>🔥</span> Doğalgaz
-                    </div>
-                </div>
-            `;
-            
-            // Create HTML for tab contents
-            html += `<div id="electricHistoryTab" class="history-tab-content">`;
-            if (electricReadings.length === 0) {
-                html += '<p class="text-center">Henüz elektrik sayaç kaydı bulunmuyor.</p>';
-            } else {
-                html += `
-                    <div class="table-responsive">
-                        <table class="history-table">
-                            <thead>
-                                <tr>
-                                    <th>Tarih</th>
-                                    <th>Değer (kWh)</th>
-                                    <th>Personel</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                `;
-                
-                electricReadings.forEach(reading => {
-                    html += `
-                        <tr>
-                            <td>${formatDateTime(reading.date)}</td>
-                            <td>${reading.value}</td>
-                            <td>${reading.user}</td>
-                        </tr>
-                    `;
-                });
-                
-                html += `
-                            </tbody>
-                        </table>
-                    </div>
-                `;
-            }
-            html += `</div>`;
-            
-            html += `<div id="waterHistoryTab" class="history-tab-content" style="display: none;">`;
-            if (waterReadings.length === 0) {
-                html += '<p class="text-center">Henüz su sayaç kaydı bulunmuyor.</p>';
-            } else {
-                html += `
-                    <div class="table-responsive">
-                        <table class="history-table">
-                            <thead>
-                                <tr>
-                                    <th>Tarih</th>
-                                    <th>Değer (m³)</th>
-                                    <th>Personel</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                `;
-                
-                waterReadings.forEach(reading => {
-                    html += `
-                        <tr>
-                            <td>${formatDateTime(reading.date)}</td>
-                            <td>${reading.value}</td>
-                            <td>${reading.user}</td>
-                        </tr>
-                    `;
-                });
-                
-                html += `
-                            </tbody>
-                        </table>
-                    </div>
-                `;
-            }
-            html += `</div>`;
-            
-            html += `<div id="gasHistoryTab" class="history-tab-content" style="display: none;">`;
-            if (gasReadings.length === 0) {
-                html += '<p class="text-center">Henüz doğalgaz sayaç kaydı bulunmuyor.</p>';
-            } else {
-                html += `
-                    <div class="table-responsive">
-                        <table class="history-table">
-                            <thead>
-                                <tr>
-                                    <th>Tarih</th>
-                                    <th>Değer (m³)</th>
-                                    <th>Personel</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                `;
-                
-                gasReadings.forEach(reading => {
-                    html += `
-                        <tr>
-                            <td>${formatDateTime(reading.date)}</td>
-                            <td>${reading.value}</td>
-                            <td>${reading.user}</td>
-                        </tr>
-                    `;
-                });
-                
-                html += `
-                            </tbody>
-                        </table>
-                    </div>
-                `;
-            }
-            html += `</div>`;
-            
-            historyContent.innerHTML = html;
-            showModal('historyModal');
-        }
-        
-        // Switch between history tabs
-        function switchHistoryTab(type) {
-            // Hide all history content
-            $$('.history-tab-content').forEach(tab => tab.style.display = 'none');
-            
-            // Show selected tab
-            $(`#${type}HistoryTab`).style.display = 'block';
-            
-            // Update active tab
-            $$('.history-tabs .meter-tab').forEach(tab => tab.classList.remove('active'));
-            $(`.meter-tab[data-history="${type}"]`).classList.add('active');
-        }
-
-        // Make functions global for onclick handlers
-        window.closeModal = closeModal;
-        window.openMeterModal = openMeterModal;
-        window.saveMeterReading = saveMeterReading;
-        window.deleteUser = deleteUser;
-        window.showHistory = showHistory;
-        window.clearLocalStorage = clearLocalStorage;
-        window.switchHistoryTab = switchHistoryTab;
-        window.openHistoryModal = openHistoryModal;
 
         // Initialize when DOM is ready
         if (document.readyState === 'loading') {
