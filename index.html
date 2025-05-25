@@ -2027,7 +2027,7 @@
             return category ? category.name : 'Diğer';
         }
     return OFFICE_CATEGORIES[0];
-
+}
 
 // Get category name by ID
 function getCategoryName(categoryId) {
@@ -2274,7 +2274,7 @@ function renderOffices(offices = AppState.data.offices) {
                 // Add the category to the main container
                 officeGrid.appendChild(categoryContainer);
             }
-        };
+        });
             
             const completedOffices = new Set(todayReadings.map(r => r.officeId)).size;
             const totalOffices = offices.length;
@@ -2285,7 +2285,7 @@ function renderOffices(offices = AppState.data.offices) {
             $('#completedOffices').textContent = completedOffices;
             $('#pendingOffices').textContent = pendingOffices;
             $('#completionRate').textContent = completionRate + '%';
-        
+        }
 
         // Switch between meter tabs
         function switchMeterTab(meterType) {
